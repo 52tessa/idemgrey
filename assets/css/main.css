@@ -3140,6 +3140,8 @@ input, select, textarea {
 	opacity: 1;
 	}
 	
+
+
 	.modal-content {
 	background-color: rgba(0, 0, 0, 0.6);
 	margin: 10% auto;
@@ -3151,7 +3153,15 @@ input, select, textarea {
 	transition: opacity 0.9s ease;
 	opacity: 5;
 	}
-	
+
+		@media screen and (max-width: 736px) {
+
+		#modal-content {
+			width: 85%;
+		}
+		}
+
+
 	.close {
 	color: #aaa;
 	float: right;
