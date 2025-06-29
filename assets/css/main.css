@@ -3155,7 +3155,7 @@ input, select, textarea {
 
 	@media screen and (max-width: 736px) {
 		.modal-content {
-			width: 85%;
+			width: 100%;
 		}
 	}
 
@@ -3186,7 +3186,7 @@ input, select, textarea {
 	@media screen and (max-width: 736px) {
 		.iframe-row {
 			gap: 5px;
-			padding: 5px;
+			padding: 20px;
 		}
 	}  
 	  
