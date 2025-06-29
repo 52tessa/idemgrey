@@ -3154,12 +3154,11 @@ input, select, textarea {
 	opacity: 5;
 	}
 
-		@media screen and (max-width: 736px) {
-
-		#modal-content {
+	@media screen and (max-width: 736px) {
+		.modal-content {
 			width: 85%;
 		}
-		}
+	}
 
 
 	.close {
