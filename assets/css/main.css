@@ -3139,7 +3139,6 @@ input, select, textarea {
 	transition: opacity 0.3s ease;
 	opacity: 1;
 	}
-	
 
 
 	.modal-content {
@@ -3182,6 +3181,14 @@ input, select, textarea {
 		padding: 20px 0;
 		flex-wrap: wrap; /* Optional: make it responsive on smaller screens */
 	  }
+
+	
+	@media screen and (max-width: 736px) {
+		.iframe-row {
+			gap: 5px;
+			padding: 5px;
+		}
+	}  
 	  
 
 /* .SF-grid {
