@@ -3318,22 +3318,6 @@ input, select, textarea {
 
 
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.02); }
-    100% { transform: scale(1); }
-}
-
-.clickable-bg {
-    animation: pulse 2s infinite;
-}
-
-@media screen and (max-width: 768px) {
-    .clickable-bg {
-        animation: pulse 2s infinite;
-    }
-}
-
 .tap-indicator {
     position: absolute;
     bottom: 10px;
@@ -3354,12 +3338,12 @@ input, select, textarea {
     opacity: 1;
 }
 
-	/* Hide indicator on desktop */
-	@media (min-width: 769px) {
-		.tap-indicator {
-			display: none;
-		}
+/* Hide indicator on desktop */
+@media (min-width: 769px) {
+	.tap-indicator {
+		display: none;
 	}
+}
 
 /* Ensure article has position for overlay */
 .tiles article {
