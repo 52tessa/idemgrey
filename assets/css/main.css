@@ -3338,11 +3338,10 @@ input, select, textarea {
     opacity: 1;
 }
 
-/* Hide indicator on desktop */
 @media (min-width: 769px) {
-	.tap-indicator {
-		display: none;
-	}
+    body {
+        border: 5px solid red !important;
+    }
 }
 
 /* Ensure article has position for overlay */
