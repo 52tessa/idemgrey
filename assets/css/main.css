@@ -3194,7 +3194,7 @@ input, select, textarea {
 			flex-direction: column;
        		align-items: center;
 			gap: 5px;
-			padding: 20px;
+			/*padding: 20px*/;
 		}
 
 		.iframe-row iframe {
