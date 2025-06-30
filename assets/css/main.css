@@ -3180,14 +3180,27 @@ input, select, textarea {
 		gap: 20px;
 		padding: 20px 0;
 		flex-wrap: wrap; /* Optional: make it responsive on smaller screens */
-	  }
+	}
+
+	.iframe-row iframe {
+		flex: 1 1 32%;
+		height: 352px;
+		min-width: 250px; /* ensures stability on tablets */
+	}
 
 	
 	@media screen and (max-width: 736px) {
 		.iframe-row {
+			flex-direction: column;
+       		align-items: center;
 			gap: 5px;
 			padding: 20px;
 		}
+
+		.iframe-row iframe {
+        width: 90%;
+        height: 300px;
+    	}
 	}  
 	  
 
