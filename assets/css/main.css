@@ -3316,4 +3316,52 @@ input, select, textarea {
 	opacity: 1;
 	}
 
-	
+
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.clickable-bg {
+    animation: pulse 2s infinite;
+}
+
+@media screen and (max-width: 768px) {
+    .clickable-bg {
+        animation: pulse 2s infinite;
+    }
+}
+
+.tap-indicator {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: sans-serif;
+    pointer-events: none; /* So it doesn't block clicks */
+    z-index: 2;
+	opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.tap-indicator:hover {
+    opacity: 1;
+}
+
+/* Hide indicator on desktop */
+@media (min-width: 769px) {
+    .tap-indicator {
+        display: none;
+    }
+}
+
+/* Ensure article has position for overlay */
+.tiles article {
+    position: relative;
+}
