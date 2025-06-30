@@ -3200,6 +3200,7 @@ input, select, textarea {
 		.iframe-row iframe {
         width: 90%;
         height: 300px;
+		padding-bottom: 10px;
     	}
 	}  
 	  
