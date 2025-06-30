@@ -3342,7 +3342,7 @@ input, select, textarea {
     color: #fff;
     padding: 4px 8px;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 10px;
     font-family: sans-serif;
     pointer-events: none; /* So it doesn't block clicks */
     z-index: 2;
