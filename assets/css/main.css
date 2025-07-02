@@ -3322,7 +3322,7 @@ input, select, textarea {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    background: rgba(0, 0, 0, 0.5);
+    /* background: rgba(0, 0, 0, 0.5);*/
     color: #fff;
     padding: 4px 8px;
     border-radius: 4px;
@@ -3332,14 +3332,15 @@ input, select, textarea {
     z-index: 2;
 	opacity: 0.8;
     transition: opacity 0.3s ease;
-}
+	text-align: bottom left;
+	}
 
 .tap-indicator:hover {
     opacity: 1;
 }
 
 
-	@media screen and (min-width: 769px) {
+	@media (min-width: 769px) {
 		.tap-indicator {
 			display: none;
 		}
