@@ -3096,7 +3096,7 @@ input, select, textarea {
 .album-grid {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 50px;
+	gap: 70px;
 	justify-content: center;
 	padding-top: 50px;
 	padding-bottom: 50px;
@@ -3290,9 +3290,9 @@ input, select, textarea {
 	}
 	
 	.SF-tile {
-	display: inline-block;
-	width: 100%;
-	max-width: 100%; /* Important to prevent overflow */
+	position: relative;
+	width: 300px;
+	height: 300px;
 	height: fit-content;
 	margin-bottom: 1rem;
 	break-inside: avoid;
@@ -3300,8 +3300,6 @@ input, select, textarea {
 	cursor: pointer;
 	overflow: hidden;
 	}
-	
-
 
 	.SF-tile img {
 	width: 100%;
