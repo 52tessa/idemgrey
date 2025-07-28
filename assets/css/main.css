@@ -3096,7 +3096,7 @@ input, select, textarea {
 .album-grid {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 20px;
+	gap: 50px;
 	justify-content: center;
 	padding-top: 50px;
 	padding-bottom: 50px;
@@ -3281,10 +3281,12 @@ input, select, textarea {
 
 
 	.SF-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(350px, 2fr));
-	gap: 2rem;
-	padding: 3rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 80px;
+	justify-content: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
 	}
 	
 	.SF-tile {

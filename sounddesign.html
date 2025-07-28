@@ -61,10 +61,25 @@
 							<div class="album-tile"onclick="openModal('modal4')">
 								<div class="SF-image-wrapper">
 									<img src="images/azrael.png" alt="azrael">
-								<div class="album-title">Azrael the Fallen</div>
+									<div class="album-title">Azrael the Fallen</div>
+								</div>
 							</div>
-						</div>
 							
+							<div class="album-tile" onclick="openModal('modal7')">
+								<img src="images/JohnLemon.png" alt="JohnLemon">
+								<div class="album-title">John Lemon's Haunted House</div>
+							</div>
+
+							<div class="album-tile" onclick="openModal('modal8')">
+								<img src="images/Village.png" alt="village">
+								<div class="album-title">Viking Village</div>
+							</div>
+
+							<div class="album-tile" onclick="openModal('modal9')">
+								<img src="images/FPS.png" alt="FPS">
+								<div class="album-title">First Person Shooter (demo)</div>
+							</div>
+
 							<div class="album-tile" onclick="openModal('modal3')">
 								<img src="images/thawheart.png" alt="thawheart">
 								<div class="album-title">Thawheart</div>
@@ -72,7 +87,7 @@
 
 							<div class="album-tile" onclick="openModal('modal6')">
 								<img src="images/Utgardr.png" alt="Utgardr">
-								<div class="album-title">Utgardr</div>
+								<div class="album-title">Project Utgardr</div>
 							</div>
 
 							<div class="album-tile" onclick="openModal('modal2')">
@@ -80,20 +95,64 @@
 								<div class="album-title">Topoly</div>
 							</div>
 
-
-							<div class="album-tile" onclick="openModal('modal5')">
-								<img src="images/miscellaneous.png" alt="misc">
-								<div class="album-title">Unreleased SFX for game development</div>
-							</div>
-
 							<div class="album-tile" onclick="openModal('modal1')">
 							  <img src="images/orbit.jpg" alt="orbit">
 							  <div class="album-title">Orbit</div>
 							</div>
 						
+							<div class="album-tile" onclick="openModal('modal5')">
+								<img src="images/miscellaneous.png" alt="misc">
+								<div class="album-title">Unreleased SFX for game development</div>
+							</div>
 
 						  
 							<!-- Popups -->
+							<div id="modal7" class="modal">
+							  <div class="modal-content">
+								<span class="close" onclick="closeModal('modal7')">&times;</span>
+								<h2>John Lemon - 3D Stealth Game: Haunted House</h2>
+								<p>This is the first project I did after finishing my FMOD course. 
+									All the audio you hear in this video was recorded, edited and implemented by me using Ableton Live, FMOD and Unity. </br>
+									John Lemon is a free Unity 3D learn asset available to download for free on their <a href="https://assetstore.unity.com/packages/essentials/tutorial-projects/3d-stealth-game-haunted-house-143848">asset store.</a></p>
+								<ul class="links">
+									<iframe width="1050" height="600" src="https://www.youtube.com/embed/hokMrx6lHME?si=DdlG4MwJxdk9Ngrb" title="YouTube video player" 
+									frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+									referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+								</ul>
+							  </div>
+							</div>
+
+							<div id="modal9" class="modal">
+							  <div class="modal-content">
+								<span class="close" onclick="closeModal('modal9')">&times;</span>
+								<h2>First Person Shooter (Low Poly)</h2>
+								<p>This is a free unity project by INFIMA games which I adapted with audio. From the music composition to recording folley and usisng pre-recorded assets, editing, mixing and implementing using FMOD. </br>
+								The Unity project is free to download <a href="https://assetstore.unity.com/packages/templates/systems/low-poly-shooter-pack-free-sample-144839">here</a> on the Unity AssetStore.
+								</p>
+								<ul class="links">
+									<iframe width="1050" height="600" src="https://www.youtube.com/embed/lpSRxbTXzxo?si=Cr4EWByxNE_xnFaV" title="YouTube video player" 
+									frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+									referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+								</ul>
+							  </div>
+							</div>
+
+							<div id="modal8" class="modal">
+							  <div class="modal-content">
+								<span class="close" onclick="closeModal('modal8')">&times;</span>
+								<h2>Viking Village</h2>
+								<p>This is the result of my learning course for FMOD and Unity. I recorded and edited my own sound effects and put together the background music in a few hours. 
+									It was a great learning project! This is a gameplay footage of the end result.</br>
+									Viking Village is a free Unity 3D learning asset available to download on the <a href="https://assetstore.unity.com/packages/essentials/tutorial-projects/viking-village-urp-29140">Unity AssetStore.</a>
+								</p>
+								<ul class="links">
+									<iframe width="1050" height="600" src="https://www.youtube.com/embed/mXEwQN9tUvY?si=00E1_CES-raOGIOu" title="YouTube video player" 
+									frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+									referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+								</ul>
+							  </div>
+							</div>
+
 							<div id="modal1" class="modal">
 							  <div class="modal-content">
 								<span class="close" onclick="closeModal('modal1')">&times;</span>
@@ -116,7 +175,7 @@
 								<h2>Topoly</h2>
 								<p>Topoly is a 3D endless run, fast paced arcade game focused on exploration available for Windows, Linux, and Android. 
 									I did the sound design and ambient audio. Find the game here: <a href="https://quadratic-games.itch.io/topoly">Topoly by Quadratic Games</a></p>
-								<div style="padding:48.13% 0 0 0;position:relative;">
+								<div style="padding:56.25% 0 0 0;position:relative;">
 									<iframe src="https://player.vimeo.com/video/1092234948?h=21c671a278&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
 									frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
 									style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Topoly"></iframe>
