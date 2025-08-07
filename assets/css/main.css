@@ -297,7 +297,7 @@ input, select, textarea {
 		text-align: center;
 	}
 
-	#two, #two h2 {
+	#two, #two h2, #two h3 {
 		color: black;
 	}
 
@@ -311,6 +311,11 @@ input, select, textarea {
 
 	#two header.major > :first-child:after {
     background-color: black;
+	}
+
+	#one {
+		background: #252A34;
+		min-height: 200px; 
 	}
 
 	header.major {
