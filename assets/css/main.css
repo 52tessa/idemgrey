@@ -317,6 +317,7 @@ input, select, textarea {
 	#one {
 		background: #252A34;
 		min-height: 200px; 
+		color: white;
 	}
 
 	header.major {
