@@ -298,7 +298,8 @@ input, select, textarea {
 	}
 
 	#two, #two h2, #two h3 {
-		color: black;
+		color: white;
+		background: #252A34;
 	}
 
 	#two p {
@@ -310,7 +311,7 @@ input, select, textarea {
 
 
 	#two header.major > :first-child:after {
-    background-color: black;
+    background-color: white;
 	}
 
 	#one {
