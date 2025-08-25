@@ -3430,28 +3430,3 @@ input, select, textarea {
 	background: #555;
 	}
 
-.video-row {
-  display: flex;
-  justify-content: center; /* keeps single video centered */
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
-.video-row iframe {
-  width: 50%;   /* full half width on PC */
-  height: 352px;
-  border: none;
-}
-
-/* On small screens: stack full width */
-@media screen and (max-width: 736px) {
-  .video-row {
-    flex-direction: column;
-    align-items: center; /* keeps them centered */
-  }
-  .video-row iframe {
-    width: 100%;   /* full width stacked */
-    height: 220px;
-  }
-}
-
