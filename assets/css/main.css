@@ -3432,27 +3432,26 @@ input, select, textarea {
 
 .video-row {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* keeps single video centered */
   gap: 16px;
   margin-bottom: 16px;
 }
 
 .video-row iframe {
-  flex: 1;
-  max-width: 50%;
+  width: 50%;   /* full half width on PC */
   height: 352px;
   border: none;
 }
 
-/* On small screens: stack them full width */
+/* On small screens: stack full width */
 @media screen and (max-width: 736px) {
   .video-row {
     flex-direction: column;
-	align-items: center;
+    align-items: center; /* keeps them centered */
   }
   .video-row iframe {
-    width: 100%;
-	width: 100%;
-    height: 220px; /* shorter height for phone */
+    width: 100%;   /* full width stacked */
+    height: 220px;
   }
 }
+
