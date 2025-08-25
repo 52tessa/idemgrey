@@ -3432,12 +3432,14 @@ input, select, textarea {
 
 .video-row {
   display: flex;
+  justify-content: center;
   gap: 16px;
   margin-bottom: 16px;
 }
 
 .video-row iframe {
   flex: 1;
+  max-width: 50%;
   height: 352px;
   border: none;
 }
@@ -3446,9 +3448,11 @@ input, select, textarea {
 @media screen and (max-width: 736px) {
   .video-row {
     flex-direction: column;
+	align-items: center;
   }
   .video-row iframe {
     width: 100%;
+	width: 100%;
     height: 220px; /* shorter height for phone */
   }
 }
