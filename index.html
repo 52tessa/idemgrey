@@ -34,7 +34,6 @@
 							<li><a href="sounddesign.html">Sound Design</a></li>
 							<li><a href="musicproduction.html">Music Production & Engineering</a></li>
 							<li><a href="index.html#two">About Me</a></li>
-							<!--<li><a href="services.html">My services</a></li>-->
 						</ul>
 						<!--<ul class="actions stacked">
 						<li>
@@ -90,62 +89,35 @@
 										<h2>About me</h2>
 									</header>
 									<p>My name is Kaloyan and I am a multi-genre music producer & sound designer. I'm based in Amsterdam, and I promote all my content under the alias Idem Grey. 
-										You can find all my work on this website. I work with performing artists and like-minded producers, offering the entire song production cycle - 
-										pre-production, recording, arrangement, vocal arrangement, post-edit, mixing & mastering to release. Apart from my focus in conventional music production, 
-										I also do audio adaptations for videos, games and films. That includes sound effects, environmental and foley audio, voice overs, animations or cinematic and game play adaptive music. </br>
-										  </br>
-									For enquiries, brainstorms, collaborations or just to say hi, feel free to reach out via my email: <a href="mailto: idemgrey@gmail.com">idemgrey@gmail.com</a>
+
 									</p>
+								</div>
+									<div class="inner">
 									<header class="major">
 										<h3>Skills & Tools</h3>
 									</header>
-									<p>My studio is equipped for multi-track and outdoor recording. I am proficient with Ableton Live as my heart of operation,  and I have a solid collection of industry standard 
-										plugins under my tool belt with over five  years of experience. Apart from that I have recently finished my FMOD/Unity course for game audio implementation, but I can also 
-										easily adapt any video material with music or environmental audio.</p>
+									<p>I am proficient with Ableton Live as my heart of operation,  and I have a solid collection of industry standard plugins under my tool belt with over five  years of experience.
+
+									My studio is equipped for multi-track indoor and outdoor recording. I have hands on experience with FMOD Studio and Unity prividing sound design assets and audio implementation remotely through Unity version control. I can also easily adapt any video material with music or environmental audio using DaVinci Resolve.
+
+								For email inquiries you can reach me on idemgrey@gmail.com</p>
 								</div>
 							</section>
 				
 
-						<!-- Three 
-						<section id="gallery"> 
-						<div class="inner">
-						<header class="major" style="display: flex; justify-content: space-between; align-items: center;">
-						<h2>Gallery</h2>
-						</header>
 
-						<!-- arrows positioned absolutely --
-						<div class="gallery-controls">
-						<button class="gallery-btn left">&lt;</button>
-						<button class="gallery-btn right">&gt;</button>
-						</div>
-							
-							<div class="gallery-container">
-							<img src="images/studio01.jpg" alt="Studio 01">
-							<img src="images/studio02.jpg" alt="Studio 02">
-							<img src="images/studio03.jpg" alt="Studio 03">
-							<img src="images/studio04.jpg" alt="Studio 04">
-							<img src="images/studio05.jpg" alt="Studio 05">
-							<img src="images/studio06.jpg" alt="Studio 06">
-							<img src="images/studio07.jpg" alt="Studio 07">
-							<img src="images/studio08.jpg" alt="Studio 08">
-							<img src="images/studio09.jpg" alt="Studio 09">
-							<img src="images/studio10.jpg" alt="Studio 10">
-							</div>
-							
-						</div>
-						</section>
--->
 
 				<!-- Footer -->
 					<footer id="footer">
 						<div class="inner">
 							<ul class="icons">
+								<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
 								<li><a href="https://www.instagram.com/idem_grey/" class="icon brands alt fa-instagram"><span class="link"></span></a></li>
-								<li><a href="https://www.linkedin.com/in/kaloyan-djamdjiev-6b78381b9/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+								<li><a href="https://www.linkedin.com/in/idem-grey-6b78381b9/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 							</ul>
 							<img src="images/logo.png" alt="Logo" class="footer-logo">
 							<ul class="copyright">
-								<li>&copy; 2025 Idem Grey</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+								<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
 							</ul>
 						</div>
 					</footer>
@@ -160,7 +132,6 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			
 			<script>
 			function playClickSound() {
 				const sound = document.getElementById('audio');
@@ -168,75 +139,5 @@
 				sound.play();
 			}
 			</script>
-
-			<script>
-				const slider = document.querySelector('.gallery-container');
-				const leftBtn = document.querySelector('.gallery-btn.left');
-				const rightBtn = document.querySelector('.gallery-btn.right');
-				const images = Array.from(slider.querySelectorAll('img')); // convert NodeList to array
-
-				let isDown = false;
-				let startX;
-				let scrollLeft;
-
-				slider.addEventListener('mousedown', (e) => {
-					isDown = true;
-					startX = e.pageX;
-					scrollLeft = slider.scrollLeft;
-					slider.style.cursor = 'grabbing';
-				});
-
-				window.addEventListener('mouseup', () => {
-					isDown = false;
-					slider.style.cursor = 'grab';
-				});
-
-				slider.addEventListener('mouseleave', () => {
-					isDown = false;
-					slider.style.cursor = 'grab';
-				});
-
-				slider.addEventListener('mousemove', (e) => {
-					if (!isDown) return;
-					e.preventDefault();
-					const x = e.pageX;
-					const walk = (x - startX) * 1.5;
-					slider.scrollLeft = scrollLeft - walk;
-				});
-
-				// Scroll to next or previous image
-				function scrollByImage(direction) {
-					const sliderLeft = slider.scrollLeft;
-
-					// Find the index of the image closest to the left edge
-					let targetIndex;
-					if (direction > 0) {
-						// Scroll right → find first image whose left is > current scroll
-						targetIndex = images.findIndex(img => img.offsetLeft > sliderLeft);
-						if (targetIndex === -1) targetIndex = images.length - 1; // last image
-					} else {
-						// Scroll left → find last image whose left is < current scroll
-						for (let i = images.length - 1; i >= 0; i--) {
-							if (images[i].offsetLeft < sliderLeft) {
-								targetIndex = i;
-								break;
-							}
-						}
-						if (targetIndex === undefined) targetIndex = 0; // first image
-					}
-
-					// Scroll to that image smoothly
-					if (targetIndex !== undefined) {
-						slider.scrollTo({
-							left: images[targetIndex].offsetLeft,
-							behavior: 'smooth'
-						});
-					}
-				}
-
-				leftBtn.addEventListener('click', () => scrollByImage(-1));
-				rightBtn.addEventListener('click', () => scrollByImage(1));
-			</script>
-
 	</body>
 </html>
