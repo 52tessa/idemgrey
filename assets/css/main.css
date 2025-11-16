@@ -2376,6 +2376,7 @@ input, select, textarea {
 		position: relative;
 		top: -3.25em;
 	}
+	
 
 		#bannerMP:after {
 			-moz-transition: opacity 2.5s ease;
@@ -2467,6 +2468,248 @@ input, select, textarea {
 		}
 
 			#bannerMP.major.alt {
+				opacity: 0.75;
+			}
+
+			/* Banner MM */
+
+	#bannerMM {
+		-moz-align-items: center;
+		-webkit-align-items: center;
+		-ms-align-items: center;
+		align-items: center;
+		background-image: url("../../images/MM_banner.jpg");
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		padding: 6em 0 2em 0 ;
+		background-attachment: fixed;
+		background-position: top;
+		background-repeat: no-repeat;
+		background-size: cover;
+		border-bottom: 0 !important;
+		cursor: default;
+		height: 20vh;
+		margin-bottom: -3.25em;
+		max-height: 32em;
+		min-height: 22em;
+		position: relative;
+		top: -3.25em;
+	}
+	
+
+		#bannerMM:after {
+			-moz-transition: opacity 2.5s ease;
+			-webkit-transition: opacity 2.5s ease;
+			-ms-transition: opacity 2.5s ease;
+			transition: opacity 2.5s ease;
+			-moz-transition-delay: 0.75s;
+			-webkit-transition-delay: 0.75s;
+			-ms-transition-delay: 0.75s;
+			transition-delay: 0.75s;
+			pointer-events: none;
+			/*background-color: #363e4e;
+				/* was eerst 252A34 */
+			content: '';
+			display: block;
+			height: 100%;
+			left: 0;
+			opacity: 0.85;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: 1;
+		}
+
+		#bannerMM h1 {
+			font-size: 3.25em;
+		}
+
+		#bannerMM > .inner {
+			-moz-transition: opacity 1.5s ease, -moz-transform 0.5s ease-out, -moz-filter 0.5s ease, -webkit-filter 0.5s ease;
+			-webkit-transition: opacity 1.5s ease, -webkit-transform 0.5s ease-out, -webkit-filter 0.5s ease, -webkit-filter 0.5s ease;
+			-ms-transition: opacity 1.5s ease, -ms-transform 0.5s ease-out, -ms-filter 0.5s ease, -webkit-filter 0.5s ease;
+			transition: opacity 1.5s ease, transform 0.5s ease-out, filter 0.5s ease, -webkit-filter 0.5s ease;
+			padding: 0 !important;
+			position: relative;
+			z-index: 2;
+		}
+
+			#bannerMM > .inner .image {
+				display: none;
+			}
+
+			#bannerMM > .inner header {
+				width: auto;
+			}
+
+				#bannerMM > .inner header > :first-child {
+					width: auto;
+				}
+
+					#bannerMM > .inner header > :first-child:after {
+						max-width: 100%;
+					}
+
+			#bannerMM > .inner .content {
+				display: -moz-flex;
+				display: -webkit-flex;
+				display: -ms-flex;
+				display: flex;
+				-moz-align-items: center;
+				-webkit-align-items: center;
+				-ms-align-items: center;
+				align-items: center;
+				margin: 0 0 2em 0;
+			}
+
+				#bannerMM > .inner .content > * {
+					margin-right: 1.5em;
+					margin-bottom: 0;
+				}
+
+				#bannerMM > .inner .content > :last-child {
+					margin-right: 0;
+				}
+
+				#bannerMM > .inner .content p {
+					font-size: 0.7em;
+					font-weight: 600;
+					letter-spacing: 0.25em;
+					text-transform: uppercase;
+					background: rgba(0, 0, 0, 0.4);
+					padding: 0.3%;
+				}
+
+		#bannerMM.major {
+			height: 30vh;
+			min-height: 23em;  /* this determines the actual height of the image banner */
+			max-height: 50em;
+		}
+
+			#bannerMM.major.alt {
+				opacity: 0.75;
+			}
+
+			/* Banner CNT*/
+
+	#BannerCNT {
+		-moz-align-items: center;
+		-webkit-align-items: center;
+		-ms-align-items: center;
+		align-items: center;
+		background-image: url("../../images/BannerCNT.png");
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		padding: 6em 0 2em 0 ;
+		background-attachment: fixed;
+		background-position: top;
+		background-repeat: no-repeat;
+		background-size: cover;
+		border-bottom: 0 !important;
+		cursor: default;
+		height: 20vh;
+		margin-bottom: -3.25em;
+		max-height: 32em;
+		min-height: 22em;
+		position: relative;
+		top: -3.25em;
+	}
+	
+
+		#BannerCNT:after {
+			-moz-transition: opacity 2.5s ease;
+			-webkit-transition: opacity 2.5s ease;
+			-ms-transition: opacity 2.5s ease;
+			transition: opacity 2.5s ease;
+			-moz-transition-delay: 0.75s;
+			-webkit-transition-delay: 0.75s;
+			-ms-transition-delay: 0.75s;
+			transition-delay: 0.75s;
+			pointer-events: none;
+			/*background-color: #363e4e;
+				/* was eerst 252A34 */
+			content: '';
+			display: block;
+			height: 100%;
+			left: 0;
+			opacity: 0.85;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: 1;
+		}
+
+		#BannerCNT h1 {
+			font-size: 3.25em;
+		}
+
+		#BannerCNT > .inner {
+			-moz-transition: opacity 1.5s ease, -moz-transform 0.5s ease-out, -moz-filter 0.5s ease, -webkit-filter 0.5s ease;
+			-webkit-transition: opacity 1.5s ease, -webkit-transform 0.5s ease-out, -webkit-filter 0.5s ease, -webkit-filter 0.5s ease;
+			-ms-transition: opacity 1.5s ease, -ms-transform 0.5s ease-out, -ms-filter 0.5s ease, -webkit-filter 0.5s ease;
+			transition: opacity 1.5s ease, transform 0.5s ease-out, filter 0.5s ease, -webkit-filter 0.5s ease;
+			padding: 0 !important;
+			position: relative;
+			z-index: 2;
+		}
+
+			#BannerCNT > .inner .image {
+				display: none;
+			}
+
+			#BannerCNT > .inner header {
+				width: auto;
+			}
+
+				#BannerCNT > .inner header > :first-child {
+					width: auto;
+				}
+
+					#BannerCNT > .inner header > :first-child:after {
+						max-width: 100%;
+					}
+
+			#BannerCNT > .inner .content {
+				display: -moz-flex;
+				display: -webkit-flex;
+				display: -ms-flex;
+				display: flex;
+				-moz-align-items: center;
+				-webkit-align-items: center;
+				-ms-align-items: center;
+				align-items: center;
+				margin: 0 0 2em 0;
+			}
+
+				#BannerCNT > .inner .content > * {
+					margin-right: 1.5em;
+					margin-bottom: 0;
+				}
+
+				#BannerCNT > .inner .content > :last-child {
+					margin-right: 0;
+				}
+
+				#BannerCNT > .inner .content p {
+					font-size: 0.7em;
+					font-weight: 600;
+					letter-spacing: 0.25em;
+					text-transform: uppercase;
+					background: rgba(0, 0, 0, 0.4);
+					padding: 0.3%;
+				}
+
+		#BannerCNT.major {
+			height: 30vh;
+			min-height: 23em;  /* this determines the actual height of the image banner */
+			max-height: 50em;
+		}
+
+			#BannerCNT.major.alt {
 				opacity: 0.75;
 			}
 
