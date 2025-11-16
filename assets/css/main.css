@@ -2606,6 +2606,7 @@ input, select, textarea {
 		-ms-align-items: center;
 		align-items: center;
 		background-image: url("../../images/bannerCNT.png");
+		background-position: center 100%;
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
