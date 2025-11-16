@@ -1921,7 +1921,7 @@ input, select, textarea {
 
 /* Banner main page */
 
-n	#bannerM {
+	#bannerM {
 		-moz-align-items: center;
 		-webkit-align-items: center bottom;
 		-ms-align-items: center;
