@@ -3578,7 +3578,7 @@ n	#bannerM {
 	background: #555;
 	}
 
-	#bannerCNT {
+	#CNT_banner {
 		-moz-align-items: center;
 		-webkit-align-items: center;
 		-ms-align-items: center;
@@ -3604,7 +3604,7 @@ n	#bannerM {
 	}
 	
 
-		#bannerCNT:after {
+		#CNT_banner:after {
 			-moz-transition: opacity 2.5s ease;
 			-webkit-transition: opacity 2.5s ease;
 			-ms-transition: opacity 2.5s ease;
@@ -3627,11 +3627,11 @@ n	#bannerM {
 			z-index: 1;
 		}
 
-		#bannerCNT h1 {
+		#CNT_banner h1 {
 			font-size: 3.25em;
 		}
 
-		#bannerCNT > .inner {
+		#CNT_banner > .inner {
 			-moz-transition: opacity 1.5s ease, -moz-transform 0.5s ease-out, -moz-filter 0.5s ease, -webkit-filter 0.5s ease;
 			-webkit-transition: opacity 1.5s ease, -webkit-transform 0.5s ease-out, -webkit-filter 0.5s ease, -webkit-filter 0.5s ease;
 			-ms-transition: opacity 1.5s ease, -ms-transform 0.5s ease-out, -ms-filter 0.5s ease, -webkit-filter 0.5s ease;
@@ -3641,23 +3641,23 @@ n	#bannerM {
 			z-index: 2;
 		}
 
-			#bannerCNT > .inner .image {
+			#CNT_banner > .inner .image {
 				display: none;
 			}
 
-			#bannerCNT > .inner header {
+			#CNT_banner > .inner header {
 				width: auto;
 			}
 
-				#bannerCNT > .inner header > :first-child {
+				#CNT_banner > .inner header > :first-child {
 					width: auto;
 				}
 
-					#bannerCNT > .inner header > :first-child:after {
+					#CNT_banner > .inner header > :first-child:after {
 						max-width: 100%;
 					}
 
-			#bannerCNT > .inner .content {
+			#CNT_banner > .inner .content {
 				display: -moz-flex;
 				display: -webkit-flex;
 				display: -ms-flex;
@@ -3669,16 +3669,16 @@ n	#bannerM {
 				margin: 0 0 2em 0;
 			}
 
-				#bannerCNT > .inner .content > * {
+				#CNT_banner > .inner .content > * {
 					margin-right: 1.5em;
 					margin-bottom: 0;
 				}
 
-				#bannerCNT > .inner .content > :last-child {
+				#CNT_banner > .inner .content > :last-child {
 					margin-right: 0;
 				}
 
-				#bannerCNT > .inner .content p {
+				#CNT_banner > .inner .content p {
 					font-size: 0.7em;
 					font-weight: 600;
 					letter-spacing: 0.25em;
@@ -3687,13 +3687,13 @@ n	#bannerM {
 					padding: 0.3%;
 				}
 
-		#bannerCNT.major {
+		#CNT_banner.major {
 			height: 30vh;
 			min-height: 23em;  /* this determines the actual height of the image banner */
 			max-height: 50em;
 		}
 
-			#bannerCNT.major.alt {
+			#CNT_banner.major.alt {
 				opacity: 0.75;
 			}
 
