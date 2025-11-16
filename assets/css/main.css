@@ -2473,31 +2473,36 @@ input, select, textarea {
 
 			/* Banner MM */
 
-	#bannerMM {
-		-moz-align-items: center;
-		-webkit-align-items: center;
-		-ms-align-items: center;
-		align-items: center;
-		background-image: url("../../images/MM_banner.jpg");
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-		padding: 6em 0 2em 0 ;
-		background-attachment: fixed;
-		background-position: top;
-		background-repeat: no-repeat;
-		background-size: cover;
-		border-bottom: 0 !important;
-		cursor: default;
-		height: 20vh;
-		margin-bottom: -3.25em;
-		max-height: 32em;
-		min-height: 22em;
-		position: relative;
-		top: -3.25em;
-	}
-	
+#bannerMM {
+	-moz-align-items: center;
+	-webkit-align-items: center;
+	-ms-align-items: center;
+	align-items: center;
+
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+
+	/* Background image & behaviour */
+	background-image: url("../../images/MM_banner.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center 100%; /* try 100% first to force “bottom” */
+
+	padding: 6em 0 2em 0;
+	border-bottom: 0 !important;
+	cursor: default;
+
+	height: 20vh;
+	margin-bottom: -3.25em;
+	max-height: 32em;
+	min-height: 22em;
+	position: relative;
+	top: -3.25em;
+}
+
 
 		#bannerMM:after {
 			-moz-transition: opacity 2.5s ease;
@@ -2586,6 +2591,7 @@ input, select, textarea {
 			height: 30vh;
 			min-height: 23em;  /* this determines the actual height of the image banner */
 			max-height: 50em;
+			background-position: center 100%;
 		}
 
 			#bannerMM.major.alt {
@@ -2594,12 +2600,12 @@ input, select, textarea {
 
 			/* Banner CNT*/
 
-	#BannerCNT {
+	#bannerCNT {
 		-moz-align-items: center;
 		-webkit-align-items: center;
 		-ms-align-items: center;
 		align-items: center;
-		background-image: url("../../images/BannerCNT.png");
+		background-image: url("../../images/bannerCNT.png");
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
@@ -2620,7 +2626,7 @@ input, select, textarea {
 	}
 	
 
-		#BannerCNT:after {
+		#bannerCNT:after {
 			-moz-transition: opacity 2.5s ease;
 			-webkit-transition: opacity 2.5s ease;
 			-ms-transition: opacity 2.5s ease;
@@ -2643,11 +2649,11 @@ input, select, textarea {
 			z-index: 1;
 		}
 
-		#BannerCNT h1 {
+		#bannerCNT h1 {
 			font-size: 3.25em;
 		}
 
-		#BannerCNT > .inner {
+		#bannerCNT > .inner {
 			-moz-transition: opacity 1.5s ease, -moz-transform 0.5s ease-out, -moz-filter 0.5s ease, -webkit-filter 0.5s ease;
 			-webkit-transition: opacity 1.5s ease, -webkit-transform 0.5s ease-out, -webkit-filter 0.5s ease, -webkit-filter 0.5s ease;
 			-ms-transition: opacity 1.5s ease, -ms-transform 0.5s ease-out, -ms-filter 0.5s ease, -webkit-filter 0.5s ease;
@@ -2657,23 +2663,23 @@ input, select, textarea {
 			z-index: 2;
 		}
 
-			#BannerCNT > .inner .image {
+			#bannerCNT > .inner .image {
 				display: none;
 			}
 
-			#BannerCNT > .inner header {
+			#bannerCNT > .inner header {
 				width: auto;
 			}
 
-				#BannerCNT > .inner header > :first-child {
+				#bannerCNT > .inner header > :first-child {
 					width: auto;
 				}
 
-					#BannerCNT > .inner header > :first-child:after {
+					#bannerCNT > .inner header > :first-child:after {
 						max-width: 100%;
 					}
 
-			#BannerCNT > .inner .content {
+			#bannerCNT > .inner .content {
 				display: -moz-flex;
 				display: -webkit-flex;
 				display: -ms-flex;
@@ -2685,16 +2691,16 @@ input, select, textarea {
 				margin: 0 0 2em 0;
 			}
 
-				#BannerCNT > .inner .content > * {
+				#bannerCNT > .inner .content > * {
 					margin-right: 1.5em;
 					margin-bottom: 0;
 				}
 
-				#BannerCNT > .inner .content > :last-child {
+				#bannerCNT > .inner .content > :last-child {
 					margin-right: 0;
 				}
 
-				#BannerCNT > .inner .content p {
+				#bannerCNT > .inner .content p {
 					font-size: 0.7em;
 					font-weight: 600;
 					letter-spacing: 0.25em;
@@ -2703,13 +2709,13 @@ input, select, textarea {
 					padding: 0.3%;
 				}
 
-		#BannerCNT.major {
+		#bannerCNT.major {
 			height: 30vh;
 			min-height: 23em;  /* this determines the actual height of the image banner */
 			max-height: 50em;
 		}
 
-			#BannerCNT.major.alt {
+			#bannerCNT.major.alt {
 				opacity: 0.75;
 			}
 
@@ -3613,6 +3619,23 @@ input, select, textarea {
 /* Ensure article has position for overlay */
 .tiles article {
     position: relative;
+}
+#contact .inner,
+
+#footer .inner {
+  max-width: 65em;
+  width: calc(100% - 6em);
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 1.5em;
+}
+
+@media screen and (max-width: 736px) {
+  #contact .inner,
+  #footer .inner {
+    width: calc(100% - 3em);
+    padding: 0 1em;
+  }
 }
 
 #gallery {
