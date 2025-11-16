@@ -3584,13 +3584,13 @@ n	#bannerM {
 		-ms-align-items: center;
 		align-items: center;
 		background-image: url("../../images/studio06.JPG");
-		background-position: center 100%;
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
 		padding: 6em 0 2em 0 ;
 		background-attachment: fixed;
+		background-position: top;
 		background-repeat: no-repeat;
 		background-size: cover;
 		border-bottom: 0 !important;
@@ -3614,6 +3614,8 @@ n	#bannerM {
 			-ms-transition-delay: 0.75s;
 			transition-delay: 0.75s;
 			pointer-events: none;
+			/*background-color: #363e4e;
+				/* was eerst 252A34 */
 			content: '';
 			display: block;
 			height: 100%;
@@ -3694,3 +3696,4 @@ n	#bannerM {
 			#bannerCNT.major.alt {
 				opacity: 0.75;
 			}
+
