@@ -3614,8 +3614,6 @@ input, select, textarea {
 			-ms-transition-delay: 0.75s;
 			transition-delay: 0.75s;
 			pointer-events: none;
-			/*background-color: #363e4e;
-				/* was eerst 252A34 */
 			content: '';
 			display: block;
 			height: 100%;
