@@ -3293,20 +3293,47 @@ input, select, textarea {
 	}
 .modal-icons {
     position: absolute;
-    top: 10px;        /* distance from top */
-    right: 70px;      /* move further left from the close button */
+    top: 10px;                 /* distance from top */
+    right: 70px;               /* move further left from the close button */
     display: flex;
-    gap: 20px;        /* increase space between icons */
-    pointer-events: none; /* makes them non-clickable */
+    gap: 20px;                 /* increase space between icons */
+    pointer-events: none;      /* makes them non-clickable */
 }
 
 .modal-icons img {
-    width: 32px;          /* icon size */
+    width: 32px;               /* icon size */
     height: 32px;
     object-fit: contain;
     border-radius: 6px;
-	pointer-events: auto; /* allow hover */
+    pointer-events: auto;      /* allow hover */
 }
+
+/* ------------------------------
+   MOBILE FIX — prevent overlap
+   ------------------------------ */
+@media (max-width: 600px) {
+    .modal-icons {
+        position: static;      /* remove absolute positioning */
+        margin-bottom: 1em;    /* spacing under icons */
+        justify-content: center;
+        flex-wrap: wrap;       /* allow wrapping */
+        gap: 12px;
+    }
+
+    .modal-icons img {
+        width: 40px;           /* slightly larger on mobile */
+        height: auto;
+    }
+
+    .modal-content {
+        padding-top: 1em;      /* ensures text does not touch icons */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
 
 
 	.modal-content {
