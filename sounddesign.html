@@ -389,52 +389,26 @@
 				}
 			  
 				function closeModal(id) {
-				  document.getElementById(id).style.display = "none";
+				  const modal = document.getElementById(id);
+					modal.style.display = "none";
+					
+					// Reset iframe sources so they reload on next open
+					const iframes = modal.querySelectorAll('iframe');
+					iframes.forEach(iframe => {
+						const src = iframe.getAttribute('data-src') || iframe.src;
+						iframe.src = src;
+					});
 				}
-			  
-				// Optional: close modal on outside click
-				window.onclick = function(event) {
-				  const modals = document.querySelectorAll('.modal');
-				  modals.forEach(modal => {
-					if (event.target === modal) {
-					  modal.style.display = "none";
-					}
-				  });
-				};
-			</script>
 			
-			<script>
-			function closeModal(modalId) {
-			const modal = document.getElementById(modalId);
-
-			// Hide modal
-			modal.style.display = 'none';
-
-			// Stop all videos
-			const mediaElements = modal.querySelectorAll('video');
-			mediaElements.forEach(video => {
-				video.pause();
-				video.currentTime = 0;
-			});
-
-			// Reset all iframes
-			const iframes = modal.querySelectorAll('iframe');
-			iframes.forEach(iframe => {
-				const src = iframe.src;
-				iframe.src = '';
-				iframe.src = src;
-			});
-			}
-
-			// Handle click-outside
-			window.onclick = function(event) {
-			const modals = document.querySelectorAll('.modal');
-			modals.forEach(modal => {
-				if (event.target === modal) {
-				closeModal(modal.id); // ✅ Ensures media is stopped
-				}
-			});
-			};
+				// Close modal when clicking outside of it
+				window.onclick = function(event) {
+					const modals = document.querySelectorAll('.modal');
+					modals.forEach(modal => {
+						if (event.target === modal) {
+							closeModal(modal.id);
+						}
+					});
+				};
 			</script>
 
 			<script>
