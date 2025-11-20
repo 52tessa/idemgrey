@@ -3291,6 +3291,27 @@ input, select, textarea {
 	transition: opacity 0.3s ease;
 	opacity: 1;
 	}
+.modal-icons {
+    position: absolute;
+    top: 10px;        /* distance from top */
+    right: 70px;      /* move further left from the close button */
+    display: flex;
+    gap: 20px;        /* increase space between icons */
+    pointer-events: none; /* makes them non-clickable */
+}
+
+.modal-icons img {
+    width: 32px;          /* icon size */
+    height: 32px;
+    object-fit: contain;
+    border-radius: 6px;
+	pointer-events: auto; /* allow hover */
+}
+.two-column-list {
+    column-count: 3;       /* split into 2 columns */
+    column-gap: 30px;      /* space between columns */
+    list-style-type: disc; /* keep bullet points */ 
+}
 
 
 	.modal-content {
