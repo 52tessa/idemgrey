@@ -3307,11 +3307,6 @@ input, select, textarea {
     border-radius: 6px;
 	pointer-events: auto; /* allow hover */
 }
-.two-column-list {
-    column-count: 3;       /* split into 2 columns */
-    column-gap: 30px;      /* space between columns */
-    list-style-type: disc; /* keep bullet points */ 
-}
 
 
 	.modal-content {
