@@ -11,7 +11,25 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-
+		<style>
+			/* Fix responsive video containers for mobile */
+			.video-container {
+				position: relative;
+				width: 100%;
+				padding-bottom: 56.25%;
+				height: 0;
+				overflow: hidden;
+				margin-top: 1em;
+			}
+			.video-container iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border: none;
+			}
+		</style>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -134,14 +152,13 @@
                 <li>Music composition</li>
             </ul>
         </div>
-								<div style="padding:56.25% 0 0 0; position:relative; margin-top:1em;">
+								<div class="video-container">
 								<iframe 
 									src="https://www.youtube.com/embed/huxxbyqRUTw?si=71nmTs11JEmKyS0T" 
 									frameborder="0" 
 									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
 									referrerpolicy="strict-origin-when-cross-origin" 
-									allowfullscreen
-									style="position:absolute; top:0; left:0; width:100%; height:100%;">
+									allowfullscreen>
 								</iframe>
 								</div>
 							</div>
@@ -182,14 +199,13 @@
             </ul>
         </div>
 
-        <div style="padding:56.25% 0 0 0; position:relative; margin-top:1em;">
+        <div class="video-container">
             <iframe 
                 src="https://www.youtube.com/embed/hokMrx6lHME?si=DdlG4MwJxdk9Ngrb" 
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 referrerpolicy="strict-origin-when-cross-origin" 
-                allowfullscreen
-                style="position:absolute; top:0; left:0; width:100%; height:100%;">
+                allowfullscreen>
             </iframe>
         </div>
     </div>
@@ -225,14 +241,13 @@
             </ul>
         </div>
 
-								<div style="padding:56.25% 0 0 0; position:relative; margin-top:1em;">
+								<div class="video-container">
 								<iframe 
 									src="https://www.youtube.com/embed/lpSRxbTXzxo?si=Cr4EWByxNE_xnFaV"
 									frameborder="0" 
 									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 									referrerpolicy="strict-origin-when-cross-origin"
-									allowfullscreen
-									style="position:absolute; top:0; left:0; width:100%; height:100%;">
+									allowfullscreen>
 								</iframe>
 								</div>
 							</div>
@@ -266,14 +281,13 @@
 				<li>Audio Implementation</li>
             </ul>
         </div>
-								<div style="padding:56.25% 0 0 0; position:relative; margin-top:1em;">
+								<div class="video-container">
 								<iframe 
 									src="https://www.youtube.com/embed/mXEwQN9tUvY?si=00E1_CES-raOGIOu"
 									frameborder="0" 
 									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 									referrerpolicy="strict-origin-when-cross-origin"
-									allowfullscreen
-									style="position:absolute; top:0; left:0; width:100%; height:100%;">
+									allowfullscreen>
 								</iframe>
 								</div>
 							</div>
@@ -287,10 +301,10 @@
 								<span class="close" onclick="closeModal('modal5')">&times;</span>
 								<h2>Topoly</h2>
 								<p>Topoly is a low poly endless run, fast paced indie game made by Quadratic Games available for Windows, Linux, and Android. I did the sound design and ambient audio for the game as part of my portfolio work back in 2020. Topoly is available to buy online and you can find me in the credits under my alias Idem Grey. Find the game here: <a href="https://quadratic-games.itch.io/topoly">Topoly by Quadratic Games</a></p>
-								<div style="padding:56.25% 0 0 0;position:relative;">
+								<div class="video-container">
 									<iframe src="https://player.vimeo.com/video/1092234948?h=21c671a278&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
 									frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-									style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Topoly"></iframe>
+									title="Topoly"></iframe>
 								</div>
 								<script src="https://player.vimeo.com/api/player.js"></script>
 							 </div> 
@@ -305,10 +319,10 @@
 								<h2>Orbit</h2>
 								<p>Orbit is a mobile game released back in 2020 on the Google Play store. I was in charge of the entire audio production including sound effects, UI, and music. Unfortunately, the game is no longer available, but I still have this game play footage outlining my work.</p>
 								<ul class="links">
-									<div style="padding:207.78% 0 0 0;position:relative;">
+									<div class="video-container" style="padding-bottom: 207.78%;">
 										<iframe src="https://player.vimeo.com/video/1092234847?h=57fc6fbc4a&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
 										frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-										style="position:absolute;top:0;left:0;width:100%;height:40%;" title="Orbit"></iframe>
+										title="Orbit"></iframe>
 									</div>
 									<script src="https://player.vimeo.com/api/player.js"></script>
 								</ul>
@@ -326,10 +340,10 @@
 							  <p>Project Utgardr is a 3D realistic parkour game developed by Tronus Games. I am the lead audio designer for the project which is set to release early 2026. Below you will find a short audio adaptation. 
 								Find the game 
 								<a href="https://store.steampowered.com/app/1878290/Project_Utgardr/">here</a> on Steam.</p>
-									<div style="padding:56.25% 0 0 0;position:relative;">
+									<div class="video-container">
 									<iframe src="https://player.vimeo.com/video/1092234875?h=a64555cfa7&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
 									frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-									style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Project Utgardr">
+									title="Project Utgardr">
 									</iframe>
 								</div>
 								<script src="https://player.vimeo.com/api/player.js"></script>
@@ -356,10 +370,10 @@
                 <li>Sound Design</li>
             </ul>
         </div>
-									<div style="padding:56.25% 0 0 0;position:relative;">
+									<div class="video-container">
 										<iframe src="https://player.vimeo.com/video/1094956940?h=c8326e8295&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
 										frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-										style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Thawheart"></iframe></div>
+										title="Thawheart"></iframe></div>
 										<script src="https://player.vimeo.com/api/player.js"></script>
 								</div>
 							</div>
