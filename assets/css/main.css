@@ -3337,18 +3337,6 @@ input, select, textarea {
         text-align: center;
     }
 }
-details summary:hover {
-  /* desktop hover */
-  background: #31055a73;
-  border-color: #999;
-}
-
-details summary:focus {
-  /* mobile tap */
-  background: #31055a33;
-  border-color: #b0d42b;
-  outline: none;
-}
 
 
 
