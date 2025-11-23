@@ -3337,7 +3337,13 @@ input, select, textarea {
         text-align: center;
     }
 }
-
+/* Disable hover on touch devices */
+@media (hover: none) {
+  details summary:hover {
+    background: none !important;
+    border-color: #b0d42b !important;
+  }
+}
 
 
 	.modal-content {
