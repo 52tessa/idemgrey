@@ -3337,13 +3337,19 @@ input, select, textarea {
         text-align: center;
     }
 }
-/* Disable hover on touch devices */
-@media (hover: none) {
-  details summary:hover {
-    background: none !important;
-    border-color: #b0d42b !important;
-  }
+details summary:hover {
+  /* desktop hover */
+  background: #31055a73;
+  border-color: #999;
 }
+
+details summary:focus {
+  /* mobile tap */
+  background: #31055a33;
+  border-color: #b0d42b;
+  outline: none;
+}
+
 
 
 	.modal-content {
