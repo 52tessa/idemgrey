@@ -95,12 +95,18 @@
 	</audio>
 	<audio id="buttonCloseSound" preload="auto">
 		<source src="assets/sounds/button_close.wav" type="audio/wav">
+	</audio>
+	<audio id="homeSound" preload="auto">
+		<source src="assets/sounds/home.wav" type="audio/wav">
+	</audio>
+	<audio id="menuItemSound" preload="auto">
+		<source src="assets/sounds/menu_item.wav" type="audio/wav">
 	</audio>		<!-- Wrapper -->
 			<div id="wrapper">
 
 			<!-- Header -->
 				<header id="header">
-					<a href="index.html" class="logo">
+					<a href="index.html" class="logo" onclick="playHomeSound(); return delayNavigation(event, 'index.html')">
 						<strong>IDEM GREY</strong> <span>audio creative</span></a>
 					<nav>
 						<a href="#menu" onclick="playMenuSound()">Menu</a>
@@ -108,12 +114,12 @@
 				</header>				<!-- Menu -->
 					<nav id="menu">
 						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="sounddesign.html">Sound Design</a></li>
-							<li><a href="musicproduction.html">Music Production</a></li>
-							<li><a href="mixing-mastering.html">Mixing & Mastering</a></li>
-							<li><a href="index.html#two">About Me</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="index.html" onclick="playMenuItemSound()">Home</a></li>
+							<li><a href="sounddesign.html" onclick="playMenuItemSound()">Sound Design</a></li>
+							<li><a href="musicproduction.html" onclick="playMenuItemSound()">Music Production</a></li>
+							<li><a href="mixing-mastering.html" onclick="playMenuItemSound()">Mixing & Mastering</a></li>
+							<li><a href="index.html#two" onclick="playMenuItemSound()">About Me</a></li>
+							<li><a href="contact.html" onclick="playMenuItemSound()">Contact</a></li>
 							
 							<!--<li><a href="services.html">My services</a></li>-->
 						</ul>
@@ -513,6 +519,28 @@
 					sound.currentTime = 0;
 					sound.play().catch(err => console.log('Audio playback failed:', err));
 				}
+			}
+
+			function playHomeSound() {
+				const sound = document.getElementById('homeSound');
+				if (sound) {
+					sound.currentTime = 0;
+					sound.play().catch(err => console.log('Audio playback failed:', err));
+				}
+			}
+
+			function playMenuItemSound() {
+				const sound = document.getElementById('menuItemSound');
+				if (sound) {
+					sound.currentTime = 0;
+					sound.play().catch(err => console.log('Audio playback failed:', err));
+				}
+			}
+
+			function delayNavigation(event, url) {
+				event.preventDefault();
+				setTimeout(() => { window.location.href = url; }, 150);
+				return false;
 			}
 		</script>
 	</body>	</body>
