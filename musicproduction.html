@@ -81,6 +81,12 @@
 	</audio>
 	<audio id="menuCloseSound" preload="auto">
 		<source src="assets/sounds/menu_close.wav" type="audio/wav">
+	</audio>
+	<audio id="buttonOpenSound" preload="auto">
+		<source src="assets/sounds/button_open.wav" type="audio/wav">
+	</audio>
+	<audio id="buttonCloseSound" preload="auto">
+		<source src="assets/sounds/button_close.wav" type="audio/wav">
 	</audio>		<!-- Wrapper -->
 			<div id="wrapper">
 
@@ -174,27 +180,28 @@
   details summary {
     cursor: pointer;
     padding: 6px 8px;
-    border: 1px solid #ffffff00;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 6px;
     display: inline-block;
     user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
-    color: #ffffff; /* DEFAULT text color */
+    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    color: #ffffff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
   }
 
-  /* Hover (optional) */
   details summary:hover {
     background: #31055a73;	
     border-color: #b0d42b;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
   }
 
-  /* When the details is OPEN → color changes automatically */
   details[open] summary {
-    color: #66f5ff; /* CLICKED color */
-    background: #31055a33; /* optional subtle open background */
+    color: #66f5ff;
+    background: #31055a33;
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
   }
 
-  /* Make strong text inherit the color properly */
   details summary strong {
     color: inherit;
   }
@@ -204,7 +211,7 @@
   }
 </style>
 
-<details style="font-size:16px; margin-top:0.6em; text-align:left;">
+<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
   <summary><strong>Skills and deliverables</strong></summary>
 
   <ul style="margin-top:0.4em; margin-left:1.1em;">
@@ -281,7 +288,7 @@
   }
 </style>
 
-<details style="font-size:16px; margin-top:0.6em; text-align:left;">
+<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
   <summary><strong>Skills and deliverables</strong></summary>
 
   <ul style="margin-top:0.4em; margin-left:1.1em;">
@@ -356,7 +363,7 @@
   }
 </style>
 
-<details style="font-size:16px; margin-top:0.6em; text-align:left;">
+<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
   <summary><strong>Skills and deliverables</strong></summary>
 
   <ul style="margin-top:0.4em; margin-left:1.1em;">
@@ -407,27 +414,28 @@
   details summary {
     cursor: pointer;
     padding: 6px 8px;
-    border: 1px solid #ffffff00;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 6px;
     display: inline-block;
     user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
-    color: #ffffff; /* DEFAULT text color */
+    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    color: #ffffff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
   }
 
-  /* Hover (optional) */
   details summary:hover {
     background: #31055a73;	
     border-color: #b0d42b;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
   }
 
-  /* When the details is OPEN → color changes automatically */
   details[open] summary {
-    color: #66f5ff; /* CLICKED color */
-    background: #31055a33; /* optional subtle open background */
+    color: #66f5ff;
+    background: #31055a33;
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
   }
 
-  /* Make strong text inherit the color properly */
   details summary strong {
     color: inherit;
   }
@@ -437,7 +445,7 @@
   }
 </style>
 
-<details style="font-size:16px; margin-top:0.6em; text-align:left;">
+<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
   <summary><strong>Skills and deliverables</strong></summary>
 
   <ul style="margin-top:0.4em; margin-left:1.1em;">
@@ -484,27 +492,28 @@
   details summary {
     cursor: pointer;
     padding: 6px 8px;
-    border: 1px solid #ffffff00;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 6px;
     display: inline-block;
     user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
-    color: #ffffff; /* DEFAULT text color */
+    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    color: #ffffff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
   }
 
-  /* Hover (optional) */
   details summary:hover {
     background: #31055a73;	
     border-color: #b0d42b;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
   }
 
-  /* When the details is OPEN → color changes automatically */
   details[open] summary {
-    color: #66f5ff; /* CLICKED color */
-    background: #31055a33; /* optional subtle open background */
+    color: #66f5ff;
+    background: #31055a33;
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
   }
 
-  /* Make strong text inherit the color properly */
   details summary strong {
     color: inherit;
   }
@@ -514,7 +523,7 @@
   }
 </style>
 
-<details style="font-size:16px; margin-top:0.6em; text-align:left;">
+<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
   <summary><strong>Skills and deliverables</strong></summary>
 
   <ul style="margin-top:0.4em; margin-left:1.1em;">
@@ -558,27 +567,28 @@
   details summary {
     cursor: pointer;
     padding: 6px 8px;
-    border: 1px solid #ffffff00;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 6px;
     display: inline-block;
     user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
-    color: #ffffff; /* DEFAULT text color */
+    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    color: #ffffff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
   }
 
-  /* Hover (optional) */
   details summary:hover {
     background: #31055a73;	
     border-color: #b0d42b;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
   }
 
-  /* When the details is OPEN → color changes automatically */
   details[open] summary {
-    color: #66f5ff; /* CLICKED color */
-    background: #31055a33; /* optional subtle open background */
+    color: #66f5ff;
+    background: #31055a33;
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
   }
 
-  /* Make strong text inherit the color properly */
   details summary strong {
     color: inherit;
   }
@@ -588,7 +598,7 @@
   }
 </style>
 
-<details style="font-size:16px; margin-top:0.6em; text-align:left;">
+<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
   <summary><strong>Skills and deliverables</strong></summary>
 
   <ul style="margin-top:0.4em; margin-left:1.1em;">
@@ -760,7 +770,7 @@
 
 				if (newIndex !== currentModalIndex) {
 					// Play random swipe sound variation
-					playRandomSound(['modalSwipeSound', 'modalSwipeSound2', 'modalSwipeSound3']);
+					playRandomSound(['modalSwipeSound']);
 					
 					closeModal(modalIds[currentModalIndex], true);
 					openModal(modalIds[newIndex], true);
@@ -858,6 +868,14 @@
 
 			function playMenuCloseSound() {
 				const sound = document.getElementById('menuCloseSound');
+				if (sound) {
+					sound.currentTime = 0;
+					sound.play().catch(err => console.log('Audio playback failed:', err));
+				}
+			}
+
+			function playDetailsToggle(details) {
+				const sound = document.getElementById(details.open ? 'buttonOpenSound' : 'buttonCloseSound');
 				if (sound) {
 					sound.currentTime = 0;
 					sound.play().catch(err => console.log('Audio playback failed:', err));
