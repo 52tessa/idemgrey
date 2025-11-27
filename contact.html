@@ -9,11 +9,19 @@
 </head>
 <body class="is-preload">
 
+<!-- Sound effects -->
+<audio id="menuSound" preload="auto">
+	<source src="assets/sounds/menu.wav" type="audio/wav">
+</audio>
+<audio id="menuCloseSound" preload="auto">
+	<source src="assets/sounds/menu_close.wav" type="audio/wav">
+</audio>
+
 <div id="wrapper">
 
   <header id="header">
     <a href="index.html" class="logo"><strong>IDEM GREY</strong> <span>audio creative</span></a>
-    <nav><a href="#menu">Menu</a></nav>
+    <nav><a href="#menu" onclick="playMenuSound()">Menu</a></nav>
   </header>
 
   <nav id="menu">
@@ -76,5 +84,22 @@
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+	function playMenuSound() {
+		const sound = document.getElementById('menuSound');
+		if (sound) {
+			sound.currentTime = 0;
+			sound.play().catch(err => console.log('Audio playback failed:', err));
+		}
+	}
+
+	function playMenuCloseSound() {
+		const sound = document.getElementById('menuCloseSound');
+		if (sound) {
+			sound.currentTime = 0;
+			sound.play().catch(err => console.log('Audio playback failed:', err));
+		}
+	}
+</script>
 </body>
 </html>

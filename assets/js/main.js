@@ -303,6 +303,14 @@
 				event.stopPropagation();
 				event.preventDefault();
 
+				// Play close sound and hide menu
+				if ($body.hasClass('is-menu-visible')) {
+					var menuCloseSound = document.getElementById('menuCloseSound');
+					if (menuCloseSound) {
+						menuCloseSound.currentTime = 0;
+						menuCloseSound.play().catch(function(err) { console.log('Audio playback failed:', err); });
+					}
+				}
 				$body.removeClass('is-menu-visible');
 
 			})
@@ -320,8 +328,15 @@
 			})
 			.on('click', function(event) {
 
-				// Hide.
+				// Hide menu and play close sound if it was visible
+				if ($body.hasClass('is-menu-visible')) {
+					var menuCloseSound = document.getElementById('menuCloseSound');
+					if (menuCloseSound) {
+						menuCloseSound.currentTime = 0;
+						menuCloseSound.play().catch(function(err) { console.log('Audio playback failed:', err); });
+					}
 					$menu._hide();
+				}
 
 			})
 			.on('keydown', function(event) {

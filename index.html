@@ -15,29 +15,34 @@
 	</head>
 	<body class="is-preload">
 
-		<!-- Wrapper -->
+	<!-- Sound effects -->
+	<audio id="menuSound" preload="auto">
+		<source src="assets/sounds/menu.wav" type="audio/wav">
+	</audio>
+	<audio id="menuCloseSound" preload="auto">
+		<source src="assets/sounds/menu_close.wav" type="audio/wav">
+	</audio>
+	<audio id="categorySound" preload="auto">
+		<source src="assets/sounds/category.wav" type="audio/wav">
+	</audio>		<!-- Wrapper -->
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">
-							<strong>IDEM GREY</strong> <span>audio creative</span></a>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
-
-				<!-- Menu -->
+				<header id="header">
+					<a href="index.html" class="logo">
+						<strong>IDEM GREY</strong> <span>audio creative</span></a>
+					<nav>
+						<a href="#menu" onclick="playMenuSound()">Menu</a>
+					</nav>
+				</header>				<!-- Menu -->
 					<nav id="menu">
 						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="sounddesign.html">Sound Design</a></li>
-							<li><a href="musicproduction.html">Music Production</a></li>
-							<li><a href="mixing-mastering.html">Mixing & Mastering</a></li>
-							<li><a href="index.html#two">About Me</a></li>
-							<li><a href="contact.html">Contact</a></li>
-							
-						</ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="sounddesign.html">Sound Design</a></li>
+						<li><a href="musicproduction.html">Music Production</a></li>
+						<li><a href="mixing-mastering.html">Mixing & Mastering</a></li>
+						<li><a href="index.html#two">About Me</a></li>
+						<li><a href="contact.html">Contact</a></li>						</ul>
 						<!--<ul class="actions stacked">
 						<li>
 							<a href="#" class="button primary fit" onclick="playClickSound()">Portfolio</a>
@@ -69,7 +74,7 @@
 										<img src="images/background_recorder.jpg" alt="" />
 									</span>
 									<header class="major">
-										<h3><a href="sounddesign.html" class="link">Sound Design</a></h3>
+										<h3><a href="sounddesign.html" onclick="playCategorySound()" class="link">Sound Design</a></h3>
 										<p>Sound effects for games and more</p>
 									</header>
 								</article>
@@ -78,7 +83,7 @@
 										<img src="images/background_mpc.jpg" alt="" />
 									</span>
 									<header class="major">
-										<h3><a href="musicproduction.html" class="link">Music Production</a></h3>
+										<h3><a href="musicproduction.html" onclick="playCategorySound()" class="link">Music Production</a></h3>
 										<p>Multi-genre music production and engineering</p>
 									</header>
 								</article>
@@ -87,7 +92,7 @@
 										<img src="images/mixing-mastering.jpg" alt="" />
 									</span>
 									<header class="major">
-										<h3><a href="mixing-mastering.html" class="link">Mixing &amp; Mastering</a></h3>
+										<h3><a href="mixing-mastering.html" onclick="playCategorySound()" class="link">Mixing &amp; Mastering</a></h3>
 										<p>Professional mixing and mastering services for singles, EPs and albums</p>
 									</header>
 								</article>
@@ -160,6 +165,30 @@
 				sound.currentTime = 0;
 				sound.play();
 			}
-			</script>
+
+			function playMenuSound() {
+				const sound = document.getElementById('menuSound');
+				if (sound) {
+					sound.currentTime = 0;
+					sound.play().catch(err => console.log('Audio playback failed:', err));
+				}
+			}
+
+			function playMenuCloseSound() {
+				const sound = document.getElementById('menuCloseSound');
+				if (sound) {
+					sound.currentTime = 0;
+					sound.play().catch(err => console.log('Audio playback failed:', err));
+				}
+			}
+
+			function playCategorySound() {
+				const sound = document.getElementById('categorySound');
+				if (sound) {
+					sound.currentTime = 0;
+					sound.play().catch(err => console.log('Audio playback failed:', err));
+				}
+			}
+		</script>
 	</body>
 </html>

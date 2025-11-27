@@ -65,19 +65,33 @@
 	</head>
 	<body class="is-preload">
 
-		<!-- Wrapper -->
+	<!-- Modal sounds -->
+	<audio id="modalSound" preload="auto">
+		<source src="assets/sounds/modal.wav" type="audio/wav">
+	</audio>
+	<audio id="modalCloseSound" preload="auto">
+		<source src="assets/sounds/modal_close.wav" type="audio/wav">
+	</audio>
+	<!-- Multiple swipe sound variations -->
+	<audio id="modalSwipeSound" preload="auto">
+		<source src="assets/sounds/modal_swipe.wav" type="audio/wav">
+	</audio>
+	<audio id="menuSound" preload="auto">
+		<source src="assets/sounds/menu.wav" type="audio/wav">
+	</audio>
+	<audio id="menuCloseSound" preload="auto">
+		<source src="assets/sounds/menu_close.wav" type="audio/wav">
+	</audio>		<!-- Wrapper -->
 			<div id="wrapper">
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">
-							<strong>IDEM GREY</strong> <span>audio creative</span></a>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
-
-				<!-- Menu -->
+			<!-- Header -->
+				<header id="header">
+					<a href="index.html" class="logo">
+						<strong>IDEM GREY</strong> <span>audio creative</span></a>
+					<nav>
+						<a href="#menu" onclick="playMenuSound()">Menu</a>
+					</nav>
+				</header>				<!-- Menu -->
 					<nav id="menu">
 						<ul class="links">
 							<li><a href="index.html">Home</a></li>
@@ -687,41 +701,71 @@
 				let touchStartX = 0;
 				let touchEndX = 0;
 
-				function openModal(id) {
-					document.getElementById(id).style.display = "block";
-					currentModalIndex = modalIds.indexOf(id);
-					updateNavigationButtons();
-				}
-			  
-				function closeModal(id) {
-					const modal = document.getElementById(id);
-					modal.style.display = "none";
-					currentModalIndex = -1;
-					
-					// Reset iframe sources so they reload on next open
-					const iframes = modal.querySelectorAll('iframe');
-					iframes.forEach(iframe => {
-						const src = iframe.getAttribute('data-src') || iframe.src;
-						iframe.src = src;
-					});
-				}
-
-				function navigateModal(direction) {
-					let newIndex = currentModalIndex;
-					
-					if (direction === 'next') {
-						newIndex = (currentModalIndex + 1) % modalIds.length; // Loop to first
-					} else if (direction === 'prev') {
-						newIndex = (currentModalIndex - 1 + modalIds.length) % modalIds.length; // Loop to last
-					}
-
-					if (newIndex !== currentModalIndex) {
-						closeModal(modalIds[currentModalIndex]);
-						openModal(modalIds[newIndex]);
+				// Helper function to play a random variation of a sound
+				function playRandomSound(soundIds) {
+					if (!Array.isArray(soundIds) || soundIds.length === 0) return;
+					const randomId = soundIds[Math.floor(Math.random() * soundIds.length)];
+					const sound = document.getElementById(randomId);
+					if (sound) {
+						sound.currentTime = 0;
+						sound.play().catch(err => console.log('Audio playback failed:', err));
 					}
 				}
 
-				function updateNavigationButtons() {
+			function openModal(id, fromNavigation) {
+				document.getElementById(id).style.display = "block";
+				currentModalIndex = modalIds.indexOf(id);
+				updateNavigationButtons();
+				
+				// Play modal open sound only if not from navigation
+				if (!fromNavigation) {
+					const modalSound = document.getElementById('modalSound');
+					if (modalSound) {
+						modalSound.currentTime = 0;
+						modalSound.play().catch(err => console.log('Audio playback failed:', err));
+					}
+				}
+			}
+
+			function closeModal(id, fromNavigation) {
+				const modal = document.getElementById(id);
+				modal.style.display = "none";
+				currentModalIndex = -1;
+				
+				// Play close sound only if not from navigation
+				if (!fromNavigation) {
+					const closeSound = document.getElementById('modalCloseSound');
+					if (closeSound) {
+						closeSound.currentTime = 0;
+						closeSound.play().catch(err => console.log('Audio playback failed:', err));
+					}
+				}
+				
+				// Reset iframe sources so they reload on next open
+				const iframes = modal.querySelectorAll('iframe');
+				iframes.forEach(iframe => {
+					const src = iframe.getAttribute('data-src') || iframe.src;
+					iframe.src = src;
+				});
+			}
+
+			function navigateModal(direction) {
+				let newIndex = currentModalIndex;
+				
+				if (direction === 'next') {
+					newIndex = (currentModalIndex + 1) % modalIds.length;
+				} else if (direction === 'prev') {
+					newIndex = (currentModalIndex - 1 + modalIds.length) % modalIds.length;
+				}
+
+				if (newIndex !== currentModalIndex) {
+					// Play random swipe sound variation
+					playRandomSound(['modalSwipeSound', 'modalSwipeSound2', 'modalSwipeSound3']);
+					
+					closeModal(modalIds[currentModalIndex], true);
+					openModal(modalIds[newIndex], true);
+				}
+			}				function updateNavigationButtons() {
 					// Update button states - all buttons always enabled with looping
 					for (let i = 0; i < modalIds.length; i++) {
 						const prevBtn = document.getElementById('prev-btn-' + (i + 1));
@@ -785,26 +829,40 @@
 						}
 					});
 					
-					if (isModalOpen && currentModalIndex !== -1) {
-						if (e.key === 'ArrowRight') {
-							navigateModal('next');
-						} else if (e.key === 'ArrowLeft') {
-							navigateModal('prev');
-						}
+				if (isModalOpen && currentModalIndex !== -1) {
+					if (e.key === 'ArrowRight') {
+						navigateModal('next');
+					} else if (e.key === 'ArrowLeft') {
+						navigateModal('prev');
+					}
+				}
+			});
+		
+			// Close modal when clicking outside of it
+			window.onclick = function(event) {
+				const modals = document.querySelectorAll('.modal');
+				modals.forEach(modal => {
+					if (event.target === modal) {
+						closeModal(modal.id);
 					}
 				});
-			
-				// Close modal when clicking outside of it
-				window.onclick = function(event) {
-					const modals = document.querySelectorAll('.modal');
-					modals.forEach(modal => {
-						if (event.target === modal) {
-							closeModal(modal.id);
-						}
-					});
-				};
-			</script>
-	</body>
-			  
-	</body>
+			};
+
+			function playMenuSound() {
+				const sound = document.getElementById('menuSound');
+				if (sound) {
+					sound.currentTime = 0;
+					sound.play().catch(err => console.log('Audio playback failed:', err));
+				}
+			}
+
+			function playMenuCloseSound() {
+				const sound = document.getElementById('menuCloseSound');
+				if (sound) {
+					sound.currentTime = 0;
+					sound.play().catch(err => console.log('Audio playback failed:', err));
+				}
+			}
+		</script>
+	</body>	</body>
 </html>
