@@ -3280,20 +3280,24 @@ input, select, textarea {
 	 transform: translateY(0);
 	}
 	
-	/* Modal Styles */
 	.modal {
-	display: none;
-	position: fixed;
-	z-index: 1000;
-	left: 0;
-	top: 0;
-	width: 100vw;
-	height: 100vh;
-	overflow: auto;
-	background: rgba(0, 0, 0, 0.7);
-	transition: opacity 0.3s ease;
-	opacity: 1;
-	}
+		display: none;
+		position: fixed;
+		z-index: 1000;
+		left: 0;
+		top: 0;
+		width: 100vw;
+		height: 100vh;
+		overflow: auto;
+	  
+		background: rgba(0, 0, 0, 0.521); /* Lower opacity so blur shows through */
+		backdrop-filter: blur(6px);     /* <— The blur effect */
+		-webkit-backdrop-filter: blur(6px); /* Safari support */
+	  
+		transition: opacity 0.3s ease;
+		opacity: 1;
+	  }
+	  
 .modal-icons {
     position: absolute;
     top: 10px;                 /* distance from top */
