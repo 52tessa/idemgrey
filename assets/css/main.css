@@ -2353,6 +2353,59 @@ input, select, textarea {
 		}
 
 
+
+#bannerMedia {
+		-moz-align-items: center;
+		-webkit-align-items: center;
+		-ms-align-items: center;
+		align-items: center;
+		background-image: url("../../images/media.jpg");
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		padding: 6em 0 2em 0 ;
+		background-attachment: fixed;
+		background-position: bottom center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		border-bottom: 0 !important;
+		cursor: default;
+		height: 20vh;
+		margin-bottom: -3.25em;
+		max-height: 32em;
+		min-height: 22em;
+		position: relative;
+		top: -3.25em;
+	}
+
+#bannerGames {
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    background-image: url("../../images/games.JPG");
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    padding: 6em 0 2em 0;
+    background-attachment: fixed;
+    background-position: bottom center; /* ← changed */
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 0 !important;
+    cursor: default;
+    height: 20vh;
+    margin-bottom: -3.25em;
+    max-height: 32em;
+    min-height: 22em;
+    position: relative;
+    top: -3.25em;
+}
+
+
+
 /* Banner MP */
 
 	#bannerMP {
@@ -2492,7 +2545,7 @@ input, select, textarea {
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: center 100%; /* try 100% first to force “bottom” */
+	background-position: bottom center; /* ← changed */
 
 	padding: 6em 0 2em 0;
 	border-bottom: 0 !important;
