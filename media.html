@@ -29,6 +29,12 @@
 				height: 100%;
 				border: none;
 			}
+			.modal-image {
+				width: 70%;
+				max-width: 640px;
+				display: block;
+				margin: 0 auto;
+			}
 			
 			/* Modal navigation arrows */
 			.modal-nav {
@@ -155,6 +161,11 @@
 
 						<!-- One -->
 						<div class="SF-grid">
+
+							<div class="album-tile" onclick="openModal('modal3')">
+								<img src="images/Parapsych.jpg" alt="VR Cartoon Foley & Sound Effects ">
+								<div class="album-title">Parapsych - Sound Design & Post-production</div>
+							</div>
 							
 							<div class="album-tile" onclick="openModal('modal2')">
 								<img src="images/takuro.PNG" alt="VR Cartoon Foley & Sound Effects ">
@@ -167,6 +178,72 @@
 							</div>
 
 							
+<div id="modal3" class="modal">
+							<div class="modal-content">
+									 <div class="modal-icons">
+		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+		<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve 19">
+</div>
+							  <span class="close" onclick="closeModal('modal3')">&times;</span>
+							  <h2>Parapsych - Sound Design & Post-production </h2>
+							  <p>Parapsych is a Sci-Fi visual novel with a classic comic style theme for which I am hired to deliver all the sound effects, edit the voice overes, mix and master the final audio production for the video sequence which is being developed as we speak. It tells a story about loss, and it follows the misadventures of Fae, Cho and Nell as they try to navigate a galaxy cold to their plight.</p>
+							  <p>About the creator: Jim has been writing stories, GMing TTRPG games and constantly creating various projects for well over thirty years. Jim constantly thrives to create worlds and stories that people can get lost in. Whether it’s a fantasy realm, a steampunk city or a sci-fi expanse, Jim brings an intoxicating mix of suspense, comedy and intrigue to all of his projects.</p>
+								<p>Find more information about the project on the <a href="https://www.parapsych-comic.com/" target="_blank">official website</a>.</p>
+								<style>
+  details summary {
+    cursor: pointer;
+    padding: 6px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    display: inline-block;
+    user-select: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    color: #ffffff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  }
+
+  details summary:hover {
+    background: #31055a73;	
+    border-color: #b0d42b;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+  }
+
+  details[open] summary {
+    color: #66f5ff;
+    background: #31055a33;
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
+  }
+
+  details summary strong {
+    color: inherit;
+  }
+
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
+
+<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+  <summary><strong>Skills and deliverables</strong></summary>
+
+  <ul style="margin-top:0.4em; margin-left:1.1em;">
+  				<li>Foley Effects</li>
+                <li>Sound Design</li>
+				<li>Audio Editing</li>
+                <li>Mixing & Mastering</li>	
+  </ul>
+</details><div class="video-wrapper">
+	<a href="https://www.parapsych-comic.com/" target="_blank" rel="noopener noreferrer">
+		<img class="modal-image" src="images/Parapsych.jpg" alt="Parapsych artwork">
+	</a>
+	<div class="modal-nav">
+		<button onclick="navigateModal('prev')">←</button>
+		<button onclick="navigateModal('next')">→</button>
+	</div>
+</div>
+							</div>
+							</div>
 
 						 
 						  <div id="modal2" class="modal">
@@ -365,7 +442,7 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script>
-				const modalIds = ['modal2', 'modal1'];
+				const modalIds = ['modal3','modal2', 'modal1'];
 				let currentModalIndex = -1;
 				let touchStartX = 0;
 				let touchEndX = 0;
