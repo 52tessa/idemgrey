@@ -163,6 +163,12 @@
 								<div class="album-title">Trailer Music & Sound Design</div>
 							</div>
 
+
+							<div class="album-tile" onclick="openModal('modal10')">
+								<img src="images/Thetr.PNG" alt="Trailer">
+								<div class="album-title">Game Music Composition - Thetr</div>
+							</div>
+
 							
 							<div class="album-tile" onclick="openModal('modal8')">
 								<img src="images/JohnLemon.png" alt="JohnLemon">
@@ -285,6 +291,88 @@
 
 							</div>
 							</div>
+
+
+<div id="modal10" class="modal">
+							<div class="modal-content">
+								 <div class="modal-icons">
+		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+		<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve 19">
+</div>
+								<span class="close" onclick="closeModal('modal9')">&times;</span>
+								<h2>Game Music Composition - Thetr</h2>
+								<p>
+								Thetr is a a small project in early development for which I got hired to compose the music. This is the first track I made for it, with five more scheduled for next year.
+								</p>
+								   <style>
+  details summary {
+    cursor: pointer;
+    padding: 6px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    display: inline-block;
+    user-select: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    color: #ffffff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  }
+
+  details summary:hover {
+    background: #31055a73;	
+    border-color: #b0d42b;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+  }
+
+  details[open] summary {
+    color: #66f5ff;
+    background: #31055a33;
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
+  }
+
+  details summary strong {
+    color: inherit;
+  }
+
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
+
+<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+  <summary><strong>Skills and deliverables</strong></summary>
+
+  <ul style="margin-top:0.4em; margin-left:1.1em;">
+  				<li>Foley Recording</li>
+                <li>Audio Editing</li>
+                <li>Sound Design</li>
+				<li>Music Composition</li>
+                	
+  </ul>
+</details>
+								<div class="video-wrapper">
+									<div class="video-container">
+									<iframe 
+										src="https://www.youtube.com/embed/3ZK4Ff87XBI" 
+										frameborder="0" 
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+										referrerpolicy="strict-origin-when-cross-origin" 
+										allowfullscreen>
+									</iframe>
+									</div>
+									<div class="modal-nav">
+										<button onclick="navigateModal('prev')">←</button>
+										<button onclick="navigateModal('next')">→</button>
+									</div>
+								</div>
+							</div>
+							</div>
+
+
+							</div>
+							</div>
+
+
 
 							<div id="modal8" class="modal">
     <div class="modal-content" style="position:relative;">
@@ -962,7 +1050,7 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script>
-				const modalIds = ['modal9', 'modal8', 'modal7', 'modal6', 'modal5', 'modal4', 'modal3', 'modal2', 'modal1'];
+				const modalIds = ['modal9', 'modal10', 'modal8', 'modal7', 'modal6', 'modal5', 'modal4', 'modal3', 'modal2', 'modal1'];
 				let currentModalIndex = -1;
 				let touchStartX = 0;
 				let touchEndX = 0;
