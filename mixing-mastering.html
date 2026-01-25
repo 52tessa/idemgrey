@@ -143,7 +143,15 @@
 					<div id="main" class="alt">
 
 						<!-- One -->
+
+
 						<div class="album-grid">
+
+							<div class="album-tile" onclick="openModal('modal3')">
+							  <img src="images/noparole.PNG" alt="loops">
+							  <div class="album-title">Luther McGinnis - No Parole</div>
+							</div>
+
 							<div class="album-tile" onclick="openModal('modal1')">
 							  <img src="images/trygvai.PNG" alt="loops">
 							  <div class="album-title">Shanel Erkin x Antracks Loops – Trygvai </div>
@@ -159,6 +167,78 @@
 							<!-- Add more album tiles as needed -->
 						  
 							<!-- Popups -->
+
+	<div id="modal3" class="modal">
+							  <div class="modal-content">
+								<div class="modal-icons">
+		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+</div>
+								<span class="close" onclick="closeModal('modal3')">&times;</span>
+								<h2>Luther McGinnis - No Parole</h2>
+								<p>In this project, I was hired by my client Luther McGinnis to mix and master his song No Parole. Below you can find the official release.</p>
+								<style>
+  details summary {
+    cursor: pointer;
+    padding: 6px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    display: inline-block;
+    user-select: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    color: #ffffff; /* DEFAULT text color */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2); /* faded white glow when closed */
+  }
+
+  /* Hover (optional) */
+  details summary:hover {
+    background: #31055a73;	
+    border-color: #b0d42b;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+  }
+
+  /* When the details is OPEN → brighter glow */
+  details[open] summary {
+    color: #66f5ff; /* CLICKED color */
+    background: #31055a33; /* optional subtle open background */
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3); /* brighter glow when open */
+  }
+
+  /* Make strong text inherit the color properly */
+  details summary strong {
+    color: inherit;
+  }
+
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
+
+<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+  <summary><strong>Skills and deliverables</strong></summary>
+
+                <ul style="margin-top:0.4em; margin-left:1.1em;">
+    <li>Mixing & Mastering</li>
+    <li>Audio Editing</li>
+	<li>Vocal Editing</li>
+	
+  </ul>
+</details>
+								<div class="video-wrapper">
+									<ul class="links" style="text-align: center;">
+										<iframe width="70%" height="400" src="https://www.youtube.com/embed/vwqeJS78M8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+									</ul>
+									<div class="modal-nav">
+										<button onclick="navigateModal('prev')" id="prev-btn-2">←</button>
+										<button onclick="navigateModal('next')" disabled id="next-btn-2">→</button>
+									</div>
+								</div>
+							  </div>
+							</div>
+					</div>
+
+				</div>
+
 							<div id="modal1" class="modal">
 							  <div class="modal-content">
 											
@@ -239,7 +319,7 @@
 </div>
 								<span class="close" onclick="closeModal('modal2')">&times;</span>
 								<h2>Luther McGinnis - Hooked On Your Love</h2>
-								<p>In this project, I was hired by my client Luther McGinnis to mix and master his song Hooked On Your Love. Below you can find the official release. Find more of my work on my website.</p>
+								<p>In this project, I was hired by my client Luther McGinnis to mix and master his song Hooked On Your Love. Below you can find the official release.</p>
 								<style>
   details summary {
     cursor: pointer;
