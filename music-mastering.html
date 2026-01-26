@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Music Production & Engineering - Idem Grey</title>
+		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+	<!-- Modal sounds -->
+	<audio id="homeSound" preload="auto">
+		<source src="assets/sounds/home.wav" type="audio/wav">
+	</audio>
+	<audio id="menuSound" preload="auto">
+		<source src="assets/sounds/menu.wav" type="audio/wav">
+	</audio>
+	<audio id="menuItemSound" preload="auto">
+		<source src="assets/sounds/menu_item.wav" type="audio/wav">
+	</audio>
+	<audio id="categorySound" preload="auto">
+		<source src="assets/sounds/category.wav" type="audio/wav">
+	</audio>
+	<div id="wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<a href="index.html" class="logo" onclick="playHomeSound(); return delayNavigation(event, 'index.html')">
+						<strong>IDEM GREY</strong> <span>audio creative</span></a>
+					<nav>
+						<a href="#menu" onclick="playMenuSound()">Menu</a>
+					</nav>
+				</header>				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html" onclick="playMenuItemSound()">Home</a></li>
+							<li><a href="sounddesign.html" onclick="playMenuItemSound()">Sound Design</a></li>
+							<li><a href="music-mastering.html" onclick="playMenuItemSound()">Music Production & Engineering</a></li>
+							<li><a href="index.html#two" onclick="playMenuItemSound()">About Me</a></li>
+							<li><a href="contact.html" onclick="playMenuItemSound()">Contact</a></li>
+						</ul>
+					</nav>
+
+				<!-- Banner -->
+				<!-- Note: The "styleN" class below should match that of the header element. -->
+					<section id="bannerMP2" class="major">
+						<div class="inner">
+							<header class="major">
+								<h1>Music Production & Engineering</h1>
+							</header>
+							<div class="content">
+								<p>Explore my work in music production and mastering.<br />
+								Choose a category below to view projects. <br />
+								Headphones recommended!</p>
+							</div>
+						</div>
+					</section>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- One -->
+							<section id="one" class="tiles">
+								<article>
+									<span class="image">
+										<img src="images/background_mpc.jpg" alt="" />
+									</span>
+									<header class="major">
+										<h3><a href="musicproduction.html" onclick="playCategorySound()" class="link">Music Production</a></h3>
+										<p>Music production, composition and arrangement</p>
+									</header>
+								</article>
+								<article>
+									<span class="image">
+										<img src="images/mixing-mastering.jpg" alt="" />
+									</span>
+									<header class="major">
+										<h3><a href="mixing-mastering.html" onclick="playCategorySound()" class="link">Mixing & Mastering</a></h3>
+										<p>Professional mixing and mastering services</p>
+									</header>
+								</article>
+							</section>
+
+					<!-- Two -->
+						<section id="two">
+					
+								<div class="inner">
+								<header class="major">
+									<h3>Experience</h3>
+								</header>
+								<p>I've been consuming music since the mid 2000s, including R&B, rap, reggae, and lots of electronic subgenres, which ultimately led me to be naturally drawn to learn music production and discover different techniques inspired by my peers. I have beeen professionally involved in music production and engineering for over 5 years now, working with performing artists and likeminded aduio engineers and producers. My sole purpose is to deliver music for others as I consider myself a producer rather than a performer in this craft</p>
+								<br />
+									
+							
+							</div>
+							<div class="inner" id="contact">
+								<header class="major">
+										<h2>Contact</h2>
+									</header>
+									For inquiries you can reach me via email - <a href="mailto:idemgrey@gmail.com">idemgrey@gmail.com</a><br />
+									<br />
+									<p>Alternatively, you can also get in touch or stay updated with my work on <a href="https://discord.com/users/701113635296247870">Discord</a>, <a href="https://www.linkedin.com/in/kaloyan-djamdjiev-6b78381b9/" target="_blank">LinkedIn</a>, <a href="https://www.instagram.com/idem_grey/" target="_blank">Instagram</a>, or check out my <a href="https://linktr.ee/idemgrey?fbclid=PAZXh0bgNhZW0CMTEAAaeo0S4pmQSpkTB_IUFPz_O7AcmN9bjCI9fEGUgC_DVl-fdpPFsRx-ZfY9igsQ_aem_btEuZKryULtNbYMeUfeMnA" target="_blank">LinkTree</a>.</br>
+									</br>
+								</p>
+							</div>
+						</section>
+
+		<!--Services list-->
+				<footer id="footer">
+					<div class="inner">
+						<ul class="icons">
+							<li><a href="https://discord.com/users/701113635296247870" class="icon brands alt fa-discord" title="idemgrey"><span class="label">Discord</span></a></li>
+							<li><a href="https://www.instagram.com/idem_grey/" class="icon brands alt fa-instagram"><span class="link"></span></a></li>
+							<li><a href="https://www.linkedin.com/in/kaloyan-djamdjiev-6b78381b9/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://www.buymeacoffee.com/idemgrey" title="Buy Me a Coffee" style="border-bottom: none; text-decoration: none;"><img src="images/bmc.PNG" alt="Buy Me a Coffee" style="width: 2em; height: 2em; vertical-align: middle; display: inline-block;"></a></li>
+						</ul>
+						<img src="images/logo.png" alt="Logo" class="footer-logo">
+						<ul class="copyright">
+							<li>&copy; 2026 Idem Grey</li><li>Design: Tessa Luntz</li>
+						</ul>
+					</div>
+				</footer>
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script>
+				function playMenuSound() {
+					const sound = document.getElementById('menuSound');
+					if (sound) {
+						sound.currentTime = 0;
+						sound.play().catch(err => console.log('Audio playback failed:', err));
+					}
+				}
+
+				function playHomeSound() {
+					const sound = document.getElementById('homeSound');
+					if (sound) {
+						sound.currentTime = 0;
+						sound.play().catch(err => console.log('Audio playback failed:', err));
+					}
+				}
+
+				function playMenuItemSound() {
+					const sound = document.getElementById('menuItemSound');
+					if (sound) {
+						sound.currentTime = 0;
+						sound.play().catch(err => console.log('Audio playback failed:', err));
+					}
+				}
+
+				function playCategorySound() {
+					const sound = document.getElementById('categorySound');
+					if (sound) {
+						sound.currentTime = 0;
+						sound.play().catch(err => console.log('Audio playback failed:', err));
+					}
+				}
+
+				function delayNavigation(event, url) {
+					event.preventDefault();
+					setTimeout(() => { window.location.href = url; }, 150);
+					return false;
+				}
+			</script>	</body>
+	
+</html>

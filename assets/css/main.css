@@ -2606,7 +2606,7 @@ input, select, textarea {
 		-webkit-align-items: center;
 		-ms-align-items: center;
 		align-items: center;
-		background-image: url("../../images/background_mpc.jpg");
+		background-image: url("../../images/banner_MM2.jpg");
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
@@ -2625,7 +2625,39 @@ input, select, textarea {
 		position: relative;
 		top: -3.25em;
 	}
-	
+	#bannerMP2 {
+		-moz-align-items: center;
+		-webkit-align-items: center;
+		-ms-align-items: center;
+		align-items: center;
+		background-image: url("../../images/banner_MM3.JPG");
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		padding: 6em 0 2em 0 ;
+		background-attachment: fixed;
+		background-position: top;
+		background-repeat: no-repeat;
+		background-size: cover;
+		border-bottom: 0 !important;
+		cursor: default;
+		height: 20vh;
+		margin-bottom: -3.25em;
+		max-height: 32em;
+		min-height: 22em;
+		position: relative;
+		top: -3.25em;
+	}
+
+		#bannerMP2 > .inner .content p {
+			font-size: 0.7em;
+			font-weight: 600;
+			letter-spacing: 0.25em;
+			text-transform: uppercase;
+			background: rgba(0, 0, 0, 0.4);
+			padding: 0.3%;
+		}
 
 		#bannerMP:after {
 			-moz-transition: opacity 2.5s ease;
