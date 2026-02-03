@@ -32,7 +32,26 @@
 			.video-wrapper iframe { width: 70%; max-width:900px; height:400px; border:0; }
 			.video-wrapper .video-container { width: 100%; }
 			.video-wrapper .video-container iframe { width: 70%; max-width:900px; height:400px; border:0; }
-			.modal-image { width: 70%; max-width: 640px; display: block; margin: 0 auto; }
+					.modal-image { width: 100%; max-width: 640px; display: block; margin: 0 auto; }
+
+					/* Remove link/image outline/highlight (prevent dotted border) */
+					.video-wrapper a,
+					.video-wrapper a:focus,
+					.video-wrapper a:active,
+					.video-wrapper a:hover {
+						outline: none;
+						border: none;
+						box-shadow: none;
+					}
+					.video-wrapper a img,
+					.modal-image {
+						border: none;
+						display: block;
+					}
+					/* Disable mobile tap highlight */
+					.video-wrapper a, .video-wrapper a img { -webkit-tap-highlight-color: transparent; }
+					/* Prevent selection artifacts */
+					.video-wrapper a img { -webkit-user-select: none; user-select: none; }
 			
 			/* Details/summary styles (consolidated) */
 			details summary {
@@ -132,8 +151,8 @@
 						</ul>
 					</details>
 					<div class="video-wrapper">
-						<a href="https://www.parapsych-comic.com/" target="_blank" rel="noopener noreferrer">
-							<img class="modal-image" src="images/Parapsych.jpg" alt="Parapsych artwork">
+						<a href="https://www.parapsych-comic.com/" target="_blank" rel="noopener noreferrer" style="display:inline-block; line-height:0;">
+							<img class="modal-image" src="images/Parapsych.jpg" alt="Parapsych artwork" style="display:block;">
 						</a>
 					</div>
 				</section>
