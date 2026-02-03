@@ -6,99 +6,57 @@
 -->
 <html>
 	<head>
-		<title>Sound Design - Idem Grey</title>
+		<title>Sound Design - Multi-Media - Idem Grey</title>
 		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
-			/* Fix responsive video containers for mobile */
-			.video-container {
-				position: relative;
-				width: 100%;
-				padding-bottom: 56.25%;
-				height: 0;
-				overflow: hidden;
-				margin-top: 1em;
-			}
-			.video-container iframe {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				border: none;
-			}
-			.modal-image {
-				width: 70%;
-				max-width: 640px;
-				display: block;
-				margin: 0 auto;
-			}
+			/* Center and push services to bottom */
+			#wrapper { display: flex; flex-direction: column; min-height: 100vh; }
+			#main { flex: 1; }
+			#contact { margin-top: auto !important; text-align: center !important; clear: both; width: 100%; padding: 3rem 0 2rem !important; }
+			#contact .inner { text-align: center; }
+			#contact .services { display: inline-block; text-align: left; }
+			#contact .services ul { margin-left: 1.5rem; }
+			#footer { margin-top: auto; }
 			
-			/* Modal navigation arrows */
-			.modal-nav {
-				position: absolute;
-				top: 50%;
-				left: 0;
-				right: 0;
-				transform: translateY(-50%);
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				pointer-events: none;
-				padding: 0 2em;
-				z-index: 10;
-			}
-			.modal-nav button {
-				display: none;
-				background: rgba(0, 0, 0, 0.5);
-				border: 0px solid #afd42b00;
-				color: #fbffee;
-				padding: 0em 1.5em;
+			/* Project list layout (replaces modals) */
+			.project-list { display: flex; flex-direction: column; gap: 2.5rem; margin: 2.5rem 0; }
+			.project-item { background: rgba(0,0,0,0.06); padding: 1.6rem; border-radius: 8px; color: #fff; }
+			.project-item .project-header { display:flex; gap:1rem; align-items:center; margin-bottom:0.6rem; }
+			.project-item .project-header img { width: 48px; height: 48px; object-fit: contain; }
+			.project-item h2 { margin: 0 0 0.4rem 0; }
+			.project-item p { margin: 0 0 0.6rem 0; }
+			.video-wrapper { position: relative; display: block; width: 100%; text-align:center; }
+			.video-wrapper iframe { width: 70%; max-width:900px; height:400px; border:0; }
+			.video-wrapper .video-container { width: 100%; }
+			.video-wrapper .video-container iframe { width: 70%; max-width:900px; height:400px; border:0; }
+			.modal-image { width: 70%; max-width: 640px; display: block; margin: 0 auto; }
+			
+			/* Details/summary styles (consolidated) */
+			details summary {
 				cursor: pointer;
-				border-radius: 4px;
-				font-size: 0.65em;
-				transition: all 0.3s ease;
-				pointer-events: all;
-				min-width: 60px;
-				text-align: center;
-				font-weight: bold;
-				outline: none;
-			}
-			.modal-nav button:hover {
-				background: rgba(255, 255, 255, 0);
-				transform: scale(1.1);
-			}
-			.modal-nav button:disabled {
-				opacity: 0.3;
-				cursor: not-allowed;
-				pointer-events: none;
-			}
-			.modal-content {
-				position: relative;
-				overflow-x: hidden;
-			}
-			.video-wrapper {
-				position: relative;
+				padding: 6px 8px;
+				border: 1px solid rgba(255, 255, 255, 0.3);
+				border-radius: 6px;
 				display: inline-block;
-				width: 100%;
+				user-select: none;
+				transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+				color: #ffffff;
+				box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
 			}
+			details summary:hover { background: #31055a73; border-color: #b0d42b; box-shadow: 0 0 12px rgba(255,255,255,0.4); }
+			details[open] summary { color: #66f5ff; background: #31055a33; border-color: rgba(255,255,255,0.6); box-shadow: 0 0 16px rgba(255,255,255,0.6), 0 0 24px rgba(255,255,255,0.3); }
+			details summary::-webkit-details-marker { display: none; }
+			/* Space between details and video */
+			.project-item details { margin-bottom: 2rem; }
 		</style>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
 
-	<!-- Modal sounds -->
-	<audio id="modalSound" preload="auto">
-		<source src="assets/sounds/modal.wav" type="audio/wav">
-	</audio>
-	<audio id="modalCloseSound" preload="auto">
-		<source src="assets/sounds/modal_close.wav" type="audio/wav">
-	</audio>
-	<audio id="modalSwipeSound" preload="auto">
-		<source src="assets/sounds/modal_swipe.wav" type="audio/wav">
-	</audio>
+	<!-- Audio elements -->
 	<audio id="menuSound" preload="auto">
 		<source src="assets/sounds/menu.wav" type="audio/wav">
 	</audio>
@@ -117,518 +75,192 @@
 	<audio id="menuItemSound" preload="auto">
 		<source src="assets/sounds/menu_item.wav" type="audio/wav">
 	</audio>
+
 	<div id="wrapper">
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo" onclick="playHomeSound(); return delayNavigation(event, 'index.html')">
+				<strong>IDEM GREY</strong> <span>audio creative</span></a>
+			<nav>
+				<a href="#menu" onclick="playMenuSound()">Menu</a>
+			</nav>
+		</header>
 
-			<!-- Header -->
-				<header id="header">
-					<a href="index.html" class="logo" onclick="playHomeSound(); return delayNavigation(event, 'index.html')">
-						<strong>IDEM GREY</strong> <span>audio creative</span></a>
-					<nav>
-						<a href="#menu" onclick="playMenuSound()">Menu</a>
-					</nav>
-				</header>				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="index.html" onclick="playMenuItemSound()">Home</a></li>
-							<li><a href="sounddesign.html" onclick="playMenuItemSound()">Sound Design</a></li>
-							<li><a href="music-mastering.html" onclick="playMenuItemSound()">Music Production & Engineering</a></li>
-							<li><a href="index.html#two" onclick="playMenuItemSound()">About Me</a></li>
-							<li><a href="contact.html" onclick="playMenuItemSound()">Contact</a></li>
-							
-							<!--<li><a href="services.html">My services</a></li>-->
-						</ul>
-					</nav>
+		<!-- Menu -->
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="index.html" onclick="playMenuItemSound()">Home</a></li>
+				<li><a href="sounddesign.html" onclick="playMenuItemSound()">Sound Design</a></li>
+				<li><a href="music-mastering.html" onclick="playMenuItemSound()">Music Production & Engineering</a></li>
+				<li><a href="index.html#two" onclick="playMenuItemSound()">About Me</a></li>
+				<li><a href="contact.html" onclick="playMenuItemSound()">Contact</a></li>
+			</ul>
+		</nav>
 
-				<!-- Banner -->
-				<!-- Note: The "styleN" class below should match that of the header element. -->
-					<section id="bannerMedia" class="major">
-						<div class="inner">
-							<!--<span class="image">
-								<img src="images/media.jpg" alt="" />
-							</span>-->
-							<header class="major">
-								<h1>Sound Design - Multi-Media</h1>
-							</header>
-							<div class="content">
-								<p>My catalogue of sound design and music production for multi-media projects such as animation, audio books, and more.</p>
-							</div>
-						</div>
-					</section>
+		<!-- Banner -->
+		<section id="bannerMedia" class="major">
+			<div class="inner">
+				<header class="major">
+					<h1>Sound Design - Multi-Media</h1>
+				</header>
+				<div class="content">
+					<p>My catalogue of sound design and music production for multi-media projects such as animation, audio books, and more.</p>
+				</div>
+			</div>
+		</section>
 
-				<!-- Main -->
-					<div id="main" class="alt">
+		<!-- Main -->
+		<div id="main" class="alt">
+			<!-- Inline project sections (replacing modals) -->
+			<div class="project-list">
 
-						<!-- One -->
-						<div class="SF-grid">
-
-							<div class="album-tile" onclick="openModal('modal3')">
-								<img src="images/Parapsych.jpg" alt="VR Cartoon Foley & Sound Effects ">
-								<div class="album-title">Parapsych - Sound Design & Post-production</div>
-							</div>
-							
-							<div class="album-tile" onclick="openModal('modal2')">
-								<img src="images/takuro.PNG" alt="VR Cartoon Foley & Sound Effects ">
-								<div class="album-title">VR Cartoon Foley & Sound Effects</div>
-							</div>
-
-								<div class="album-tile" onclick="openModal('modal1')">
-								<img src="images/flight.jpg" alt="Narrative Sound Effects">
-								<div class="album-title">Narrative Sound Effects</div>
-							</div>
-
-							
-<div id="modal3" class="modal">
-							<div class="modal-content">
-									 <div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-		<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve 19">
-</div>
-							  <span class="close" onclick="closeModal('modal3')">&times;</span>
-							  <h2>Parapsych - Sound Design & Post-production </h2>
-							  <p>Parapsych is a Sci-Fi visual novel with a classic comic style theme for which I am hired to deliver all the sound effects, edit the voice overs, mix and master the final audio production for the video sequence which is being developed as we speak. It tells a story about loss, and it follows the misadventures of Fae, Cho and Nell as they try to navigate a galaxy cold to their plight.</p>
-							  <p>About the creator: Jim has been writing stories, GMing TTRPG games and constantly creating various projects for well over thirty years. Jim constantly thrives to create worlds and stories that people can get lost in. Whether it’s a fantasy realm, a steampunk city or a sci-fi expanse, Jim brings an intoxicating mix of suspense, comedy and intrigue to all of his projects.</p>
-								<p>Find more information about the project on the <a href="https://www.parapsych-comic.com/" target="_blank">official website</a>.</p>
-								<style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-  				<li>Foley Effects</li>
-                <li>Sound Design</li>
-				<li>Audio Editing</li>
-                <li>Mixing & Mastering</li>	
-  </ul>
-</details><div class="video-wrapper">
-	<a href="https://www.parapsych-comic.com/" target="_blank" rel="noopener noreferrer">
-		<img class="modal-image" src="images/Parapsych.jpg" alt="Parapsych artwork">
-	</a>
-	<div class="modal-nav">
-		<button onclick="navigateModal('prev')">←</button>
-		<button onclick="navigateModal('next')">→</button>
-	</div>
-</div>
-							</div>
-							</div>
-
-						 
-						  <div id="modal2" class="modal">
-							<div class="modal-content">
-									 <div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-		<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve 19">
-</div>
-							  <span class="close" onclick="closeModal('modal2')">&times;</span>
-							  <h2>VR Cartoon Foley & Sound Effects </h2>
-							  <p>This is a sample submission I did for a VR animated experience. I was provided with the voice over and I had to adapt the entire audio as part of the application. This is my final result which I built using my own foley assets and audio editing skills.</p>
-								<style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-  				<li>Foley Effects</li>
-                <li>Sound Design</li>
-				<li>Audio Editing</li>
-                <li>Mixing & Mastering</li>	
-  </ul>
-</details><div class="video-wrapper">
-	<div class="video-container">
-		<iframe 
-			src="https://www.youtube.com/embed/nJ2eBuBcGR0"
-			frameborder="0"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-			allowfullscreen
-			title="YouTube Short"
-		></iframe>
-	</div>
-
-	<div class="modal-nav">
-		<button onclick="navigateModal('prev')">←</button>
-		<button onclick="navigateModal('next')">→</button>
-	</div>
-</div>
-							</div>
-							</div>
-
-
-					
-						  
-							
-<div id="modal1" class="modal">
-							<div class="modal-content">
-								 <div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-</div>
-								<span class="close" onclick="closeModal('modal1')">&times;</span>
-								<h2>Narrative Sound Effects</h2>
-								<p>
-								For this project, I was hired on Upwork to create and implement the sound effects and edit the voice over for a narrative book. 
-								</p>
-								   <style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; margin-bottom:1em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-  				<li>Foley Recording</li>
-                <li>Audio Editing</li>
-                <li>Sound Design</li>
-				<li>Mixing & Mastering</li>
-                	
-  </ul>
-</details>
-								<div class="video-wrapper">
-									<div class="video-container">
-										<iframe width="100%" height="800" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2203965519%3Fsecret_token%3Ds-ylgDdlvSDRX&color=%23231f1d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/kaloyan-djamdjiev" title="Kaloyan Djamdjiev" target="_blank" style="color: #cccccc; text-decoration: none;">Kaloyan Djamdjiev</a> · <a href="https://soundcloud.com/kaloyan-djamdjiev/flight-attendant/s-ylgDdlvSDRX" title="Flight attendant" target="_blank" style="color: #cccccc; text-decoration: none;">Flight attendant</a></div>
-									</div>
-									<div class="modal-nav">
-										<button onclick="navigateModal('prev')">←</button>
-										<button onclick="navigateModal('next')">→</button>
-									</div>
-								</div>
-							</div>
-							</div>
-
-
-							</div>
-							</div>
-
-		
-<!--Services list-->
-<section id="contact">
-  <div class="inner contact-container">
-    <!--<div class="split">-->
-      <section class="services">
-        <header class="major">
-          <h2>My services</h2>
-        </header>
-        <ul>	
-			<li>Sound Effects & Sound design</li>
-			<li>Field and foley recording</li>
-			<li>Dialog & voiceover editing</li>
-			<li>Custom soundtracks for film</li>
-			<li>Audio post-production</li>
-			<li>Environmental sound design</li>
-			<li>Immersive audio</li>
-		</ul>
-	</section>
-
-			<!-- Footer -->
-				<footer id="footer">
-					<div class="inner">
-						<ul class="icons">
-							<li><a href="https://discord.com/users/701113635296247870" class="icon brands alt fa-discord" title="idemgrey"><span class="label">Discord</span></a></li>
-							<li><a href="https://www.instagram.com/idem_grey/" class="icon brands alt fa-instagram"><span class="link"></span></a></li>
-							<li><a href="https://www.linkedin.com/in/kaloyan-djamdjiev-6b78381b9/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-							<li><a href="https://www.buymeacoffee.com/idemgrey" title="Buy Me a Coffee" style="border-bottom: none; text-decoration: none;"><img src="images/bmc.PNG" alt="Buy Me a Coffee" style="width: 2em; height: 2em; vertical-align: middle; display: inline-block;"></a></li>
-						</ul>
-						<img src="images/logo.png" alt="Logo" class="footer-logo">
-						<ul class="copyright">
-							<li>&copy; 2026 Idem Grey</li><li>Design: Tessa Luntz</li>
-						</ul>
+				<section id="project-parapsych" class="project-item">
+					<div class="project-header">
+						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
 					</div>
-				</footer>
+					<h2>Parapsych - Sound Design & Post-production</h2>
+					<p>Parapsych is a Sci-Fi visual novel with a classic comic style theme for which I am hired to deliver all the sound effects, edit the voice overs, mix and master the final audio production for the video sequence which is being developed as we speak. It tells a story about loss, and it follows the misadventures of Fae, Cho and Nell as they try to navigate a galaxy cold to their plight.</p>
+					<p>About the creator: Jim has been writing stories, GMing TTRPG games and constantly creating various projects for well over thirty years. Jim constantly thrives to create worlds and stories that people can get lost in. Whether it's a fantasy realm, a steampunk city or a sci-fi expanse, Jim brings an intoxicating mix of suspense, comedy and intrigue to all of his projects.</p>
+					<p>Find more information about the project on the <a href="https://www.parapsych-comic.com/" target="_blank">official website</a>.</p>
+					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+						<summary><strong>Skills and deliverables</strong></summary>
+						<ul style="margin-top:0.4em; margin-left:1.1em;">
+							<li>Foley Effects</li>
+							<li>Sound Design</li>
+							<li>Audio Editing</li>
+							<li>Mixing & Mastering</li>
+						</ul>
+					</details>
+					<div class="video-wrapper">
+						<a href="https://www.parapsych-comic.com/" target="_blank" rel="noopener noreferrer">
+							<img class="modal-image" src="images/Parapsych.jpg" alt="Parapsych artwork">
+						</a>
+					</div>
+				</section>
+
+				<section id="project-vr-cartoon" class="project-item">
+					<div class="project-header">
+						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+					</div>
+					<h2>VR Cartoon Foley & Sound Effects</h2>
+					<p>This is a sample submission I did for a VR animated experience. I was provided with the voice over and I had to adapt the entire audio as part of the application. This is my final result which I built using my own foley assets and audio editing skills.</p>
+					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+						<summary><strong>Skills and deliverables</strong></summary>
+						<ul style="margin-top:0.4em; margin-left:1.1em;">
+							<li>Foley Effects</li>
+							<li>Sound Design</li>
+							<li>Audio Editing</li>
+							<li>Mixing & Mastering</li>
+						</ul>
+					</details>
+					<div class="video-wrapper">
+						<div class="video-container">
+							<iframe src="https://www.youtube.com/embed/nJ2eBuBcGR0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="YouTube Short"></iframe>
+						</div>
+					</div>
+				</section>
+
+				<section id="project-narrative-sfx" class="project-item">
+					<div class="project-header">
+						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+					</div>
+					<h2>Narrative Sound Effects</h2>
+					<p>For this project, I was hired on Upwork to create and implement the sound effects and edit the voice over for a narrative book.</p>
+					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+						<summary><strong>Skills and deliverables</strong></summary>
+						<ul style="margin-top:0.4em; margin-left:1.1em;">
+							<li>Foley Recording</li>
+							<li>Audio Editing</li>
+							<li>Sound Design</li>
+							<li>Mixing & Mastering</li>
+						</ul>
+					</details>
+					<div class="video-wrapper">
+						<div class="video-container">
+							<iframe width="100%" height="800" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2203965519%3Fsecret_token%3Ds-ylgDdlvSDRX&color=%23231f1d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+						</div>
+					</div>
+				</section>
+
+			</div>
 		</div>
-</section>
 
+		<!-- Services list -->
+		<section id="contact">
+			<div class="inner contact-container">
+				<section class="services">
+					<header class="major">
+						<h2>My services</h2>
+					</header>
+					<ul>	
+						<li>Sound Effects & Sound design</li>
+						<li>Field and foley recording</li>
+						<li>Dialog & voiceover editing</li>
+						<li>Custom soundtracks for film</li>
+						<li>Audio post-production</li>
+						<li>Environmental sound design</li>
+						<li>Immersive audio</li>
+					</ul>
+				</section>
+			</div>
+		</section>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script>
-				const modalIds = ['modal3','modal2', 'modal1'];
-				let currentModalIndex = -1;
-				let touchStartX = 0;
-				let touchEndX = 0;
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="https://discord.com/users/701113635296247870" class="icon brands alt fa-discord" title="idemgrey"><span class="label">Discord</span></a></li>
+					<li><a href="https://www.instagram.com/idem_grey/" class="icon brands alt fa-instagram"><span class="link"></span></a></li>
+					<li><a href="https://www.linkedin.com/in/kaloyan-djamdjiev-6b78381b9/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+					<li><a href="https://www.buymeacoffee.com/idemgrey" title="Buy Me a Coffee" style="border-bottom: none; text-decoration: none;"><img src="images/bmc.PNG" alt="Buy Me a Coffee" style="width: 2em; height: 2em; vertical-align: middle; display: inline-block;"></a></li>
+				</ul>
+				<img src="images/logo.png" alt="Logo" class="footer-logo">
+				<ul class="copyright">
+					<li>&copy; 2026 Idem Grey</li><li>Design: Tessa Luntz</li>
+				</ul>
+			</div>
+		</footer>
+	</div>
 
-		function openModal(id, fromNavigation) {
-			document.getElementById(id).style.display = "block";
-			currentModalIndex = modalIds.indexOf(id);
-			updateNavigationButtons();
-			
-			// Play modal open sound only if not from navigation
-			if (!fromNavigation) {
-				const modalSound = document.getElementById('modalSound');
-				if (modalSound) {
-					modalSound.currentTime = 0;
-					modalSound.play().catch(err => console.log('Audio playback failed:', err));
-				}
-			}
-		}			function closeModal(id, fromNavigation) {
-				const modal = document.getElementById(id);
-				modal.style.display = "none";
-				currentModalIndex = -1;
-				
-				// Play close sound only if not from navigation
-				if (!fromNavigation) {
-					const closeSound = document.getElementById('modalCloseSound');
-					if (closeSound) {
-						closeSound.currentTime = 0;
-						closeSound.play().catch(err => console.log('Audio playback failed:', err));
-					}
-				}
-				
-				// Reset iframe sources so they reload on next open
-				const iframes = modal.querySelectorAll('iframe');
-				iframes.forEach(iframe => {
-					const src = iframe.getAttribute('data-src') || iframe.src;
-					iframe.src = src;
-				});
-			}
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script>
+		function playMenuSound() {
+			const sound = document.getElementById('menuSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
 
-			function navigateModal(direction) {
-				let newIndex = currentModalIndex;
-				
-				if (direction === 'next') {
-					newIndex = (currentModalIndex + 1) % modalIds.length; // Loop to first
-				} else if (direction === 'prev') {
-					newIndex = (currentModalIndex - 1 + modalIds.length) % modalIds.length; // Loop to last
-				}
+		function playMenuCloseSound() {
+			const sound = document.getElementById('menuCloseSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
 
-				if (newIndex !== currentModalIndex) {
-					// Play swipe sound
-					const swipeSound = document.getElementById('modalSwipeSound');
-					if (swipeSound) {
-						swipeSound.currentTime = 0;
-						swipeSound.play().catch(err => console.log('Audio playback failed:', err));
-					}
-					
-					closeModal(modalIds[currentModalIndex], true);
-					openModal(modalIds[newIndex], true);
-				}
-			}				function updateNavigationButtons() {
-					// Update button states - all buttons always enabled with looping
-					for (let i = 0; i < modalIds.length; i++) {
-						const prevBtn = document.getElementById('prev-btn-' + (i + 1));
-						const nextBtn = document.getElementById('next-btn-' + (i + 1));
-						
-						if (prevBtn) prevBtn.disabled = false;
-						if (nextBtn) nextBtn.disabled = false;
-					}
-				}
+		function playDetailsToggle(details) {
+			const sound = document.getElementById(details.open ? 'buttonOpenSound' : 'buttonCloseSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
 
-				// Touch swipe handling
-				document.addEventListener('touchstart', (e) => {
-					const modals = document.querySelectorAll('.modal');
-					let isModalOpen = false;
-					modals.forEach(modal => {
-						if (modal.style.display === 'block') {
-							isModalOpen = true;
-						}
-					});
-					
-					if (isModalOpen && currentModalIndex !== -1) {
-						touchStartX = e.changedTouches[0].screenX;
-					}
-				});
+		function playHomeSound() {
+			const sound = document.getElementById('homeSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
 
-				document.addEventListener('touchend', (e) => {
-					const modals = document.querySelectorAll('.modal');
-					let isModalOpen = false;
-					modals.forEach(modal => {
-						if (modal.style.display === 'block') {
-							isModalOpen = true;
-						}
-					});
-					
-					if (isModalOpen && currentModalIndex !== -1) {
-						touchEndX = e.changedTouches[0].screenX;
-						handleSwipe();
-					}
-				});
+		function playMenuItemSound() {
+			const sound = document.getElementById('menuItemSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
 
-				function handleSwipe() {
-					const swipeThreshold = 50;
-					const diff = touchStartX - touchEndX;
-
-					if (Math.abs(diff) > swipeThreshold) {
-						if (diff > 0) {
-							navigateModal('next');
-						} else {
-							navigateModal('prev');
-						}
-					}
-				}
-
-				// Keyboard navigation
-				document.addEventListener('keydown', (e) => {
-					const modals = document.querySelectorAll('.modal');
-					let isModalOpen = false;
-					modals.forEach(modal => {
-						if (modal.style.display === 'block') {
-							isModalOpen = true;
-						}
-					});
-					
-					if (isModalOpen && currentModalIndex !== -1) {
-						if (e.key === 'ArrowRight') {
-							navigateModal('next');
-						} else if (e.key === 'ArrowLeft') {
-							navigateModal('prev');
-						}
-					}
-				});
-			
-			// Close modal when clicking outside of it
-			window.onclick = function(event) {
-				const modals = document.querySelectorAll('.modal');
-				modals.forEach(modal => {
-					if (event.target === modal) {
-						closeModal(modal.id);
-					}
-				});
-			};
-
-			function playMenuSound() {
-				const sound = document.getElementById('menuSound');
-				if (sound) {
-					sound.currentTime = 0;
-					sound.play().catch(err => console.log('Audio playback failed:', err));
-				}
-			}
-
-			function playMenuCloseSound() {
-				const sound = document.getElementById('menuCloseSound');
-				if (sound) {
-					sound.currentTime = 0;
-					sound.play().catch(err => console.log('Audio playback failed:', err));
-				}
-			}
-
-			function playDetailsToggle(details) {
-				const sound = document.getElementById(details.open ? 'buttonOpenSound' : 'buttonCloseSound');
-				if (sound) {
-					sound.currentTime = 0;
-					sound.play().catch(err => console.log('Audio playback failed:', err));
-				}
-			}
-
-			function playHomeSound() {
-				const sound = document.getElementById('homeSound');
-				if (sound) {
-					sound.currentTime = 0;
-					sound.play().catch(err => console.log('Audio playback failed:', err));
-				}
-			}
-
-			function playMenuItemSound() {
-				const sound = document.getElementById('menuItemSound');
-				if (sound) {
-					sound.currentTime = 0;
-					sound.play().catch(err => console.log('Audio playback failed:', err));
-				}
-			}
-
-			function delayNavigation(event, url) {
-				event.preventDefault();
-				setTimeout(() => { window.location.href = url; }, 150);
-				return false;
-			}
-		</script>	</body>
-	
+		function delayNavigation(event, url) {
+			event.preventDefault();
+			setTimeout(() => { window.location.href = url; }, 150);
+			return false;
+		}
+	</script>
+	</body>
 </html>

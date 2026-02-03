@@ -2649,15 +2649,7 @@ input, select, textarea {
 		position: relative;
 		top: -3.25em;
 	}
-
-		#bannerMP2 > .inner .content p {
-			font-size: 0.7em;
-			font-weight: 600;
-			letter-spacing: 0.25em;
-			text-transform: uppercase;
-			background: rgba(0, 0, 0, 0.4);
-			padding: 0.3%;
-		}
+	
 
 		#bannerMP:after {
 			-moz-transition: opacity 2.5s ease;

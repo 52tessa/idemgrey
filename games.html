@@ -6,93 +6,61 @@
 -->
 <html>
 	<head>
-		<title>Sound Design - Idem Grey</title>
+		<title>Sound Design - Games - Idem Grey</title>
 		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
-			/* Fix responsive video containers for mobile */
-			.video-container {
-				position: relative;
-				width: 100%;
-				padding-bottom: 56.25%;
-				height: 0;
-				overflow: hidden;
-				margin-top: 1em;
-			}
-			.video-container iframe {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				border: none;
-			}
+			/* Center and push services to bottom */
+			#wrapper { display: flex; flex-direction: column; min-height: 100vh; }
+			#main { flex: 1; }
+			#contact { margin-top: auto !important; text-align: center !important; clear: both; width: 100%; padding: 3rem 0 2rem !important; }
+			#contact .inner { text-align: center; }
+			#contact .services { display: inline-block; text-align: left; }
+			#contact .services ul { margin-left: 1.5rem; }
+			#footer { margin-top: auto; }
 			
-			/* Modal navigation arrows */
-			.modal-nav {
-				position: absolute;
-				top: 50%;
-				left: 0;
-				right: 0;
-				transform: translateY(-50%);
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				pointer-events: none;
-				padding: 0 2em;
-				z-index: 10;
-			}
-			.modal-nav button {
-				display: none;
-				background: rgba(0, 0, 0, 0.5);
-				border: 0px solid #afd42b00;
-				color: #fbffee;
-				padding: 0em 1.5em;
+			/* Project list layout (replaces modals) */
+			.project-list { display: flex; flex-direction: column; gap: 2.5rem; margin: 2.5rem 0; }
+			.project-item { background: rgba(0,0,0,0.06); padding: 1.6rem; border-radius: 8px; color: #fff; }
+			.project-item .project-header { display:flex; gap:1rem; align-items:center; margin-bottom:0.6rem; }
+			.project-item .project-header img { width: 48px; height: 48px; object-fit: contain; }
+			.project-item h2 { margin: 0 0 0.4rem 0; }
+			.project-item p { margin: 0 0 0.6rem 0; }
+			.video-wrapper { position: relative; display: block; width: 100%; text-align:center; }
+			.video-wrapper iframe { width: 70%; max-width:900px; height:400px; border:0; }
+			.video-wrapper .video-container { width: 100%; }
+			.video-wrapper .video-container iframe { width: 70%; max-width:900px; height:400px; border:0; }
+			.modal-image { width: 70%; max-width: 640px; display: block; margin: 0 auto; }
+			
+			/* Details/summary styles (consolidated) */
+			details summary {
 				cursor: pointer;
-				border-radius: 4px;
-				font-size: 0.65em;
-				transition: all 0.3s ease;
-				pointer-events: all;
-				min-width: 60px;
-				text-align: center;
-				font-weight: bold;
-				outline: none;
-			}
-			.modal-nav button:hover {
-				background: rgba(255, 255, 255, 0);
-				transform: scale(1.1);
-			}
-			.modal-nav button:disabled {
-				opacity: 0.3;
-				cursor: not-allowed;
-				pointer-events: none;
-			}
-			.modal-content {
-				position: relative;
-				overflow-x: hidden;
-			}
-			.video-wrapper {
-				position: relative;
+				padding: 6px 8px;
+				border: 1px solid rgba(255, 255, 255, 0.3);
+				border-radius: 6px;
 				display: inline-block;
-				width: 100%;
+				user-select: none;
+				transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+				color: #ffffff;
+				box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
 			}
+			details summary:hover { background: #31055a73; border-color: #b0d42b; box-shadow: 0 0 12px rgba(255,255,255,0.4); }
+			details[open] summary { color: #66f5ff; background: #31055a33; border-color: rgba(255,255,255,0.6); box-shadow: 0 0 16px rgba(255,255,255,0.6), 0 0 24px rgba(255,255,255,0.3); }
+			details summary::-webkit-details-marker { display: none; }
+			/* Space between details and video */
+			.project-item details { margin-bottom: 2rem; }
+			
+			/* Multi-iframe layout for some projects */
+			.iframe-grid { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+			.iframe-grid iframe { flex: 1; min-width: 300px; height: 352px; }
 		</style>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
 
-	<!-- Modal sounds -->
-	<audio id="modalSound" preload="auto">
-		<source src="assets/sounds/modal.wav" type="audio/wav">
-	</audio>
-	<audio id="modalCloseSound" preload="auto">
-		<source src="assets/sounds/modal_close.wav" type="audio/wav">
-	</audio>
-	<audio id="modalSwipeSound" preload="auto">
-		<source src="assets/sounds/modal_swipe.wav" type="audio/wav">
-	</audio>
+	<!-- Audio elements -->
 	<audio id="menuSound" preload="auto">
 		<source src="assets/sounds/menu.wav" type="audio/wav">
 	</audio>
@@ -111,1390 +79,440 @@
 	<audio id="menuItemSound" preload="auto">
 		<source src="assets/sounds/menu_item.wav" type="audio/wav">
 	</audio>
+
 	<div id="wrapper">
-
-			<!-- Header -->
-				<header id="header">
-					<a href="index.html" class="logo" onclick="playHomeSound(); return delayNavigation(event, 'index.html')">
-						<strong>IDEM GREY</strong> <span>audio creative</span></a>
-					<nav>
-						<a href="#menu" onclick="playMenuSound()">Menu</a>
-					</nav>
-				</header>				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="index.html" onclick="playMenuItemSound()">Home</a></li>
-							<li><a href="sounddesign.html" onclick="playMenuItemSound()">Sound Design</a></li>
-							<li><a href="music-mastering.html" onclick="playMenuItemSound()">Music Production & Engineering</a></li>
-							<li><a href="index.html#two" onclick="playMenuItemSound()">About Me</a></li>
-							<li><a href="contact.html" onclick="playMenuItemSound()">Contact</a></li>
-							
-							<!--<li><a href="services.html">My services</a></li>-->
-						</ul>
-					</nav>
-
-				<!-- Banner -->
-				<!-- Note: The "styleN" class below should match that of the header element. -->
-					<section id="bannerGames" class="major">
-						<div class="inner">
-							<!--<span class="image">
-								<img src="images/background_recorder.jpg" alt="" />
-							</span>-->
-							<header class="major">
-								<h1>Sound Design - Games</h1>
-							</header>
-							<div class="content">
-								<p>A selection of games and other projects for which I have done the music and sound design.<br />
-								Click on the thumbnail for a showreel and more info on my role on each project. <br />
-								Headphones recommended!</p>
-							</div>
-						</div>
-					</section>
-
-				<!-- Main -->
-					<div id="main" class="alt">
-
-						<!-- One -->
-						<div class="SF-grid">
-
-								<div class="album-tile" onclick="openModal('modal9')">
-								<img src="images/Trailer.PNG" alt="Trailer">
-								<div class="album-title">Trailer Music & Sound Design</div>
-							</div>
-
-							<div class="album-tile" onclick="openModal('modal11')">
-								<img src="images/MM.jpg" alt="Mad Metal OST">
-								<div class="album-title">Game Music Composition & OST - Mad Metal</div>
-							</div>
-
-							<div class="album-tile" onclick="openModal('modal10')">
-								<img src="images/Thetr.PNG" alt="Thetr">
-								<div class="album-title">Game Music Composition - Thetr</div>
-							</div>
-
-							<div class="album-tile" onclick="openModal('modal12')">
-								<img src="images/ellen.jpg" alt="3D Fantasy-Adventure SFX">
-								<div class="album-title">Sound Design - 3D Fantasy-Adventure</div>
-							</div>
-
-							
-							<div class="album-tile" onclick="openModal('modal8')">
-								<img src="images/JohnLemon.png" alt="JohnLemon">
-								<div class="album-title">John Lemon's Haunted House</div>
-							</div>
-
-							<div class="album-tile" onclick="openModal('modal7')">
-								<img src="images/FPS.png" alt="fps">
-								<div class="album-title">First Person Shooter</div>
-							</div>
-
-							<div class="album-tile" onclick="openModal('modal6')">
-								<img src="images/Village.png" alt="village">
-								<div class="album-title">Viking Village</div>
-							</div>
-
-							<div class="album-tile" onclick="openModal('modal4')">
-							  <img src="images/orbit.jpg" alt="orbit">
-							  <div class="album-title">Orbit</div>
-							</div>
-
-							<div class="album-tile" onclick="openModal('modal13')">
-							  <img src="images/slots_fishing.PNG" alt="slots">
-							  <div class="album-title">Online Casino Slots</div>
-							</div>
-
-							<div class="album-tile" onclick="openModal('modal5')">
-								<img src="images/topoly.png" alt="topoly">
-								<div class="album-title">Topoly</div>
-							</div>
-						
-							<div class="album-tile" onclick="openModal('modal3')">
-								<img src="images/Utgardr.png" alt="Utgardr">
-								<div class="album-title">Project Utgardr</div>
-							</div>
-							
-							<div class="album-tile" onclick="openModal('modal2')">
-								<img src="images/epic_bar.PNG" alt="Epic Bar Quest">
-								<div class="album-title">Epic Bar Quest</div>
-							</div>
-
-							<div class="album-tile" onclick="openModal('modal1')">
-								<img src="images/miscellaneous.png" alt="misc">
-								<div class="album-title">Unreleased SFX for game development</div>
-							</div>
-
-							
-
-						  
-<div id="modal9" class="modal">
-							<div class="modal-content">
-								 <div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-		<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve 19">
-</div>
-								<span class="close" onclick="closeModal('modal9')">&times;</span>
-								<h2>Trailer Music & Sound Design</h2>
-								<p>
-								In this portfolio project I composed music and designed sound effects using footage from Skyrim Online.
-								</p>
-								   <style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-  				<li>Foley Recording</li>
-                <li>Audio Editing</li>
-                <li>Sound Design</li>
-				<li>Music Composition</li>
-                	
-  </ul>
-</details>
-								<div class="video-wrapper">
-									<div class="video-container">
-									<iframe 
-										src="https://www.youtube.com/embed/huxxbyqRUTw?si=71nmTs11JEmKyS0T" 
-										frameborder="0" 
-										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-										referrerpolicy="strict-origin-when-cross-origin" 
-										allowfullscreen>
-									</iframe>
-									</div>
-									<div class="modal-nav">
-										<button onclick="navigateModal('prev')">←</button>
-										<button onclick="navigateModal('next')">→</button>
-									</div>
-								</div>
-							</div>
-							</div>
-
-
-							</div>
-							</div>
-
-
-
-							
-
-<div id="modal11" class="modal">
-							<div class="modal-content">
-								 <div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-</div>
-								<span class="close" onclick="closeModal('modal11')">&times;</span>
-								<h2>Game Music Composition & OST - Mad Metal</h2>
-								<p>
-								Mad Metal is a vehicle combat roguelite steam game, with a dystopian and post-apocalyptic setting. This title is developed by  <a href="https://store.steampowered.com/search/?developer=Mad%20Mechs%20Inc./">Mad Mechs Inc.</a> and published by <a href="https://www.indie.io/">indie.io</a>
-								For this project I got hired to compose the official soundtrack of the game. Find out more information about the game on the official <a href="https://store.steampowered.com/app/3068230/Mad_Metal/">Steam</a> page.  
-								</p>
-								   <style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-				<li>Music Composition</li>
-                <li>Audio Editing</li>
-                <li>Sound Design</li>
-				
-                	
-  </ul>
-</details>
-								<div class="video-wrapper">
-									<div class="video-container">
-									<iframe 
-										src="https://www.youtube.com/embed/-xIpaY_8wvo" 
-										frameborder="0" 
-										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-										referrerpolicy="strict-origin-when-cross-origin" 
-										allowfullscreen>
-									</iframe>
-									</div>
-									<div class="modal-nav">
-										<button onclick="navigateModal('prev')">←</button>
-										<button onclick="navigateModal('next')">→</button>
-									</div>
-								</div>
-							</div>
-							</div>
-
-
-							</div>
-							</div>
-
-
-
-
-
-
-
-<div id="modal10" class="modal">
-							<div class="modal-content">
-								 <div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-</div>
-								<span class="close" onclick="closeModal('modal9')">&times;</span>
-								<h2>Game Music Composition - Thetr</h2>
-								<p>
-								Thetr is a a small project in early development for which I got hired to compose the music. This is the first track I made for it, with five more scheduled for next year.
-								</p>
-								   <style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-				<li>Music Composition</li>
-                <li>Audio Editing</li>
-                <li>Sound Design</li>
-				<li>Asset Implementation</li>
-				
-                	
-  </ul>
-</details>
-								<div class="video-wrapper">
-									<div class="video-container">
-									<iframe 
-										src="https://www.youtube.com/embed/3ZK4Ff87XBI" 
-										frameborder="0" 
-										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-										referrerpolicy="strict-origin-when-cross-origin" 
-										allowfullscreen>
-									</iframe>
-									</div>
-									<div class="modal-nav">
-										<button onclick="navigateModal('prev')">←</button>
-										<button onclick="navigateModal('next')">→</button>
-									</div>
-								</div>
-							</div>
-							</div>
-
-
-							</div>
-							</div>
-
-<div id="modal12" class="modal">
-							<div class="modal-content">
-								 <div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-		<img src="images/fmod.png" alt="FMOD Icon" title="FMOD Audio integration">
-		<img src="images/unity.png" alt="Unity Icon" title="Unity 6">
-		<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve 19">
-</div>
-								<span class="close" onclick="closeModal('modal11')">&times;</span>
-								<h2>Sound Design - 3D Fantasy-Adventure</h2>
-								<p>
-								In this project I showcase my delivery of the entire sound effects pipeline for a 3D Fantasy-Adventure game: from asset creation using Ableton Live, to audio integration and setup in Unity and FMOD. This is a free learning project available on the <a href="https://assetstore.unity.com/packages/templates/tutorials/unity-learn-3d-game-kit-115747">Unity Asset Store</a> page.  
-								</p>
-								   <style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-				<li>Foley Recording</li>
-                <li>Audio Editing</li>
-				<li>Dialog Editing</li>
-                <li>Sound Design</li>
-                <li>Audio Implementation</li>
-				
-                	
-  </ul>
-</details>
-								<div class="video-wrapper">
-									<div class="video-container">
-									<iframe 
-										src="https://www.youtube.com/embed/h_E-6i_-8Sw" 
-										frameborder="0" 
-										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-										referrerpolicy="strict-origin-when-cross-origin" 
-										allowfullscreen>
-									</iframe>
-									</div>
-									<div class="modal-nav">
-										<button onclick="navigateModal('prev')">←</button>
-										<button onclick="navigateModal('next')">→</button>
-									</div>
-								</div>
-							</div>
-							</div>
-
-
-							</div>
-							</div>
-
-
-							<div id="modal8" class="modal">
-    <div class="modal-content" style="position:relative;">
-       <div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-		<img src="images/fmod.png" alt="FMOD Icon" title="FMOD Audio integration">
-		<img src="images/unity.png" alt="Unity Icon" title="Unity 6">
-		<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve 19">
-</div>
-
-        <span class="close" onclick="closeModal('modal8')">&times;</span>
-
-        <h2>John Lemon's Haunted House - 3D Stealth Game</h2>
-        <p>
-        This is the first project I did after finishing my FMOD course. 
-        All the audio you hear in this video was recorded, edited and implemented by me using Ableton Live, FMOD and Unity. <br>
-        John Lemon is a free Unity 3D learn asset available to download for free on their 
-        <a href="https://assetstore.unity.com/packages/essentials/tutorial-projects/3d-stealth-game-haunted-house-143848">asset store.</a>
-        </p>
-
-       <style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-  				<li>Foley Recording</li>
-                <li>Audio Editing</li>
-                <li>Sound Design</li>
-				<li>Music Composition</li>
-                <li>Audio Implementation</li>	
-  </ul>
-</details>
-        <div class="video-wrapper">
-            <div class="video-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/hokMrx6lHME?si=DdlG4MwJxdk9Ngrb" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    referrerpolicy="strict-origin-when-cross-origin" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-            <div class="modal-nav">
-                <button onclick="navigateModal('prev')">←</button>
-                <button onclick="navigateModal('next')">→</button>
-            </div>
-        </div>
-    </div>
-</div>
-							
-
-							<div id="modal7" class="modal">
-							<div class="modal-content">
-								 <div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-		<img src="images/fmod.png" alt="FMOD Icon" title="FMOD Audio integration">
-		<img src="images/unity.png" alt="Unity Icon" title="Unity 6">
-		<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve 19">
-</div>
-								<span class="close" onclick="closeModal('modal7')">&times;</span>
-								<h2>First Person Shooter (Low Poly)</h2>
-								<p>
-								This is a free Unity project by INFIMA games which I adapted with audio. 
-								From the music composition to recording folley and using pre-recorded assets, 
-								editing, mixing and implementing using FMOD. </br>
-								The Unity project is free to download 
-								<a href="https://assetstore.unity.com/packages/templates/systems/low-poly-shooter-pack-free-sample-144839">here</a> 
-								on the Unity AssetStore.
-								</p>
-					<style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-  				<li>Foley Recording</li>
-                <li>Audio Editing</li>
-                <li>Sound Design</li>
-				<li>Music Composition</li>
-                <li>Audio Implementation</li>	
-  </ul>
-</details>
-
-								<div class="video-wrapper">
-									<div class="video-container">
-									<iframe 
-										src="https://www.youtube.com/embed/lpSRxbTXzxo?si=Cr4EWByxNE_xnFaV"
-										frameborder="0" 
-										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-										referrerpolicy="strict-origin-when-cross-origin"
-										allowfullscreen>
-									</iframe>
-									</div>
-									<div class="modal-nav">
-										<button onclick="navigateModal('prev')">←</button>
-										<button onclick="navigateModal('next')">→</button>
-									</div>
-								</div>
-							</div>
-							</div>
-
-							<div id="modal6" class="modal">
-							<div class="modal-content">
-								 <div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-		<img src="images/fmod.png" alt="FMOD Icon" title="FMOD Audio integration">
-		<img src="images/unity.png" alt="Unity Icon" title="Unity 6">
-		<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve 19">
-</div>
-								<span class="close" onclick="closeModal('modal6')">&times;</span>
-								<h2>Viking Village</h2>
-								<p>
-									
-								This is the result of my learning course for FMOD and Unity. 
-								I recorded and edited my own sound effects and put together the background music in a few hours. 
-								It was a great learning project! This is a gameplay footage of the end result. Viking Village is a free Unity 3D learning asset available to download on the 
-								<a href="https://assetstore.unity.com/packages/essentials/tutorial-projects/viking-village-urp-29140">Unity AssetStore.</a></br>
-							
-								</p>
-<style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-  				<li>Foley Recording</li>
-                <li>Audio Editing</li>
-                <li>Sound Design</li>
-				<li>Music Composition</li>
-                <li>Audio Implementation</li>	
-  </ul>
-</details>
-								<div class="video-wrapper">
-									<div class="video-container">
-									<iframe 
-										src="https://www.youtube.com/embed/mXEwQN9tUvY?si=00E1_CES-raOGIOu"
-										frameborder="0" 
-										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-										referrerpolicy="strict-origin-when-cross-origin"
-										allowfullscreen>
-									</iframe>
-									</div>
-									<div class="modal-nav">
-										<button onclick="navigateModal('prev')">←</button>
-										<button onclick="navigateModal('next')">→</button>
-									</div>
-								</div>
-							</div>
-							</div>
-<div id="modal4" class="modal">
-							  <div class="modal-content">
-								 <div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-		<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve 19">
-</div>
-								<span class="close" onclick="closeModal('modal4')">&times;</span>
-								<h2>Orbit</h2>
-								<p>Orbit is a mobile game released back in 2020 on the Google Play store. I was in charge of the entire audio production including sound effects, UI, and music. Unfortunately, the game is no 
-									longer available, but I still have this game play footage outlining my work.</p>
-								<style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-  				<li>Foley Recording</li>
-                <li>Audio Editing</li>
-                <li>Sound Design</li>
-				<li>Music Composition</li>
-  </ul>
-</details>
-								
-									<div class="video-wrapper">
-										<div class="video-container">
-											<iframe src="https://player.vimeo.com/video/1092234847?h=57fc6fbc4a&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-											frameborder="0"
-											allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-											title="Orbit"></iframe>
-										</div>
-							
-										<div class="modal-nav">
-											<button onclick="navigateModal('prev')">←</button>
-											<button onclick="navigateModal('next')">→</button>
-										</div>
-									</div>
-							
-									<script src="https://player.vimeo.com/api/player.js"></script>
-								</div>
-							</div>
-<div id="modal5" class="modal">
-							  <div class="modal-content">
-								 <div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-		<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve 19">
-</div>
-								<span class="close" onclick="closeModal('modal5')">&times;</span>
-								<h2>Topoly</h2>
-								<p>Topoly is a low poly endless run, fast paced indie game made by Quadratic Games available for Windows, Linux, and Android. I did the sound design and ambient audio for the game as part of my 
-									portfolio work back in 2020. Topoly is available to buy online and you can find me in the credits under my alias Idem Grey. Find the game here: <a href="https://quadratic-games.itch.io/topoly">Topoly by Quadratic Games</a></p>
-								<style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-  				<li>Foley Recording</li>
-                <li>Audio Editing</li>
-                <li>Sound Design</li>
-  </ul>
-</details>
-								<div class="video-wrapper">
-									<div class="video-container">
-										<iframe src="https://player.vimeo.com/video/1092234948?h=21c671a278&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-										frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-										title="Topoly"></iframe>
-									</div>
-									<div class="modal-nav">
-										<button onclick="navigateModal('prev')">←</button>
-										<button onclick="navigateModal('next')">→</button>
-									</div>
-								</div>
-								<script src="https://player.vimeo.com/api/player.js"></script>
-							 </div> 
-							</div>
-
-	<div id="modal13" class="modal">
-							  <div class="modal-content">
-								 <div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-		<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve 19">
-</div>
-								<span class="close" onclick="closeModal('modal13')">&times;</span>
-								<h2>Online Casino Slots</h2>
-								<p>For this project I was hired on Upwork to deliver a number of different tracks and sound effects for a couple of online slot games. In order to deliver all the files, I had to follow strict guidelines and references. This is the final result of my work.</p>
-								<style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-  				<li>Music Composition</li>
-				<li>Foley Recording</li>
-                <li>Audio Editing</li>
-                <li>Sound Design</li>
-  </ul>
-</details>
-								<div class="video-wrapper">
-									<ul class="links">
-									<!-- Row 1 -->
-									<div style="display: flex; gap: 16px; margin-bottom: 16px;">
-										<iframe width="50%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2180468645%3Fsecret_token%3Ds-lAaQ4gE38Bp&color=%23231f1d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"></div>
-										<iframe width="50%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2180469800%3Fsecret_token%3Ds-BlxvUnjNQk4&color=%23231f1d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"></div>
-									</div>
-									</ul>		
-									
-									
-									<div class="modal-nav">
-										<button onclick="navigateModal('prev')">←</button>
-										<button onclick="navigateModal('next')">→</button>
-									</div>
-								</div>
-								<script src="https://player.vimeo.com/api/player.js"></script>
-							 </div> 
-							</div>
-
-						  
-							  <div id="modal3" class="modal">
-							<div class="modal-content">
-								 <div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-		<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve 19">
-</div>
-							  <span class="close" onclick="closeModal('modal3')">&times;</span>
-							  <h2>Project Utgardr</h2>
-							  <p>Project Utgardr is a 3D realistic parkour game developed by Tronus Games. I am the lead audio designer for the project which is set to release early 2026. Below you will find a short audio adaptation. 
-								Find the game 
-								<a href="https://store.steampowered.com/app/1878290/Project_Utgardr/">here</a> on Steam.</p>
-								<style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-  				<li>Foley Recording</li>
-                <li>Audio Editing</li>
-                <li>Sound Design</li>	
-  </ul>
-</details>
-									<div class="video-wrapper">
-										<div class="video-container">
-										<iframe src="https://player.vimeo.com/video/1092234875?h=a64555cfa7&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-										frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-										title="Project Utgardr">
-										</iframe>
-									</div>
-									<div class="modal-nav">
-										<button onclick="navigateModal('prev')">←</button>
-										<button onclick="navigateModal('next')">→</button>
-									</div>
-									</div>
-								<script src="https://player.vimeo.com/api/player.js"></script>
-						  	</div>
-						  </div>
-						  
-						  <div id="modal2" class="modal">
-							<div class="modal-content">
-									 <div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-		<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve 19">
-</div>
-							  <span class="close" onclick="closeModal('modal2')">&times;</span>
-							  <h2>Epic Bar Quest</h2>
-							  <p>For this project I was part of a game jam and I composed the background music for three sections of the top down pixel game. The game is available on 
-								<a href="https://retro-paul.itch.io/epic-bar-quest-or-take-me-drunk-i-am-home">Itch.io</a></br></br>
-							 	Below you can hear the full music score in a game play footage.</p>
-								<style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-  				<li>Music Composition</li>
-                <li>Mixing & Mastering</li>
-                <li>Audio Engineering</li>	
-  </ul>
-</details><div class="video-wrapper">
-	<div class="video-container">
-		<iframe 
-			src="https://www.youtube.com/embed/9EusxWHrzcI"
-			frameborder="0"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-			allowfullscreen
-			title="YouTube Short"
-		></iframe>
-	</div>
-
-	<div class="modal-nav">
-		<button onclick="navigateModal('prev')">←</button>
-		<button onclick="navigateModal('next')">→</button>
-	</div>
-</div>
-							</div>
-							</div>
-
-
-					
-						  
-							<div id="modal1" class="modal">
-							<div class="modal-content">
-								 <div class="modal-icons">
-		<img src="images/blockbench.png" alt="Blockbench Icon" title="Blockbench">							
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-		<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve 19">
-		
-	
-</div>
-								<span class="close" onclick="closeModal('modal1')">&times;</span>
-								<h2>Miscellaneous</h2>
-								<p>
-								Here you can find some videos with miscellaneous sounds. These are mainly submissions for games that are still in the very early production stage.
-								</p>
-<style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-  				<li>Foley Recording</li>
-                <li>Audio Editing</li>
-                <li>Sound Design</li>
-	
-  </ul>
-</details>
-								<div class="video-wrapper">
-									<ul class="links">
-									<!-- Row 1 -->
-									<div style="display: flex; gap: 16px; margin-bottom: 16px;">
-										<iframe width="50%" height="352" src="https://www.youtube.com/embed/ufdrrL-bwio" allowfullscreen></iframe>
-										<iframe width="50%" height="352" src="https://player.vimeo.com/video/1095019032?h=a3e86d03a8&title=0&byline=0&portrait=0" allowfullscreen></iframe>
-									</div>
-
-									<!-- Row 2 -->
-									<div style="display: flex; gap: 16px; margin-bottom: 16px;">
-										<iframe width="50%" height="352" src="https://player.vimeo.com/video/1094956851?h=ee343b8095&title=0&byline=0&portrait=0" allowfullscreen></iframe>
-										<iframe width="50%" height="352" src="https://player.vimeo.com/video/1094956940?h=c8326e8295&title=0&byline=0&portrait=0" allowfullscreen></iframe>
-										<iframe width="50%" height="352" src="https://player.vimeo.com/video/1094970095?h=9b00f9f81f&title=0&byline=0&portrait=0" allowfullscreen></iframe>
-									</div>
-
-									<!-- Row 3 -->
-									<div style="display: flex; gap: 16px; margin-bottom: 16px;">
-										<iframe width="50%" height="352" src="https://player.vimeo.com/video/1095022977?h=c15afcbb0b&title=0&byline=0&portrait=0" allowfullscreen></iframe>
-										<iframe width="50%" height="352" src="https://player.vimeo.com/video/1094956907?h=d3b577ead4&title=0&byline=0&portrait=0" allowfullscreen></iframe>
-									</div>
-									</ul>
-									<div class="modal-nav">
-										<button onclick="navigateModal('prev')">←</button>
-										<button onclick="navigateModal('next')">→</button>
-									</div>
-								</div>
-							</div>
-							</div>
-
-
-						</div>
-
-		
-<!--Services list-->
-<section id="contact">
-  <div class="inner contact-container">
-    <!--<div class="split">-->
-      <section class="services">
-        <header class="major">
-          <h2>My services</h2>
-        </header>
-        <ul>	
-			<li>Sound effects & UI sound design</li>
-			<li>Field & foley recording</li>
-			<li>Dialog/voiceover editing</li>
-			<li>Custom soundtracks for games</li>
-			<li>Adaptive music composition</li>
-			<li>Ambient and atmospheric sound design</li>
-			<li>Immersive audio</li>
-		</ul>
-	</section>
-
-			<!-- Footer -->
-				<footer id="footer">
-					<div class="inner">
-						<ul class="icons">
-							<li><a href="https://discord.com/users/701113635296247870" class="icon brands alt fa-discord" title="idemgrey"><span class="label">Discord</span></a></li>
-							<li><a href="https://www.instagram.com/idem_grey/" class="icon brands alt fa-instagram"><span class="link"></span></a></li>
-							<li><a href="https://www.linkedin.com/in/kaloyan-djamdjiev-6b78381b9/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-							<li><a href="https://www.buymeacoffee.com/idemgrey" title="Buy Me a Coffee" style="border-bottom: none; text-decoration: none;"><img src="images/bmc.PNG" alt="Buy Me a Coffee" style="width: 2em; height: 2em; vertical-align: middle; display: inline-block;"></a></li>
-						</ul>
-						<img src="images/logo.png" alt="Logo" class="footer-logo">
-						<ul class="copyright">
-							<li>&copy; 2026 Idem Grey</li><li>Design: Tessa Luntz</li>
-						</ul>
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo" onclick="playHomeSound(); return delayNavigation(event, 'index.html')">
+				<strong>IDEM GREY</strong> <span>audio creative</span></a>
+			<nav>
+				<a href="#menu" onclick="playMenuSound()">Menu</a>
+			</nav>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="index.html" onclick="playMenuItemSound()">Home</a></li>
+				<li><a href="sounddesign.html" onclick="playMenuItemSound()">Sound Design</a></li>
+				<li><a href="music-mastering.html" onclick="playMenuItemSound()">Music Production & Engineering</a></li>
+				<li><a href="index.html#two" onclick="playMenuItemSound()">About Me</a></li>
+				<li><a href="contact.html" onclick="playMenuItemSound()">Contact</a></li>
+			</ul>
+		</nav>
+
+		<!-- Banner -->
+		<section id="bannerGames" class="major">
+			<div class="inner">
+				<header class="major">
+					<h1>Sound Design - Games</h1>
+				</header>
+				<div class="content">
+					<p>A selection of games and other projects for which I have done the music and sound design.<br />
+					Headphones recommended!</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Main -->
+		<div id="main" class="alt">
+			<!-- Inline project sections (replacing modals) -->
+			<div class="project-list">
+
+				<section id="project-trailer" class="project-item">
+					<div class="project-header">
+						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+						<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve">
 					</div>
-				</footer>
+					<h2>Trailer Music & Sound Design</h2>
+					<p>In this portfolio project I composed music and designed sound effects using footage from Skyrim Online.</p>
+					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+						<summary><strong>Skills and deliverables</strong></summary>
+						<ul style="margin-top:0.4em; margin-left:1.1em;">
+							<li>Foley Recording</li>
+							<li>Audio Editing</li>
+							<li>Sound Design</li>
+							<li>Music Composition</li>
+						</ul>
+					</details>
+					<div class="video-wrapper">
+						<div class="video-container">
+							<iframe src="https://www.youtube.com/embed/huxxbyqRUTw?si=71nmTs11JEmKyS0T" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+						</div>
+					</div>
+				</section>
+
+				<section id="project-mad-metal" class="project-item">
+					<div class="project-header">
+						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+						<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve">
+					</div>
+					<h2>Game Music Composition & OST - Mad Metal</h2>
+					<p>Mad Metal is a vehicle combat roguelite steam game, with a dystopian and post-apocalyptic setting. This title is developed by <a href="https://store.steampowered.com/search/?developer=Mad%20Mechs%20Inc./">Mad Mechs Inc.</a> and published by <a href="https://www.indie.io/">indie.io</a>. For this project I got hired to compose the official soundtrack of the game. Find out more information about the game on the official <a href="https://store.steampowered.com/app/3068230/Mad_Metal/">Steam</a> page.</p>
+					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+						<summary><strong>Skills and deliverables</strong></summary>
+						<ul style="margin-top:0.4em; margin-left:1.1em;">
+							<li>Music Composition</li>
+							<li>Audio Editing</li>
+							<li>Sound Design</li>
+						</ul>
+					</details>
+					<div class="video-wrapper">
+						<div class="video-container">
+							<iframe src="https://www.youtube.com/embed/-xIpaY_8wvo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+						</div>
+					</div>
+				</section>
+
+				
+				<section id="project-3d-fantasy" class="project-item">
+					<div class="project-header">
+						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+						<img src="images/unity.png" alt="Unity Icon" title="Unity 3D">
+						<img src="images/fmod.png" alt="FMOD Icon" title="FMOD Studio">
+						<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve">
+					</div>
+					<h2>Sound Design - 3D Fantasy-Adventure</h2>
+					<p>In this project I showcase my delivery of the entire sound effects pipeline for a 3D Fantasy-Adventure game: from asset creation using Ableton Live, to audio integration and setup in Unity and FMOD. This is a free learning project available on the <a href="https://assetstore.unity.com/packages/templates/tutorials/unity-learn-3d-game-kit-115747">Unity Asset Store</a> page.</p>
+					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+						<summary><strong>Skills and deliverables</strong></summary>
+						<ul style="margin-top:0.4em; margin-left:1.1em;">
+							<li>Foley Recording</li>
+							<li>Audio Editing</li>
+							<li>Dialog Editing</li>
+							<li>Sound Design</li>
+							<li>Audio Implementation</li>
+						</ul>
+					</details>
+					<div class="video-wrapper">
+						<div class="video-container">
+							<iframe src="https://www.youtube.com/embed/h_E-6i_-8Sw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+						</div>
+					</div>
+				</section>
+
+				<section id="project-thetr" class="project-item">
+					<div class="project-header">
+						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+						<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve">
+					</div>
+					<h2>Game Music Composition - Thetr</h2>
+					<p>Thetr is a small project in early development for which I got hired to compose the music. This is the first track I made for it, with five more scheduled for next year.</p>
+					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+						<summary><strong>Skills and deliverables</strong></summary>
+						<ul style="margin-top:0.4em; margin-left:1.1em;">
+							<li>Music Composition</li>
+							<li>Audio Editing</li>
+							<li>Sound Design</li>
+							<li>Asset Implementation</li>
+						</ul>
+					</details>
+					<div class="video-wrapper">
+						<div class="video-container">
+							<iframe src="https://www.youtube.com/embed/3ZK4Ff87XBI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+						</div>
+					</div>
+				</section>
+
+
+				<section id="project-john-lemon" class="project-item">
+					<div class="project-header">
+						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+						<img src="images/unity.png" alt="Unity Icon" title="Unity 3D">
+						<img src="images/fmod.png" alt="FMOD Icon" title="FMOD Studio">
+						<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve">
+					</div>
+					<h2>John Lemon's Haunted House - 3D Stealth Game</h2>
+					<p>This is the first project I did after finishing my FMOD course. All the audio you hear in this video was recorded, edited and implemented by me using Ableton Live, FMOD and Unity. John Lemon is a free Unity 3D learn asset available to download for free on their <a href="https://assetstore.unity.com/packages/essentials/tutorial-projects/3d-stealth-game-haunted-house-143848">asset store.</a></p>
+					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+						<summary><strong>Skills and deliverables</strong></summary>
+						<ul style="margin-top:0.4em; margin-left:1.1em;">
+							<li>Foley Recording</li>
+							<li>Audio Editing</li>
+							<li>Sound Design</li>
+							<li>Music Composition</li>
+							<li>Audio Implementation</li>
+						</ul>
+					</details>
+					<div class="video-wrapper">
+						<div class="video-container">
+							<iframe src="https://www.youtube.com/embed/hokMrx6lHME?si=DdlG4MwJxdk9Ngrb" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+						</div>
+					</div>
+				</section>
+
+				<section id="project-fps" class="project-item">
+					<div class="project-header">
+						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+						<img src="images/unity.png" alt="Unity Icon" title="Unity 3D">
+						<img src="images/fmod.png" alt="FMOD Icon" title="FMOD Studio">
+						<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve">
+					</div>
+					<h2>First Person Shooter (Low Poly)</h2>
+					<p>This is a free Unity project by INFIMA games which I adapted with audio. From the music composition to recording foley and using pre-recorded assets, editing, mixing and implementing using FMOD. The Unity project is free to download <a href="https://assetstore.unity.com/packages/templates/systems/low-poly-shooter-pack-free-sample-144839">here</a> on the Unity AssetStore.</p>
+					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+						<summary><strong>Skills and deliverables</strong></summary>
+						<ul style="margin-top:0.4em; margin-left:1.1em;">
+							<li>Foley Recording</li>
+							<li>Audio Editing</li>
+							<li>Sound Design</li>
+							<li>Music Composition</li>
+							<li>Audio Implementation</li>
+						</ul>
+					</details>
+					<div class="video-wrapper">
+						<div class="video-container">
+							<iframe src="https://www.youtube.com/embed/lpSRxbTXzxo?si=Cr4EWByxNE_xnFaV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+						</div>
+					</div>
+				</section>
+
+				<section id="project-viking-village" class="project-item">
+					<div class="project-header">
+						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+						<img src="images/unity.png" alt="Unity Icon" title="Unity 3D">
+						<img src="images/fmod.png" alt="FMOD Icon" title="FMOD Studio">
+						<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve">
+					</div>
+					<h2>Viking Village</h2>
+					<p>This is the result of my learning course for FMOD and Unity. I recorded and edited my own sound effects and put together the background music in a few hours. It was a great learning project! This is a gameplay footage of the end result. Viking Village is a free Unity 3D learning asset available to download on the <a href="https://assetstore.unity.com/packages/essentials/tutorial-projects/viking-village-urp-29140">Unity AssetStore.</a></p>
+					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+						<summary><strong>Skills and deliverables</strong></summary>
+						<ul style="margin-top:0.4em; margin-left:1.1em;">
+							<li>Foley Recording</li>
+							<li>Audio Editing</li>
+							<li>Sound Design</li>
+							<li>Music Composition</li>
+							<li>Audio Implementation</li>
+						</ul>
+					</details>
+					<div class="video-wrapper">
+						<div class="video-container">
+							<iframe src="https://www.youtube.com/embed/mXEwQN9tUvY?si=00E1_CES-raOGIOu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+						</div>
+					</div>
+				</section>
+
+				<section id="project-orbit" class="project-item">
+					<div class="project-header">
+						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+						<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve">
+					</div>
+					<h2>Orbit</h2>
+					<p>Orbit is a mobile game released back in 2020 on the Google Play store. I was in charge of the entire audio production including sound effects, UI, and music. Unfortunately, the game is no longer available, but I still have this game play footage outlining my work.</p>
+					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+						<summary><strong>Skills and deliverables</strong></summary>
+						<ul style="margin-top:0.4em; margin-left:1.1em;">
+							<li>Foley Recording</li>
+							<li>Audio Editing</li>
+							<li>Sound Design</li>
+							<li>Music Composition</li>
+						</ul>
+					</details>
+					<div class="video-wrapper">
+						<div class="video-container">
+							<iframe src="https://player.vimeo.com/video/1092234847?h=57fc6fbc4a&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" title="Orbit"></iframe>
+						</div>
+					</div>
+				</section>
+
+				<section id="project-topoly" class="project-item">
+					<div class="project-header">
+						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+						<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve">
+					</div>
+					<h2>Topoly</h2>
+					<p>Topoly is a low poly endless run, fast paced indie game made by Quadratic Games available for Windows, Linux, and Android. I did the sound design and ambient audio for the game as part of my portfolio work back in 2020. Topoly is available to buy online and you can find me in the credits under my alias Idem Grey. Find the game here: <a href="https://quadratic-games.itch.io/topoly">Topoly by Quadratic Games</a></p>
+					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+						<summary><strong>Skills and deliverables</strong></summary>
+						<ul style="margin-top:0.4em; margin-left:1.1em;">
+							<li>Foley Recording</li>
+							<li>Audio Editing</li>
+							<li>Sound Design</li>
+						</ul>
+					</details>
+					<div class="video-wrapper">
+						<div class="video-container">
+							<iframe src="https://player.vimeo.com/video/1092234948?h=21c671a278&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" title="Topoly"></iframe>
+						</div>
+					</div>
+				</section>
+
+				<section id="project-casino-slots" class="project-item">
+					<div class="project-header">
+						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+					</div>
+					<h2>Online Casino Slots</h2>
+					<p>For this project I was hired on Upwork to deliver a number of different tracks and sound effects for a couple of online slot games. In order to deliver all the files, I had to follow strict guidelines and references. This is the final result of my work.</p>
+					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+						<summary><strong>Skills and deliverables</strong></summary>
+						<ul style="margin-top:0.4em; margin-left:1.1em;">
+							<li>Music Composition</li>
+							<li>Foley Recording</li>
+							<li>Audio Editing</li>
+							<li>Sound Design</li>
+						</ul>
+					</details>
+					<div class="video-wrapper">
+						<div class="iframe-grid">
+							<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2180468645%3Fsecret_token%3Ds-lAaQ4gE38Bp&color=%23231f1d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+							<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2180469800%3Fsecret_token%3Ds-BlxvUnjNQk4&color=%23231f1d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+						</div>
+					</div>
+				</section>
+
+				<section id="project-utgardr" class="project-item">
+					<div class="project-header">
+						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+						<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve">
+					</div>
+					<h2>Project Utgardr</h2>
+					<p>Project Utgardr is a 3D realistic parkour game developed by Tronus Games. I am the lead audio designer for the project which is set to release early 2026. Below you will find a short audio adaptation. Find the game <a href="https://store.steampowered.com/app/1878290/Project_Utgardr/">here</a> on Steam.</p>
+					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+						<summary><strong>Skills and deliverables</strong></summary>
+						<ul style="margin-top:0.4em; margin-left:1.1em;">
+							<li>Foley Recording</li>
+							<li>Audio Editing</li>
+							<li>Sound Design</li>
+						</ul>
+					</details>
+					<div class="video-wrapper">
+						<div class="video-container">
+							<iframe src="https://player.vimeo.com/video/1092234875?h=a64555cfa7&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" title="Project Utgardr"></iframe>
+						</div>
+					</div>
+				</section>
+
+				<section id="project-epic-bar-quest" class="project-item">
+					<div class="project-header">
+						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+						<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve">
+					</div>
+					<h2>Epic Bar Quest</h2>
+					<p>For this project I was part of a game jam and I composed the background music for three sections of the top down pixel game. The game is available on <a href="https://retro-paul.itch.io/epic-bar-quest-or-take-me-drunk-i-am-home">Itch.io</a>. Below you can hear the full music score in a game play footage.</p>
+					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+						<summary><strong>Skills and deliverables</strong></summary>
+						<ul style="margin-top:0.4em; margin-left:1.1em;">
+							<li>Music Composition</li>
+							<li>Mixing & Mastering</li>
+							<li>Audio Engineering</li>
+						</ul>
+					</details>
+					<div class="video-wrapper">
+						<div class="video-container">
+							<iframe src="https://www.youtube.com/embed/9EusxWHrzcI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="YouTube Video"></iframe>
+						</div>
+					</div>
+				</section>
+
+				<section id="project-miscellaneous" class="project-item">
+					<div class="project-header">
+						<img src="images/blockbench.png" alt="Blockbench Icon" title="Blockbench">
+						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
+						<img src="images/davinci.png" alt="DaVinci Icon" title="DaVinci Resolve">
+					</div>
+					<h2>Miscellaneous</h2>
+					<p>Here you can find some videos with miscellaneous sounds. These are mainly submissions for games that are still in the very early production stage.</p>
+					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+						<summary><strong>Skills and deliverables</strong></summary>
+						<ul style="margin-top:0.4em; margin-left:1.1em;">
+							<li>Foley Recording</li>
+							<li>Audio Editing</li>
+							<li>Sound Design</li>
+						</ul>
+					</details>
+					<div class="video-wrapper">
+						<div class="iframe-grid">
+							<iframe width="100%" height="352" src="https://www.youtube.com/embed/ufdrrL-bwio" allowfullscreen></iframe>
+							<iframe width="100%" height="352" src="https://player.vimeo.com/video/1095019032?h=a3e86d03a8&title=0&byline=0&portrait=0" allowfullscreen></iframe>
+							<iframe width="100%" height="352" src="https://player.vimeo.com/video/1094956851?h=ee343b8095&title=0&byline=0&portrait=0" allowfullscreen></iframe>
+							<iframe width="100%" height="352" src="https://player.vimeo.com/video/1094956940?h=c8326e8295&title=0&byline=0&portrait=0" allowfullscreen></iframe>
+							<iframe width="100%" height="352" src="https://player.vimeo.com/video/1094970095?h=9b00f9f81f&title=0&byline=0&portrait=0" allowfullscreen></iframe>
+							<iframe width="100%" height="352" src="https://player.vimeo.com/video/1095022977?h=c15afcbb0b&title=0&byline=0&portrait=0" allowfullscreen></iframe>
+							<iframe width="100%" height="352" src="https://player.vimeo.com/video/1094956907?h=d3b577ead4&title=0&byline=0&portrait=0" allowfullscreen></iframe>
+						</div>
+					</div>
+				</section>
+
+			</div>
 		</div>
-</section>
 
+		<!-- Services list -->
+		<section id="contact">
+			<div class="inner contact-container">
+				<section class="services">
+					<header class="major">
+						<h2>My services</h2>
+					</header>
+					<ul>	
+						<li>Sound effects & UI sound design</li>
+						<li>Field & foley recording</li>
+						<li>Dialog/voiceover editing</li>
+						<li>Custom soundtracks for games</li>
+						<li>Adaptive music composition</li>
+						<li>Ambient and atmospheric sound design</li>
+						<li>Immersive audio</li>
+					</ul>
+				</section>
+			</div>
+		</section>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script>
-				const modalIds = ['modal9', 'modal11', 'modal10','modal12', 'modal8', 'modal7', 'modal6', 'modal4', 'modal13', 'modal5', 'modal3', 'modal2', 'modal1'];
-				let currentModalIndex = -1;
-				let touchStartX = 0;
-				let touchEndX = 0;
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="https://discord.com/users/701113635296247870" class="icon brands alt fa-discord" title="idemgrey"><span class="label">Discord</span></a></li>
+					<li><a href="https://www.instagram.com/idem_grey/" class="icon brands alt fa-instagram"><span class="link"></span></a></li>
+					<li><a href="https://www.linkedin.com/in/kaloyan-djamdjiev-6b78381b9/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+					<li><a href="https://www.buymeacoffee.com/idemgrey" title="Buy Me a Coffee" style="border-bottom: none; text-decoration: none;"><img src="images/bmc.PNG" alt="Buy Me a Coffee" style="width: 2em; height: 2em; vertical-align: middle; display: inline-block;"></a></li>
+				</ul>
+				<img src="images/logo.png" alt="Logo" class="footer-logo">
+				<ul class="copyright">
+					<li>&copy; 2026 Idem Grey</li><li>Design: Tessa Luntz</li>
+				</ul>
+			</div>
+		</footer>
+	</div>
 
-		function openModal(id, fromNavigation) {
-			document.getElementById(id).style.display = "block";
-			currentModalIndex = modalIds.indexOf(id);
-			updateNavigationButtons();
-			
-			// Play modal open sound only if not from navigation
-			if (!fromNavigation) {
-				const modalSound = document.getElementById('modalSound');
-				if (modalSound) {
-					modalSound.currentTime = 0;
-					modalSound.play().catch(err => console.log('Audio playback failed:', err));
-				}
-			}
-		}			function closeModal(id, fromNavigation) {
-				const modal = document.getElementById(id);
-				modal.style.display = "none";
-				currentModalIndex = -1;
-				
-				// Play close sound only if not from navigation
-				if (!fromNavigation) {
-					const closeSound = document.getElementById('modalCloseSound');
-					if (closeSound) {
-						closeSound.currentTime = 0;
-						closeSound.play().catch(err => console.log('Audio playback failed:', err));
-					}
-				}
-				
-				// Reset iframe sources so they reload on next open
-				const iframes = modal.querySelectorAll('iframe');
-				iframes.forEach(iframe => {
-					const src = iframe.getAttribute('data-src') || iframe.src;
-					iframe.src = src;
-				});
-			}
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script>
+		function playMenuSound() {
+			const sound = document.getElementById('menuSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
 
-			function navigateModal(direction) {
-				let newIndex = currentModalIndex;
-				
-				if (direction === 'next') {
-					newIndex = (currentModalIndex + 1) % modalIds.length; // Loop to first
-				} else if (direction === 'prev') {
-					newIndex = (currentModalIndex - 1 + modalIds.length) % modalIds.length; // Loop to last
-				}
+		function playMenuCloseSound() {
+			const sound = document.getElementById('menuCloseSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
 
-				if (newIndex !== currentModalIndex) {
-					// Play swipe sound
-					const swipeSound = document.getElementById('modalSwipeSound');
-					if (swipeSound) {
-						swipeSound.currentTime = 0;
-						swipeSound.play().catch(err => console.log('Audio playback failed:', err));
-					}
-					
-					closeModal(modalIds[currentModalIndex], true);
-					openModal(modalIds[newIndex], true);
-				}
-			}				function updateNavigationButtons() {
-					// Update button states - all buttons always enabled with looping
-					for (let i = 0; i < modalIds.length; i++) {
-						const prevBtn = document.getElementById('prev-btn-' + (i + 1));
-						const nextBtn = document.getElementById('next-btn-' + (i + 1));
-						
-						if (prevBtn) prevBtn.disabled = false;
-						if (nextBtn) nextBtn.disabled = false;
-					}
-				}
+		function playDetailsToggle(details) {
+			const sound = document.getElementById(details.open ? 'buttonOpenSound' : 'buttonCloseSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
 
-				// Touch swipe handling
-				document.addEventListener('touchstart', (e) => {
-					const modals = document.querySelectorAll('.modal');
-					let isModalOpen = false;
-					modals.forEach(modal => {
-						if (modal.style.display === 'block') {
-							isModalOpen = true;
-						}
-					});
-					
-					if (isModalOpen && currentModalIndex !== -1) {
-						touchStartX = e.changedTouches[0].screenX;
-					}
-				});
+		function playHomeSound() {
+			const sound = document.getElementById('homeSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
 
-				document.addEventListener('touchend', (e) => {
-					const modals = document.querySelectorAll('.modal');
-					let isModalOpen = false;
-					modals.forEach(modal => {
-						if (modal.style.display === 'block') {
-							isModalOpen = true;
-						}
-					});
-					
-					if (isModalOpen && currentModalIndex !== -1) {
-						touchEndX = e.changedTouches[0].screenX;
-						handleSwipe();
-					}
-				});
+		function playMenuItemSound() {
+			const sound = document.getElementById('menuItemSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
 
-				function handleSwipe() {
-					const swipeThreshold = 50;
-					const diff = touchStartX - touchEndX;
-
-					if (Math.abs(diff) > swipeThreshold) {
-						if (diff > 0) {
-							navigateModal('next');
-						} else {
-							navigateModal('prev');
-						}
-					}
-				}
-
-				// Keyboard navigation
-				document.addEventListener('keydown', (e) => {
-					const modals = document.querySelectorAll('.modal');
-					let isModalOpen = false;
-					modals.forEach(modal => {
-						if (modal.style.display === 'block') {
-							isModalOpen = true;
-						}
-					});
-					
-					if (isModalOpen && currentModalIndex !== -1) {
-						if (e.key === 'ArrowRight') {
-							navigateModal('next');
-						} else if (e.key === 'ArrowLeft') {
-							navigateModal('prev');
-						}
-					}
-				});
-			
-			// Close modal when clicking outside of it
-			window.onclick = function(event) {
-				const modals = document.querySelectorAll('.modal');
-				modals.forEach(modal => {
-					if (event.target === modal) {
-						closeModal(modal.id);
-					}
-				});
-			};
-
-			function playMenuSound() {
-				const sound = document.getElementById('menuSound');
-				if (sound) {
-					sound.currentTime = 0;
-					sound.play().catch(err => console.log('Audio playback failed:', err));
-				}
-			}
-
-			function playMenuCloseSound() {
-				const sound = document.getElementById('menuCloseSound');
-				if (sound) {
-					sound.currentTime = 0;
-					sound.play().catch(err => console.log('Audio playback failed:', err));
-				}
-			}
-
-			function playDetailsToggle(details) {
-				const sound = document.getElementById(details.open ? 'buttonOpenSound' : 'buttonCloseSound');
-				if (sound) {
-					sound.currentTime = 0;
-					sound.play().catch(err => console.log('Audio playback failed:', err));
-				}
-			}
-
-			function playHomeSound() {
-				const sound = document.getElementById('homeSound');
-				if (sound) {
-					sound.currentTime = 0;
-					sound.play().catch(err => console.log('Audio playback failed:', err));
-				}
-			}
-
-			function playMenuItemSound() {
-				const sound = document.getElementById('menuItemSound');
-				if (sound) {
-					sound.currentTime = 0;
-					sound.play().catch(err => console.log('Audio playback failed:', err));
-				}
-			}
-
-			function delayNavigation(event, url) {
-				event.preventDefault();
-				setTimeout(() => { window.location.href = url; }, 150);
-				return false;
-			}
-		</script>	</body>
-	
+		function delayNavigation(event, url) {
+			event.preventDefault();
+			setTimeout(() => { window.location.href = url; }, 150);
+			return false;
+		}
+	</script>
+	</body>
 </html>
