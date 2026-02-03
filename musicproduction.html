@@ -25,13 +25,11 @@
 			.project-list { display: flex; flex-direction: column; gap: 2.5rem; margin: 2.5rem 0; }
 			.project-item { background: rgba(0,0,0,0.06); padding: 1.6rem; border-radius: 8px; color: #fff; }
 			.project-item .project-header { display:flex; gap:1rem; align-items:center; margin-bottom:0.6rem; }
-			.project-item .project-header img { width: 48px; height:48px; }
+			.project-item .project-header img { width: 48px; height:48px; object-fit: contain; }
 			.project-item h2 { margin: 0 0 0.4rem 0; }
 			.project-item p { margin: 0 0 0.6rem 0; }
 			.video-wrapper { position: relative; display: block; width: 100%; text-align:center; }
 			.video-wrapper iframe { width: 70%; max-width:900px; height:400px; border:0; }
-			.iframe-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
-			.iframe-row iframe { flex: 1; min-width: 200px; }
 			
 			/* Details/summary styles (consolidated) */
 			details summary {
@@ -49,13 +47,14 @@
 			details[open] summary { color: #66f5ff; background: #31055a33; border-color: rgba(255,255,255,0.6); box-shadow: 0 0 16px rgba(255,255,255,0.6), 0 0 24px rgba(255,255,255,0.3); }
 			details summary::-webkit-details-marker { display: none; }
 			/* Space between details and video */
-			.project-item details { margin-bottom: 1rem; }
+			.project-item details { margin-bottom: 2rem; }
 		</style>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
 
-	<!-- Audio elements for sound effects -->
+	<!-- Modal sounds -->
+	<!-- Modal sounds removed (modals converted to inline sections) -->
 	<audio id="menuSound" preload="auto">
 		<source src="assets/sounds/menu.wav" type="audio/wav">
 	</audio>
@@ -73,747 +72,171 @@
 	</audio>
 	<audio id="menuItemSound" preload="auto">
 		<source src="assets/sounds/menu_item.wav" type="audio/wav">
-	</audio>
-
-	<!-- Wrapper -->
-	<div id="wrapper">
-
+	</audio>		<!-- Wrapper -->
+			<div id="wrapper">
 			<!-- Header -->
-				<header id="header">
-					<a href="index.html" class="logo" onclick="playHomeSound(); return delayNavigation(event, 'index.html')">
-						<strong>IDEM GREY</strong> <span>audio creative</span></a>
-					<nav>
-						<a href="#menu" onclick="playMenuSound()">Menu</a>
-					</nav>
-				</header>				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="index.html" onclick="playMenuItemSound()">Home</a></li>
-							<li><a href="sounddesign.html" onclick="playMenuItemSound()">Sound Design</a></li>
-							<li><a href="music-mastering.html" onclick="playMenuItemSound()">Music Production & Engineering</a></li>
-							<li><a href="index.html#two" onclick="playMenuItemSound()">About Me</a></li>
-							<li><a href="contact.html" onclick="playMenuItemSound()">Contact</a></li>
-							
-							<!--<li><a href="services.html">My services</a></li>-->
-						</ul>
-					</nav>
+			<header id="header">
+				<a href="index.html" class="logo" onclick="playHomeSound(); return delayNavigation(event, 'index.html')">
+					<strong>IDEM GREY</strong> <span>audio creative</span></a>
+				<nav>
+					<a href="#menu" onclick="playMenuSound()">Menu</a>
+				</nav>
+			</header>
+			<!-- Menu -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html" onclick="playMenuItemSound()">Home</a></li>
+					<li><a href="sounddesign.html" onclick="playMenuItemSound()">Sound Design</a></li>
+					<li><a href="music-mastering.html" onclick="playMenuItemSound()">Music Production & Engineering</a></li>
+					<li><a href="index.html#two" onclick="playMenuItemSound()">About Me</a></li>
+					<li><a href="contact.html" onclick="playMenuItemSound()">Contact</a></li>
+				</ul>
+			</nav>
 
-				<!-- Banner -->
-		<section id="bannerMP" class="major">
-			<div class="inner">
-				<header class="major">
-					<h1>Music Production</h1>
-				</header>
-				<div class="content">
-					<p>Here you can find several of my productions, both fully self made and collaborations.<br />
-						Explore my work across various genres and production styles.</p>
+			<!-- Banner -->
+			<section id="bannerMP" class="major">
+				<div class="inner">
+					<header class="major">
+						<h1>Music Production</h1>
+					</header>
+					<div class="content">
+						<p>Here you can find several of my productions, both fully self made and collaborations.<br />
+							Click on any album cover to find it on Youtube, Spotify, SoundCloud and Apple Music. Or find it wherever else you listen to music!
+						</p>
+					</div>
 				</div>
-			</div>
-		</section>
+			</section>
 
-		<!-- Main -->
-		<div id="main" class="alt">
+			<!-- Main -->
+			<div id="main" class="alt">
 
-			<!-- Inline project sections (replacing modals) -->
-			<div class="project-list">
-
-				<!-- Project 1: Idem Grey - Loops -->
-				<section id="project-loops" class="project-item">
+				<!-- Inline project sections (replacing modals) -->
+				<div class="project-list">
+				  <section id="project-loops" class="project-item">
 					<div class="project-header">
 						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
 					</div>
 					<h2>Idem Grey - Loops</h2>
 					<p>This is a personal project EP that contains five instrumental and two vocal tracks. The direction of the album is LoFi/downtempo. It features the French singer/songwriter Lokou. I released this back in 2024.</p>
 					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-						<summary><strong>Skills and deliverables</strong></summary>
-						<ul style="margin-top:0.4em; margin-left:1.1em;">
-							<li>Music Production</li>
-							<li>Audio Editing</li>
-							<li>Vocal Editing</li>
-							<li>Mixing & Mastering</li>
-						</ul>
+					  <summary><strong>Skills and deliverables</strong></summary>
+					  <ul style="margin-top:0.4em; margin-left:1.1em;">
+						<li>Music Production</li>
+						<li>Audio Editing</li>
+						<li>Vocal Editing</li>
+						<li>Mixing & Mastering</li>
+					  </ul>
 					</details>
 					<div class="video-wrapper">
-						<div style="text-align: center;"><iframe width="70%" height="400" src="https://www.youtube.com/embed/ZyKSFCGP13A?si=UEOqBXs2tZULbYU0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-						<div class="iframe-row">
-							<iframe width="30%" height="352" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1795402566&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-							<iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/7EMWjjNk4bpVSuGkkaaNrG?utm_source=generator" width="30%" height="352" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-							<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="352" style="width:35%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/cd/album/loops/1735983076"></iframe>
-						</div>
+					  <iframe src="https://www.youtube.com/embed/ZyKSFCGP13A?si=UEOqBXs2tZULbYU0" title="YouTube video player" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 					</div>
-				</section>
+				  </section>
 
-				<!-- Project 2: Luther McGinnis - All 4 you -->
-				<section id="project-all4you" class="project-item">
+
+				   <section id="project-all4you" class="project-item">
 					<div class="project-header">
 						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
 					</div>
 					<h2>Luther McGinnis - All 4 you</h2>
 					<p>In this project I worked together with Luther McGinnis - a soulful performing singer and keyboardist. This was our first work together and the song is the result of a collaborative effort where Luther was contributing with harmonics and lead singing, and I was behind some backing melodies, the post edit, mix and master. The song is out on all streaming platforms. You can find me in the credits section under my alias Idem Grey.</p>
 					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-						<summary><strong>Skills and deliverables</strong></summary>
-						<ul style="margin-top:0.4em; margin-left:1.1em;">
-							<li>Music Production</li>
-							<li>Audio Editing</li>
-							<li>Vocal Editing</li>
-							<li>Mixing & Mastering</li>
-						</ul>
+					  <summary><strong>Skills and deliverables</strong></summary>
+					  <ul style="margin-top:0.4em; margin-left:1.1em;">
+						<li>Music Production</li>
+						<li>Audio Editing</li>
+						<li>Vocal Editing</li>
+						<li>Mixing & Mastering</li>
+					  </ul>
 					</details>
 					<div class="video-wrapper">
-						<div style="text-align: center;"><iframe width="70%" height="400" src="https://www.youtube.com/embed/wrrbrzK0LkA?si=ggsr6gMGJoVCIooU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-						<div class="iframe-row">
-							<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6lgqdzxAqyCMPgJlbcklZD?utm_source=generator" width="30%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-							<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="352" style="width:30%; max-width: 660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/song/all-4-u/1775035707"></iframe>
-						</div>
+					  <iframe src="https://www.youtube.com/embed/wrrbrzK0LkA?si=ggsr6gMGJoVCIooU" title="YouTube video player" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 					</div>
-				</section>
+				  </section>
 
-				<!-- Project 3: Idem Grey - No Exceptions -->
-				<section id="project-noexceptions" class="project-item">
-					<div class="project-header">
-						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-					</div>
-					<h2>Idem Grey - No Exceptions</h2>
-					<p>Rap beat I produced, still open to collab</p>
-					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-						<summary><strong>Skills and deliverables</strong></summary>
-						<ul style="margin-top:0.4em; margin-left:1.1em;">
-							<li>Music Production</li>
-							<li>Audio Editing</li>
-							<li>Mixing & Mastering</li>
-						</ul>
-					</details>
-					<div class="video-wrapper">
-						<div style="text-align: center;"><iframe width="70%" height="400" src="https://www.youtube.com/embed/qbI2ZiR-KYU?si=k33PuhZMc9ftMHCk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-						<div class="iframe-row">
-							<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3CN9GpRwwUvh4nojbUwMrF?utm_source=generator&theme=0" width="30%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-							<iframe width="30%" height="352" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2013245535&color=%23524f4e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-							<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="352" style="width:30%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/nl/song/no-exceptions/1790880308"></iframe>
-						</div>
-					</div>
-				</section>
-
-				<!-- Project 4: Isolde Fortuna - Mirror Affirmations -->
-				<section id="project-mirror" class="project-item">
+				
+				    <section id="project-mirror" class="project-item">
 					<div class="project-header">
 						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
 					</div>
 					<h2>Isolde Fortuna - Mirror Affirmations</h2>
 					<p>In this project I worked together with Isolde Fortuna - an emerging pop singer/songwriter. My job in this project was to transform a simple piano score into a full pop song. She already had the chords and lyrics done. We took a little under two weeks to finish the song. You can find me in the credits section under my alias Idem Grey. The song was part of an exhibition: <a href="https://hvoquerido.nl/door-art-een-unieke-expositie-in-het-amsterdamse-stadhuis/">More info about the exhibition (Dutch)</a></p>
 					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-						<summary><strong>Skills and deliverables</strong></summary>
-						<ul style="margin-top:0.4em; margin-left:1.1em;">
-							<li>Music Production</li>
-							<li>Audio Editing</li>
-							<li>Vocal Editing</li>
-							<li>Mixing & Mastering</li>
-						</ul>
+					  <summary><strong>Skills and deliverables</strong></summary>
+					  <ul style="margin-top:0.4em; margin-left:1.1em;">
+						<li>Music Production</li>
+						<li>Audio Editing</li>
+						<li>Vocal Editing</li>
+						<li>Mixing & Mastering</li>
+					  </ul>
 					</details>
 					<div class="video-wrapper">
-						<div style="text-align: center;"><iframe width="70%" height="400" src="https://www.youtube.com/embed/turpouxMhi4?si=mAjIulssAufFm3ko" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-						<div class="iframe-row">
-							<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0ED2QXdBIJchyNJ5kX5abL?utm_source=generator" width="30%" height="352" frameBOrder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-							<iframe width="30%" height="352" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1784789205&color=%237f7f7f&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-							<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="352" style="width:30%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/nl/song/mirror-affirmations/1737659013"></iframe>
-						</div>
+					  <iframe src="https://www.youtube.com/embed/turpouxMhi4?si=mAjIulssAufFm3ko" title="YouTube video player" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 					</div>
-				</section>
+				  </section>
 
-				<!-- Project 5: Luther McGinnis - Take Care Of Me (2025) -->
-				<section id="project-takecare" class="project-item">
+				   <section id="project-tcom" class="project-item">
 					<div class="project-header">
 						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
 					</div>
 					<h2>Luther McGinnis - Take Care Of Me (2025)</h2>
 					<p>In this project, I had the opportunity to apply my expertise in the R&B/Neo-Soul genre and re-produce an existing song for my client Luther McGinnis. I essentially had to rearrange the song structure together with Luther. Sticking to the original key progression I adapted my sound to his harmonics idea with the direction to deliver a more modern sound but with a touch of my creativity. You can find me in the credits section under my alias Idem Grey.</p>
 					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-						<summary><strong>Skills and deliverables</strong></summary>
-						<ul style="margin-top:0.4em; margin-left:1.1em;">
-							<li>Music Production</li>
-							<li>Audio Editing</li>
-							<li>Vocal Editing</li>
-							<li>Mixing & Mastering</li>
-						</ul>
+					  <summary><strong>Skills and deliverables</strong></summary>
+					  <ul style="margin-top:0.4em; margin-left:1.1em;">
+						<li>Music Production</li>
+						<li>Audio Editing</li>
+						<li>Vocal Editing</li>
+						<li>Mixing & Mastering</li>
+					  </ul>
 					</details>
 					<div class="video-wrapper">
-						<div style="text-align: center;"><iframe width="70%" height="400" src="https://www.youtube.com/embed/pfk-NAEc-Ls?si=_1w5w0DgTfbbZHle" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-						<div class="iframe-row">
-							<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7vLBG3UUHBCNBDMKFxvLr4?utm_source=generator&theme=0" width="30%" height="352" frameBOrder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-							<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="352" style="width:30%; max-width: 660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/song/take-care-of-me-2025/1817124193"></iframe>
-						</div>
+					  <iframe src="https://www.youtube.com/embed/pfk-NAEc-Ls?si=_1w5w0DgTfbbZHle" title="YouTube video player" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 					</div>
-				</section>
+				  </section>
 
-				<!-- Project 6: VeroNika - That Day -->
-				<section id="project-thatday" class="project-item">
+
+				  <section id="project-noexceptions" class="project-item">
 					<div class="project-header">
 						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
 					</div>
-					<h2>VeroNika - That Day</h2>
-					<p>In this project I was behind the post production and part of the lead pre-production for creating a ballad song. This was a collaborative effort production between the performing artist - VeroniKa, and Luther McGinnis on the keys and vocal production. My role was to contribute to and guide the production process, edit, mix and master the finished song. This project took us about five weeks to finish. You can find me in the credits section under my alias Idem Grey.</p>
+					<h2>Idem Grey - No Exceptions</h2>
+					<p>Rap beat I produced, still open to collab</p>
 					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-						<summary><strong>Skills and deliverables</strong></summary>
-						<ul style="margin-top:0.4em; margin-left:1.1em;">
-							<li>Music Production</li>
-							<li>Audio Editing</li>
-							<li>Vocal Editing</li>
-							<li>Mixing & Mastering</li>
-						</ul>
+					  <summary><strong>Skills and deliverables</strong></summary>
+					  <ul style="margin-top:0.4em; margin-left:1.1em;">
+						<li>Music Production</li>
+						<li>Audio Editing</li>
+						<li>Mixing & Mastering</li>
+					  </ul>
 					</details>
 					<div class="video-wrapper">
-						<div style="text-align: center;"><iframe width="70%" height="400" src="https://www.youtube.com/embed/UUDPu2dsJ9c?si=_ZFFRX8Od3i7wu8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-						<div class="iframe-row">
-							<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/7fzvrXvV1UOS57U2ykva4k?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-						</div>
+					  <iframe src="https://www.youtube.com/embed/qbI2ZiR-KYU?si=k33PuhZMc9ftMHCk" title="YouTube video player" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 					</div>
-				</section>
+				  </section>
 
-			</div>
+				
 
-		</div>
-
-		<!-- Services list -->
-		<section id="contact">
-			<div class="inner contact-container">
-				<section class="services">
-					<header class="major">
-						<h2>My services</h2>
-					</header>
-					<ul>
-						<li>Full music production cycle</li>
-						<li>Beat production for rappers</li>
-						<li>Song arrangement and composition</li>
-						<li>Vocal recording</li>
-						<li>Vocal tuning & editing</li>
-						<li>Instrument sampling & recording</li>
-					</ul>
-				</section>
-			</div>
-		</section>
-
-		<!-- Footer -->
-		<footer id="footer">
-			<div class="inner">
-				<ul class="icons">
-					<li><a href="https://discord.com/users/701113635296247870" class="icon brands alt fa-discord" title="idemgrey"><span class="label">Discord</span></a></li>
-					<li><a href="https://www.instagram.com/idem_grey/" class="icon brands alt fa-instagram"><span class="link"></span></a></li>
-					<li><a href="https://www.linkedin.com/in/kaloyan-djamdjiev-6b78381b9/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-					<li><a href="https://www.buymeacoffee.com/idemgrey" title="Buy Me a Coffee" style="border-bottom: none; text-decoration: none;"><img src="images/bmc.PNG" alt="Buy Me a Coffee" style="width: 2em; height: 2em; vertical-align: middle; display: inline-block;"></a></li>
-				</ul>
-				<img src="images/logo.png" alt="Logo" class="footer-logo">
-				<ul class="copyright">
-					<li>&copy; 2026 Idem Grey</li><li>Design: Tessa Luntz</li>
-				</ul>
-			</div>
-		</footer>
-
-	</div>
-
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/jquery.scrollex.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script>
-		function playMenuSound() {
-			const sound = document.getElementById('menuSound');
-			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
-		}
-
-		function playMenuCloseSound() {
-			const sound = document.getElementById('menuCloseSound');
-			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
-		}
-
-		function playDetailsToggle(details) {
-			const sound = document.getElementById(details.open ? 'buttonOpenSound' : 'buttonCloseSound');
-			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
-		}
-
-		function playHomeSound() {
-			const sound = document.getElementById('homeSound');
-			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
-		}
-
-		function playMenuItemSound() {
-			const sound = document.getElementById('menuItemSound');
-			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
-		}
-
-		function delayNavigation(event, url) {
-			event.preventDefault();
-			setTimeout(() => { window.location.href = url; }, 150);
-			return false;
-		}
-	</script>
-
-
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-								</div>
-								<span class="close" onclick="closeModal('modal1')">&times;</span>
-								<h2>Idem Grey - Loops</h2>
-								<p>
-        This is a personal project EP that contains five instrumental and two vocal tracks. The direction of the album is LoFi/downtempo. It features the French singer/songwriter Lokou. I released this back in 2024.</p>
-		 <style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-    <li>Music Production</li>
-    <li>Audio Editing</li>
-	<li>Vocal Editing</li>
-	<li>Mixing & Mastering</li>
-  </ul>
-</details>
-								<div class="video-wrapper">
-									<ul class="links">
-										<div style ="text-align: center;"><iframe width="70%" height="400" src="https://www.youtube.com/embed/ZyKSFCGP13A?si=UEOqBXs2tZULbYU0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div> 
-										<div class="iframe-row">
-											<iframe width="30%" height="352" scrolling="no" frameborder="no" allow="autoplay" 
-											  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1795402566&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-										  
-											<iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/7EMWjjNk4bpVSuGkkaaNrG?utm_source=generator" 
-											  width="30%" height="352" frameborder="0" allowfullscreen 
-											  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-										  
-											<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="352" 
-											  style="width:35%;max-width:660px;overflow:hidden;border-radius:10px;" 
-											  sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
-											  src="https://embed.music.apple.com/cd/album/loops/1735983076"></iframe>
-										  </div>
-									</ul>
-									<div class="modal-nav">
-										<button onclick="navigateModal('prev')">←</button>
-										<button onclick="navigateModal('next')">→</button>
-									</div>
-								</div>
-							  </div>
-							</div>
-						  
-							<div id="modal2" class="modal">
-							  <div class="modal-content">
-								<div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-								</div>
-								<span class="close" onclick="closeModal('modal2')">&times;</span>
-								<h2>Luther McGinnis - All 4 you</h2>
-								<p>In this project I worked together with Luther McGinnis - a soulful performing singer and keyboardist. This was our first work together and the song is the result of a collaborative effort 
-									where Luther was contributing with harmonics and lead singing, and I was behind some backing melodies, the post edit, mix and master. The song is out on all streaming platforms. 
-									You can find me in the credits section under my alias Idem Grey.</p>
-								 <style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid #ffffff00;
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
-    color: #ffffff; /* DEFAULT text color */
-  }
-
-  /* Hover (optional) */
-  details summary:hover {
-    background: #31055a73;
-    border-color: #b0d42b;
-  }
-
-  /* When the details is OPEN → color changes automatically */
-  details[open] summary {
-    color: #66f5ff; /* CLICKED color */
-    background: #31055a33; /* optional subtle open background */
-  }
-
-  /* Make strong text inherit the color properly */
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-    <li>Music Production</li>
-	<li>Audio Editing</li>
-	<li>Vocal Editing</li>
-	<li>Mixing & Mastering</li>
-  </ul>
-</details>
-								<div class="video-wrapper">
-									<ul class="links">
-										<div style ="text-align: center;"><iframe width="70%" height="400" src="https://www.youtube.com/embed/wrrbrzK0LkA?si=ggsr6gMGJoVCIooU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-											<div class="iframe-row">
-												
-												<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6lgqdzxAqyCMPgJlbcklZD?utm_source=generator" 
-												width="30%" height="352" frameBorder="0" allowfullscreen="" 
-												allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-
-												<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="352" 
-												style="width:30%; max-width: 660px;overflow:hidden;border-radius:10px;" 
-												sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
-												src="https://embed.music.apple.com/us/song/all-4-u/1775035707"></iframe>
-											</div>
-										</ul>
-									<div class="modal-nav">
-										<button onclick="navigateModal('prev')">←</button>
-										<button onclick="navigateModal('next')">→</button>
-									</div>
-								</div>
-							  </div>
-							</div>
-
-							<div id="modal3" class="modal">
-								<div class="modal-content">
-									<div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-								</div>
-								  <span class="close" onclick="closeModal('modal3')">&times;</span>
-								  <h2>Idem Grey - No Exceptions</h2> 
-								  <p>Rap beat I produced, still open to collab</p>
-								  <style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid #ffffff00;
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
-    color: #ffffff; /* DEFAULT text color */
-  }
-
-  /* Hover (optional) */
-  details summary:hover {
-    background: #31055a73;
-    border-color: #b0d42b;
-  }
-
-  /* When the details is OPEN → color changes automatically */
-  details[open] summary {
-    color: #66f5ff; /* CLICKED color */
-    background: #31055a33; /* optional subtle open background */
-  }
-
-  /* Make strong text inherit the color properly */
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-    <li>Music Production</li>
-    <li>Audio Editing</li>
-    <li>Mixing & Mastering</li>
-  </ul>
-</details>
-
-								  <div class="video-wrapper">
-									  <ul class="links">
-										<div style ="text-align: center;"><iframe width="70%" height="400" 
-											src="https://www.youtube.com/embed/qbI2ZiR-KYU?si=k33PuhZMc9ftMHCk" 
-											title="YouTube video player" frameborder="0" 
-											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-											referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div> 
-										<div class="iframe-row">
-											<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3CN9GpRwwUvh4nojbUwMrF?utm_source=generator&theme=0" 
-											width="30%" height="352" frameBorder="0" allowfullscreen="" 
-											allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-											
-											<iframe width="30%" height="352" scrolling="no" frameborder="no" allow="autoplay" 
-											src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2013245535&color=%23524f4e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-											
-											<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="352" 
-											style="width:30%;max-width:660px;overflow:hidden;border-radius:10px;" 
-											sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
-											src="https://embed.music.apple.com/nl/song/no-exceptions/1790880308"></iframe>
-										</div>
-									  </ul>
-									  <div class="modal-nav">
-										<button onclick="navigateModal('prev')">←</button>
-										<button onclick="navigateModal('next')">→</button>
-									  </div>
-								  </div>
-								</div>
-							  </div>
-
-							  <div id="modal4" class="modal">
-								<div class="modal-content">
-									<div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-								</div>
-								  <span class="close" onclick="closeModal('modal4')">&times;</span>
-								  <h2>Isolde Fortuna - Mirror Affirmations</h2>
-								  <p>In this project I worked together with Isolde Fortuna - an emerging pop singer/songwriter. My job in this project was to transform a simple piano score into a full pop song. She already had the chords and lyrics done. 
-									We took a little under two weeks to finish the song. You can find me in the credits section under my alias Idem Grey. The song was part of an exhibition: <a href="https://hvoquerido.nl/door-art-een-unieke-expositie-in-het-amsterdamse-stadhuis/">More info about the exhibition (Dutch)</a> </p>
-								 	 <style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-    <li>Music Production</li>
-    <li>Audio Editing</li>
-	<li>Vocal Editing</li>
-	<li>Mixing & Mastering</li>
-  </ul>
-</details>
-								  <div class="video-wrapper">
-									  <ul class="links">
-										<div style ="text-align: center;"><iframe width="70%" height="400" src="https://www.youtube.com/embed/turpouxMhi4?si=mAjIulssAufFm3ko" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div> 
-										<div class="iframe-row">
-											<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0ED2QXdBIJchyNJ5kX5abL?utm_source=generator" 
-											width="30%" height="352" frameBorder="0" allowfullscreen="" 
-											allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-											
-											<iframe width="30%" height="352" scrolling="no" frameborder="no" allow="autoplay" 
-											src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1784789205&color=%237f7f7f&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-
-											<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="352" 
-											style="width:30%;max-width:660px;overflow:hidden;border-radius:10px;" 
-											sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
-											src="https://embed.music.apple.com/nl/song/mirror-affirmations/1737659013"></iframe>
-										</div>
-									  </ul>
-									  <div class="modal-nav">
-										<button onclick="navigateModal('prev')">←</button>
-										<button onclick="navigateModal('next')">→</button>
-									  </div>
-								  </div>
-							  </div>
-						  </div>
-
-						  	<div id="modal5" class="modal">
-							  <div class="modal-content">
-								<span class="close" onclick="closeModal('modal5')">&times;</span>
-								<div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-								</div>
-								<h2>Luther McGinnis - Take Care Of Me (2025)</h2>
-								<p>In this project, I had the opportunity to apply my expertise in the R&B/Neo-Soul genre and re-produce an existing song for my client Luther McGinnis. I essentially had to rearrange the song structure together with Luther. 
-									Sticking to the original key progression I adapted my sound to his harmonics idea with the direction to deliver a more modern sound but with a touch of my creativity. You can find me in the credits section under my alias Idem Grey.</p>
-									 <style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-    <li>Music Production</li>
-    <li>Audio Editing</li>
-	<li>Vocal Editing</li>
-	<li>Mixing & Mastering</li>
-  </ul>
-</details>
-								<div class="video-wrapper">
-									<ul class="links">
-										<div style ="text-align: center;"><iframe width="70%" height="400" src="https://www.youtube.com/embed/pfk-NAEc-Ls?si=_1w5w0DgTfbbZHle" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-											<div class="iframe-row">
-												<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7vLBG3UUHBCNBDMKFxvLr4?utm_source=generator&theme=0" 
-												width="30%" height="352" frameBorder="0" allowfullscreen="" 
-												allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-
-												<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="352" 
-												style="width:30%; max-width: 660px;overflow:hidden;border-radius:10px;" 
-												sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" 
-												src="https://embed.music.apple.com/us/song/take-care-of-me-2025/1817124193"></iframe>
-											</div>
-										</ul>
-									<div class="modal-nav">
-										<button onclick="navigateModal('prev')">←</button>
-										<button onclick="navigateModal('next')">→</button>
-									</div>
-								</div>
-							  </div>
-							</div>
-
-							<div id="modal6" class="modal">
-							  <div class="modal-content">
-								<div class="modal-icons">
-		<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
-								</div>
-								<span class="close" onclick="closeModal('modal6')">&times;</span>
-								<h2>VeroNika - That Day</h2>
-								<p>In this project I was behind the post production and part of the lead pre-production for creating a ballad song. This was a collaborative effort production between the performing artist - VeroniKa, 
-									and Luther McGinnis on the keys and vocal production. My role was to contribute to and guide the production process, edit, mix and master the finished song. This project took us about five weeks to finish. You can find me in the credits section under my alias Idem Grey.</p>
-									 <style>
-  details summary {
-    cursor: pointer;
-    padding: 6px 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 6px;
-    display: inline-block;
-    user-select: none;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  details summary:hover {
-    background: #31055a73;	
-    border-color: #b0d42b;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-  }
-
-  details[open] summary {
-    color: #66f5ff;
-    background: #31055a33;
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.3);
-  }
-
-  details summary strong {
-    color: inherit;
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-</style>
-
-<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
-  <summary><strong>Skills and deliverables</strong></summary>
-
-  <ul style="margin-top:0.4em; margin-left:1.1em;">
-    <li>Music Production</li>
-    <li>Audio Editing</li>
-	<li>Vocal Editing</li>
-	<li>Mixing & Mastering</li>
-  </ul>
-</details>
-								<div class="video-wrapper">
-									<ul class="links">
-										<div style ="text-align: center;"><iframe width="70%" height="400" src="https://www.youtube.com/embed/UUDPu2dsJ9c?si=_ZFFRX8Od3i7wu8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-											<div class="iframe-row">
-												
-												<iframe data-testid="embed-iframe" style="border-radius:12px" 
-												src="https://open.spotify.com/embed/track/7fzvrXvV1UOS57U2ykva4k?utm_source=generator" width="100%" height="352" 
-												frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-											</div>
-										</ul>
-									<div class="modal-nav">
-										<button onclick="navigateModal('prev')">←</button>
-										<button onclick="navigateModal('next')">→</button>
-									</div>
-								</div>
-							  </div>
-							</div>
-
+				  <section id="project-thatday" class="project-item">
+					<div class="project-header">
+						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
 					</div>
-
+					<h2>VeroniKa - That Day</h2>
+					<p>In this project I was behind the post production and part of the lead pre-production for creating a ballad song. This was a collaborative effort production between the performing artist - VeroniKa, and Luther McGinnis on the keys and vocal production. My role was to contribute to and guide the production process, edit, mix and master the finished song. This project took us about five weeks to finish. You can find me in the credits section under my alias Idem Grey.</p>
+					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
+					  <summary><strong>Skills and deliverables</strong></summary>
+					  <ul style="margin-top:0.4em; margin-left:1.1em;">
+						<li>Music Production</li>
+						<li>Audio Editing</li>
+						<li>Vocal Editing</li>
+						<li>Mixing & Mastering</li>
+					  </ul>
+					</details>
+					<div class="video-wrapper">
+					  <iframe src="https://www.youtube.com/embed/UUDPu2dsJ9c?si=_ZFFRX8Od3i7wu8o" title="YouTube video player" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					</div>
+				  </section>
+				</div>
+			</div>
 
 <!--Services list-->
 <section id="contact">
@@ -833,45 +256,13 @@
         </ul>
       </section>
 
-      <!-- Contact Form
-      <section>
-        <header class="major">
-          <h2>Get in touch</h2>
-        </header>
-        <form method="post" action="#">
-          <div class="fields">
-            <div class="field half">
-              <label for="name">Name</label>
-              <input type="text" name="name" id="name" />
-            </div>
-            <div class="field half">
-              <label for="email">Email</label>
-              <input type="email" name="email" id="email" />
-            </div>
-            <div class="field">
-              <label for="message">Message</label>
-              <textarea name="message" id="message" rows="6"></textarea>
-            </div>
-          </div>
-          <ul class="actions">
-            <li><input type="submit" value="Send Message" class="primary" /></li>
-            <li><input type="reset" value="Clear" /></li>
-          </ul>
-        </form>
-      </section>
-    </div>
-  </div>
-</section>  -->
-
-
-
 			<!-- Footer -->
 				<footer id="footer">
 					<div class="inner">
 						<ul class="icons">
 							<li><a href="https://discord.com/users/701113635296247870" class="icon brands alt fa-discord" title="idemgrey"><span class="label">Discord</span></a></li>
 							<li><a href="https://www.instagram.com/idem_grey/" class="icon brands alt fa-instagram"><span class="link"></span></a></li>
-							<li><a href="https://www.linkedin.com/in/kaloyan-djamdjiev-6b78381b9/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://www.linkedin.com/in/kaloyan-djamdjiev-6b78381b9/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 							<li><a href="https://www.buymeacoffee.com/idemgrey" title="Buy Me a Coffee" style="border-bottom: none; text-decoration: none;"><img src="images/bmc.PNG" alt="Buy Me a Coffee" style="width: 2em; height: 2em; vertical-align: middle; display: inline-block;"></a></li>
 						</ul>
 						<img src="images/logo.png" alt="Logo" class="footer-logo">
@@ -892,211 +283,29 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script>
-		function playMenuSound() {
-			const sound = document.getElementById('menuSound');
-			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
-		}
-
-		function playMenuCloseSound() {
-			const sound = document.getElementById('menuCloseSound');
-			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
-		}
-
-		function playDetailsToggle(details) {
-			const sound = document.getElementById(details.open ? 'buttonOpenSound' : 'buttonCloseSound');
-			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
-		}
-
-		function playHomeSound() {
-			const sound = document.getElementById('homeSound');
-			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
-		}
-
-		function playMenuItemSound() {
-			const sound = document.getElementById('menuItemSound');
-			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
-		}
-
-		function delayNavigation(event, url) {
-			event.preventDefault();
-			setTimeout(() => { window.location.href = url; }, 150);
-			return false;
-		}
-	</script>
-			function openModal(id, fromNavigation) {
-				document.getElementById(id).style.display = "block";
-				currentModalIndex = modalIds.indexOf(id);
-				updateNavigationButtons();
-				
-				// Play modal open sound only if not from navigation
-				if (!fromNavigation) {
-					const modalSound = document.getElementById('modalSound');
-					if (modalSound) {
-						modalSound.currentTime = 0;
-						modalSound.play().catch(err => console.log('Audio playback failed:', err));
-					}
-				}
-			}
-
-			function closeModal(id, fromNavigation) {
-				const modal = document.getElementById(id);
-				modal.style.display = "none";
-				currentModalIndex = -1;
-				
-				// Play close sound only if not from navigation
-				if (!fromNavigation) {
-					const closeSound = document.getElementById('modalCloseSound');
-					if (closeSound) {
-						closeSound.currentTime = 0;
-						closeSound.play().catch(err => console.log('Audio playback failed:', err));
-					}
-				}
-				
-				// Reset iframe sources so they reload on next open
-				const iframes = modal.querySelectorAll('iframe');
-				iframes.forEach(iframe => {
-					const src = iframe.getAttribute('data-src') || iframe.src;
-					iframe.src = src;
-				});
-			}
-
-			function navigateModal(direction) {
-				let newIndex = currentModalIndex;
-				
-				if (direction === 'next') {
-					newIndex = (currentModalIndex + 1) % modalIds.length;
-				} else if (direction === 'prev') {
-					newIndex = (currentModalIndex - 1 + modalIds.length) % modalIds.length;
-				}
-
-				if (newIndex !== currentModalIndex) {
-					// Play random swipe sound variation
-					playRandomSound(['modalSwipeSound']);
-					
-					closeModal(modalIds[currentModalIndex], true);
-					openModal(modalIds[newIndex], true);
-				}
-			}				function updateNavigationButtons() {
-					// Update button states - all buttons always enabled with looping
-					for (let i = 0; i < modalIds.length; i++) {
-						const prevBtn = document.getElementById('prev-btn-' + (i + 1));
-						const nextBtn = document.getElementById('next-btn-' + (i + 1));
-						
-						if (prevBtn) prevBtn.disabled = false;
-						if (nextBtn) nextBtn.disabled = false;
-					}
-				}
-
-				// Touch swipe handling
-				document.addEventListener('touchstart', (e) => {
-					const modals = document.querySelectorAll('.modal');
-					let isModalOpen = false;
-					modals.forEach(modal => {
-						if (modal.style.display === 'block') {
-							isModalOpen = true;
-						}
-					});
-					
-					if (isModalOpen && currentModalIndex !== -1) {
-						touchStartX = e.changedTouches[0].screenX;
-					}
-				});
-
-				document.addEventListener('touchend', (e) => {
-					const modals = document.querySelectorAll('.modal');
-					let isModalOpen = false;
-					modals.forEach(modal => {
-						if (modal.style.display === 'block') {
-							isModalOpen = true;
-						}
-					});
-					
-					if (isModalOpen && currentModalIndex !== -1) {
-						touchEndX = e.changedTouches[0].screenX;
-						handleSwipe();
-					}
-				});
-
-				function handleSwipe() {
-					const swipeThreshold = 50;
-					const diff = touchStartX - touchEndX;
-
-					if (Math.abs(diff) > swipeThreshold) {
-						if (diff > 0) {
-							navigateModal('next');
-						} else {
-							navigateModal('prev');
-						}
-					}
-				}
-
-				// Keyboard navigation
-				document.addEventListener('keydown', (e) => {
-					const modals = document.querySelectorAll('.modal');
-					let isModalOpen = false;
-					modals.forEach(modal => {
-						if (modal.style.display === 'block') {
-							isModalOpen = true;
-						}
-					});
-					
-				if (isModalOpen && currentModalIndex !== -1) {
-					if (e.key === 'ArrowRight') {
-						navigateModal('next');
-					} else if (e.key === 'ArrowLeft') {
-						navigateModal('prev');
-					}
-				}
-			});
-		
-			// Close modal when clicking outside of it
-			window.onclick = function(event) {
-				const modals = document.querySelectorAll('.modal');
-				modals.forEach(modal => {
-					if (event.target === modal) {
-						closeModal(modal.id);
-					}
-				});
-			};
-
 			function playMenuSound() {
 				const sound = document.getElementById('menuSound');
-				if (sound) {
-					sound.currentTime = 0;
-					sound.play().catch(err => console.log('Audio playback failed:', err));
-				}
+				if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
 			}
 
 			function playMenuCloseSound() {
 				const sound = document.getElementById('menuCloseSound');
-				if (sound) {
-					sound.currentTime = 0;
-					sound.play().catch(err => console.log('Audio playback failed:', err));
-				}
+				if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
 			}
 
 			function playDetailsToggle(details) {
 				const sound = document.getElementById(details.open ? 'buttonOpenSound' : 'buttonCloseSound');
-				if (sound) {
-					sound.currentTime = 0;
-					sound.play().catch(err => console.log('Audio playback failed:', err));
-				}
+				if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
 			}
 
 			function playHomeSound() {
 				const sound = document.getElementById('homeSound');
-				if (sound) {
-					sound.currentTime = 0;
-					sound.play().catch(err => console.log('Audio playback failed:', err));
-				}
+				if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
 			}
 
 			function playMenuItemSound() {
 				const sound = document.getElementById('menuItemSound');
-				if (sound) {
-					sound.currentTime = 0;
-					sound.play().catch(err => console.log('Audio playback failed:', err));
-				}
+				if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
 			}
 
 			function delayNavigation(event, url) {
@@ -1104,6 +313,6 @@
 				setTimeout(() => { window.location.href = url; }, 150);
 				return false;
 			}
-		</script>
-	</body>	</body>
+			</script>
+	</body>
 </html>
