@@ -65,6 +65,16 @@
 			/* Multi-iframe layout for some projects */
 			.iframe-grid { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
 			.iframe-grid iframe { flex: 1; min-width: 300px; height: 352px; }
+
+				/* Responsive: force one video per row on small screens and preserve 16:9 */
+				@media (max-width: 700px) {
+					.video-wrapper .video-container > iframe,
+					.video-wrapper .video-container > .video-box,
+					.iframe-grid > .video-box { flex: 1 1 100% !important; max-width: 100% !important; }
+					.video-box iframe,
+					.iframe-grid .video-box iframe,
+					.video-wrapper .video-container > iframe { width: 100% !important; height: auto !important; aspect-ratio: 16/9; }
+				}
 		</style>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
