@@ -24,9 +24,13 @@
 			/* Project list layout (replaces modals) */
 			.project-list { display: flex; flex-direction: column; gap: 2.5rem; margin: 2.5rem 0; }
 			.project-item { background: rgba(0,0,0,0.06); padding: 1.6rem; border-radius: 8px; color: #fff; }
+			.project-item { scroll-margin-top: 7rem; }
+			.project-item:target { box-shadow: 0 0 0 2px rgba(102, 245, 255, 0.35), 0 0 24px rgba(102, 245, 255, 0.18); }
 			.project-item .project-header { display:flex; gap:1rem; align-items:center; margin-bottom:0.6rem; }
 			.project-item .project-header img { width: 48px; height:48px; object-fit: contain; }
 			.project-item h2 { margin: 0 0 0.4rem 0; }
+			.project-item h2 a { color: inherit; text-decoration: none; border-bottom: none; }
+			.project-item h2 a:hover { color: #66f5ff; }
 			.project-item p { margin: 0 0 0.6rem 0; }
 			.video-wrapper { position: relative; display: block; width: 100%; text-align:center; }
 			.video-wrapper iframe { width: 70%; max-width:900px; height:400px; border:0; }
@@ -116,7 +120,7 @@
 					<div class="project-header">
 						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
 					</div>
-					<h2>Idem Grey - Loops</h2>
+					<h2><a href="#project-loops">Idem Grey - Loops</a></h2>
 					<p>This is a personal project EP that contains five instrumental and two vocal tracks. The direction of the album is LoFi/downtempo. It features the French singer/songwriter Lokou. I released this back in 2024.</p>
 					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
 					  <summary><strong>Skills and deliverables</strong></summary>
@@ -137,7 +141,7 @@
 					<div class="project-header">
 						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
 					</div>
-					<h2>Luther McGinnis - All 4 you</h2>
+					<h2><a href="#project-all4you">Luther McGinnis - All 4 you</a></h2>
 					<p>In this project I worked together with Luther McGinnis - a soulful performing singer and keyboardist. This was our first work together and the song is the result of a collaborative effort where Luther was contributing with harmonics and lead singing, and I was behind some backing melodies, the post edit, mix and master. The song is out on all streaming platforms. You can find me in the credits section under my alias Idem Grey.</p>
 					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
 					  <summary><strong>Skills and deliverables</strong></summary>
@@ -158,7 +162,7 @@
 					<div class="project-header">
 						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
 					</div>
-					<h2>Isolde Fortuna - Mirror Affirmations</h2>
+					<h2><a href="#project-mirror">Isolde Fortuna - Mirror Affirmations</a></h2>
 					<p>In this project I worked together with Isolde Fortuna - an emerging pop singer/songwriter. My job in this project was to transform a simple piano score into a full pop song. She already had the chords and lyrics done. We took a little under two weeks to finish the song. You can find me in the credits section under my alias Idem Grey. The song was part of an exhibition: <a href="https://hvoquerido.nl/door-art-een-unieke-expositie-in-het-amsterdamse-stadhuis/">More info about the exhibition (Dutch)</a></p>
 					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
 					  <summary><strong>Skills and deliverables</strong></summary>
@@ -178,7 +182,7 @@
 					<div class="project-header">
 						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
 					</div>
-					<h2>Luther McGinnis - Take Care Of Me (2025)</h2>
+					<h2><a href="#project-tcom">Luther McGinnis - Take Care Of Me (2025)</a></h2>
 					<p>In this project, I had the opportunity to apply my expertise in the R&B/Neo-Soul genre and re-produce an existing song for my client Luther McGinnis. I essentially had to rearrange the song structure together with Luther. Sticking to the original key progression I adapted my sound to his harmonics idea with the direction to deliver a more modern sound but with a touch of my creativity. You can find me in the credits section under my alias Idem Grey.</p>
 					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
 					  <summary><strong>Skills and deliverables</strong></summary>
@@ -199,7 +203,7 @@
 					<div class="project-header">
 						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
 					</div>
-					<h2>Idem Grey - No Exceptions</h2>
+					<h2><a href="#project-noexceptions">Idem Grey - No Exceptions</a></h2>
 					<p>Rap beat I produced, still open to collab</p>
 					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
 					  <summary><strong>Skills and deliverables</strong></summary>
@@ -220,7 +224,7 @@
 					<div class="project-header">
 						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
 					</div>
-					<h2>VeroniKa - That Day</h2>
+					<h2><a href="#project-thatday">VeroniKa - That Day</a></h2>
 					<p>In this project I was behind the post production and part of the lead pre-production for creating a ballad song. This was a collaborative effort production between the performing artist - VeroniKa, and Luther McGinnis on the keys and vocal production. My role was to contribute to and guide the production process, edit, mix and master the finished song. This project took us about five weeks to finish. You can find me in the credits section under my alias Idem Grey.</p>
 					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
 					  <summary><strong>Skills and deliverables</strong></summary>
@@ -313,6 +317,24 @@
 				setTimeout(() => { window.location.href = url; }, 150);
 				return false;
 			}
+
+			function scrollToHashTarget() {
+				const { hash } = window.location;
+				if (!hash) return;
+
+				const target = document.querySelector(hash);
+				if (target) {
+					window.requestAnimationFrame(() => {
+						target.scrollIntoView({ behavior: 'auto', block: 'start' });
+					});
+				}
+			}
+
+			window.addEventListener('load', function() {
+				window.setTimeout(scrollToHashTarget, 150);
+			});
+
+			window.addEventListener('hashchange', scrollToHashTarget);
 			</script>
 	</body>
 </html>
