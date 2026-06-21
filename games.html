@@ -24,7 +24,7 @@
 			/* Project list layout (replaces modals) */
 			.project-list { display: flex; flex-direction: column; gap: 2.5rem; margin: 2.5rem 0; }
 			.project-item { background: rgba(0,0,0,0.06); padding: 1.6rem; border-radius: 8px; color: #fff; scroll-margin-top: 7rem; }
-			.project-item:target { box-shadow: 0 0 0 2px rgba(102, 245, 255, 0.35), 0 0 24px rgba(102, 245, 255, 0.18); }
+			
 			.project-item .project-header { display:flex; gap:1rem; align-items:center; margin-bottom:0.6rem; }
 			.project-item .project-header img { width: 48px; height: 48px; object-fit: contain; }
 			.project-item h2 { margin: 0 0 0.4rem 0; }
@@ -35,6 +35,8 @@
 				.video-wrapper iframe { width: 100%; max-width:900px; height:400px; border:0; }
 				/* Centered single-video box to keep caption under one video */
 				.video-box { width: 100%; text-align: center; }
+				.video-box:focus { outline: 2px solid transparent; outline-offset: 0.4rem; box-shadow: none; }
+				.video-box:focus-visible { outline: 2px solid transparent; box-shadow: none; }
 				.video-box iframe { width: 100%; height: 400px; border: 0; }
 				.video-box p { margin-top: 0.6rem; }
 				/* Make video container a flex row so two videos sit side-by-side */
@@ -186,13 +188,13 @@
 					</details>
 					<div class="video-wrapper">
 						<div class="video-container">
-							<div class="video-box">
+							<div class="video-box" id="steam-games-mad-metal" tabindex="-1">
 								<iframe src="https://www.youtube.com/embed/-xIpaY_8wvo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-								<p>Mad Metal is a vehicle combat roguelite steam game, with a dystopian and post-apocalyptic setting. This title is developed by <a href="https://store.steampowered.com/search/?developer=Mad%20Mechs%20Inc./">Mad Mechs Inc.</a> and published by <a href="https://www.indie.io/">indie.io</a>. For this project I got hired to compose the official soundtrack of the game. Find out more information about the game on the official <a href="https://store.steampowered.com/app/3068230/Mad_Metal/">Steam</a> page.</p>
+								<p><a href="#steam-games-mad-metal">Mad Metal</a> is a vehicle combat roguelite steam game, with a dystopian and post-apocalyptic setting. This title is developed by <a href="https://store.steampowered.com/search/?developer=Mad%20Mechs%20Inc./">Mad Mechs Inc.</a> and published by <a href="https://www.indie.io/">indie.io</a>. For this project I got hired to compose the official soundtrack of the game. Find out more information about the game on the official <a href="https://store.steampowered.com/app/3068230/Mad_Metal/">Steam</a> page.</p>
 							</div>
-							<div class="video-box">
+							<div class="video-box" id="steam-games-project-utgardr" tabindex="-1">
 								<iframe src="https://player.vimeo.com/video/1092234875?h=a64555cfa7&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" title="Project Utgardr"></iframe>
-								<p>Project Utgardr is a 3D realistic parkour game developed by Tronus Games. I am the lead sound designer for the project which is set to release early 2026. Below you will find a short audio adaptation. Find out more information about the game on the official  <a href="https://store.steampowered.com/app/1878290/Project_Utgardr/">Steam</a> page.</p>
+								<p><a href="#steam-games-project-utgardr">Project Utgardr</a> is a 3D realistic parkour game developed by Tronus Games. I am the lead sound designer for the project which is set to release early 2026. Below you will find a short audio adaptation. Find out more information about the game on the official  <a href="https://store.steampowered.com/app/1878290/Project_Utgardr/">Steam</a> page.</p>
 							</div>
 						</div>
 					</div>
@@ -221,21 +223,21 @@
 					</details>
 					<div class="video-wrapper">
 						<div class="video-container">
-							<div class="video-box">
+							<div class="video-box" id="unity-fantasy-adventure" tabindex="-1">
 								<iframe src="https://www.youtube.com/embed/h_E-6i_-8Sw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-								<p>Sound Design - 3D Fantasy-Adventure</p>
+								<p>Sound Design - <a href="#unity-fantasy-adventure">3D Fantasy-Adventure</a></p>
 							</div>
-							<div class="video-box">
+							<div class="video-box" id="unity-first-person-shooter" tabindex="-1">
 								<iframe src="https://www.youtube.com/embed/lpSRxbTXzxo?si=Cr4EWByxNE_xnFaV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-								<p>Music & Sound Design - First Person Shooter</p>
+								<p>Music & Sound Design - <a href="#unity-first-person-shooter">First Person Shooter</a></p>
 							</div>
-							<div class="video-box">
+							<div class="video-box" id="unity-3d-stealth-game" tabindex="-1">
 								<iframe src="https://www.youtube.com/embed/hokMrx6lHME?si=DdlG4MwJxdk9Ngrb" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-								<p>Music & Sound Design - 3D Stealth Game</p>
+								<p>Music & Sound Design - <a href="#unity-3d-stealth-game">3D Stealth Game</a></p>
 							</div>
-							<div class="video-box">
+							<div class="video-box" id="unity-3d-viking-village" tabindex="-1">
 								<iframe src="https://www.youtube.com/embed/mXEwQN9tUvY?si=00E1_CES-raOGIOu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-								<p>Music & Sound Design - 3D Viking Village</p>
+								<p>Music & Sound Design - <a href="#unity-3d-viking-village">3D Viking Village</a></p>
 							</div>
 						
 						</div>
@@ -260,18 +262,18 @@
 					</details>
 					<div class="video-wrapper">
 						<div class="video-container">
-								<div class="video-box">
+								<div class="video-box" id="project-enshrouded" tabindex="-1">
 								<iframe src="https://www.youtube.com/embed/9yeQHBKpDfw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="YouTube Video"></iframe>
-								<p>For this project, I composed a Fantasy-Medieval themed piece of music and adapted it over a game play footage of the game Enshrouded.</p>
+								<p>For this project, I composed a Fantasy-Medieval themed piece of music and adapted it over a game play footage of the game <a href="#project-enshrouded">Enshrouded</a>.</p>
 							</div>
 
-							<div class="video-box">
+							<div class="video-box" id="project-thetr-music" tabindex="-1">
 								<iframe src="https://www.youtube.com/embed/3ZK4Ff87XBI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-								<p>Thetr is a small project in early development for which I got hired to compose the music. This is the first track I made for it, with five more scheduled for next year.</p>
+								<p><a href="#project-thetr-music">Thetr</a> is a small project in early development for which I got hired to compose the music. This is the first track I made for it, with five more scheduled for next year.</p>
 							</div>
-							<div class="video-box">
+							<div class="video-box" id="project-epic-bar-quest" tabindex="-1">
 								<iframe src="https://www.youtube.com/embed/9EusxWHrzcI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="YouTube Video"></iframe>
-								<p>For this project I was part of a game jam and I composed the background music for three sections of a top down pixel game. The game is available on <a href="https://retro-paul.itch.io/epic-bar-quest-or-take-me-drunk-i-am-home">Itch.io</a>.</p>
+								<p>For this project I was part of a game jam and I composed the background music for three sections of a top down pixel game called <a href="#project-epic-bar-quest">Epic Bar Quest</a>. The game is available on <a href="https://retro-paul.itch.io/epic-bar-quest-or-take-me-drunk-i-am-home">Itch.io</a>.</p>
 							</div>
 						
 						</div>
@@ -296,13 +298,13 @@
 					</details>
 					<div class="video-wrapper">
 						<div class="video-container">
-							<div class="video-box">
+							<div class="video-box" id="mobile-orbit" tabindex="-1">
 								<iframe src="https://player.vimeo.com/video/1092234847?h=57fc6fbc4a&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" title="Orbit"></iframe>
-								<p>Orbit is a mobile game released back in 2020 on the Google Play store. I was in charge of the entire audio production including sound effects, UI, and music. Unfortunately, the game is no longer available, but I still have this game play footage outlining my work.</p>
+								<p><a href="#mobile-orbit">Orbit</a> is a mobile game released back in 2020 on the Google Play store. I was in charge of the entire audio production including sound effects, UI, and music. Unfortunately, the game is no longer available, but I still have this game play footage outlining my work.</p>
 							</div>
-							<div class="video-box">
+							<div class="video-box" id="mobile-topoly" tabindex="-1">
 								<iframe src="https://player.vimeo.com/video/1092234948?h=21c671a278&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" title="Topoly"></iframe>
-								<p>Topoly is a low poly endless run, fast paced indie game made by Quadratic Games available for Windows, Linux, and Android. I did the sound design and ambient audio for the game as part of my portfolio work back in 2020. Topoly is available to buy online and you can find me in the credits under my alias Idem Grey. Here is a lik for <a href="https://quadratic-games.itch.io/topoly">Topoly by Quadratic Games</a>.</p>
+								<p><a href="#mobile-topoly">Topoly</a> is a low poly endless run, fast paced indie game made by Quadratic Games available for Windows, Linux, and Android. I did the sound design and ambient audio for the game as part of my portfolio work back in 2020. Topoly is available to buy online and you can find me in the credits under my alias Idem Grey. Here is a lik for <a href="https://quadratic-games.itch.io/topoly">Topoly by Quadratic Games</a>.</p>
 							</div>
 						</div>
 					</div>
@@ -447,23 +449,44 @@
 			return false;
 		}
 
-		function scrollToHashTarget() {
-			const { hash } = window.location;
-			if (!hash) return;
+		function scrollToHashTarget(hash) {
+			const targetHash = hash || window.location.hash;
+			if (!targetHash) return;
 
-			const target = document.querySelector(hash);
+			const target = document.querySelector(targetHash);
 			if (target) {
 				window.requestAnimationFrame(() => {
-					target.scrollIntoView({ behavior: 'auto', block: 'start' });
+					const extraTopOffset = 140;
+					const top = window.scrollY + target.getBoundingClientRect().top - extraTopOffset;
+					window.scrollTo({ top: Math.max(0, top), behavior: 'auto' });
+					if (typeof target.focus === 'function') {
+						target.focus({ preventScroll: true });
+					}
 				});
 			}
 		}
+
+		function handleInternalHashLinkClick(event) {
+			const link = event.currentTarget;
+			const hash = link.getAttribute('href');
+			if (!hash || hash.charAt(0) !== '#') return;
+
+			event.preventDefault();
+			history.replaceState(null, '', hash);
+			scrollToHashTarget(hash);
+		}
+
+		document.querySelectorAll('.project-item a[href^="#"]').forEach(function(link) {
+			link.addEventListener('click', handleInternalHashLinkClick);
+		});
 
 		window.addEventListener('load', function() {
 			window.setTimeout(scrollToHashTarget, 150);
 		});
 
-		window.addEventListener('hashchange', scrollToHashTarget);
+		window.addEventListener('hashchange', function() {
+			scrollToHashTarget();
+		});
 	</script>
 	</body>
 </html>
