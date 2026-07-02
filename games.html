@@ -31,6 +31,32 @@
 			.project-item h2 a { color: inherit; text-decoration: none; border-bottom: none; }
 			.project-item h2 a:hover { color: #66f5ff; }
 			.project-item p { margin: 0 0 0.6rem 0; }
+			.project-item p a[href^="#"],
+			.project-item p a[href^="#"]:hover,
+			.project-item p a[href^="#"]:focus,
+			.project-item p a[href^="#"]:focus-visible,
+			.project-item li a[href^="#"],
+			.project-item li a[href^="#"]:hover,
+			.project-item li a[href^="#"]:focus,
+			.project-item li a[href^="#"]:focus-visible {
+				color: inherit;
+				border-bottom: none !important;
+				text-decoration: none !important;
+				box-shadow: none !important;
+			}
+			.project-item p a:not([href^="#"]),
+			.project-item p a:not([href^="#"]):hover,
+			.project-item p a:not([href^="#"]):focus,
+			.project-item p a:not([href^="#"]):focus-visible,
+			.project-item li a:not([href^="#"]),
+			.project-item li a:not([href^="#"]):hover,
+			.project-item li a:not([href^="#"]):focus,
+			.project-item li a:not([href^="#"]):focus-visible {
+				color: #66f5ff;
+				border-bottom: none !important;
+				text-decoration: none !important;
+				box-shadow: none !important;
+			}
 			.video-wrapper { position: relative; display: block; width: 100%; text-align:center; }
 				.video-wrapper iframe { width: 100%; max-width:900px; height:400px; border:0; }
 				/* Centered single-video box to keep caption under one video */
@@ -39,6 +65,15 @@
 				.video-box:focus-visible { outline: 2px solid transparent; box-shadow: none; }
 				.video-box iframe { width: 100%; height: 400px; border: 0; }
 				.video-box p { margin-top: 0.6rem; }
+				.video-box > a,
+				.video-box > a:hover,
+				.video-box > a:focus,
+				.video-box > a:focus-visible {
+					border-bottom: none !important;
+					text-decoration: none !important;
+					box-shadow: none !important;
+					display: inline-block;
+				}
 				/* Make video container a flex row so two videos sit side-by-side */
 				.video-wrapper .video-container { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; width: 100%; }
 				.video-wrapper .video-container > iframe,
@@ -315,7 +350,7 @@
 						<img src="images/ableton.png" alt="Ableton Icon" title="Ableton Live 12">
 					</div>
 					<h2><a href="#project-casino-slots">Online Casino Slots</a></h2>
-					<p>For this project I was hired on Upwork to deliver a number of different tracks and sound effects for a couple of online slot games. In order to deliver all the files, I had to follow strict guidelines and references. This is the final result of my work.</p>
+					<p>This is a compilation of my work on various online casino slot games, where I was responsible for composing the music and creating all the sound effects.</p>
 					<details style="font-size:16px; margin-top:0.6em; text-align:left;" ontoggle="playDetailsToggle(this)">
 						<summary><strong>Skills and deliverables</strong></summary>
 						<ul style="margin-top:0.4em; margin-left:1.1em;">
@@ -326,14 +361,31 @@
 						</ul>
 					</details>
 					<div class="video-wrapper">
-						<div class="iframe-grid">
-							<div class="video-box">
+						<div class="video-box" id="tomb-of-fortune" tabindex="-1" style="margin-bottom:1.5rem;">
+							<a href="https://www.711casino.be/g/nl/PWG_TOMB_OF_FORTUNE_DICE/fun" target="_blank" rel="noopener noreferrer" style="text-decoration:none; border-bottom:none; display:inline-block;">
+								<img src="images/tof.PNG" alt="Tomb of Fortune" style="width:100%; max-width:740px; border-radius:8px; margin-bottom:0.8rem; display:block;">
+							</a>
+							<p><a href="#tomb-of-fortune">Tomb of Fortune</a> is a skill based casino game developed by <a href="https://www.711casino.be/" target="_blank" rel="noopener noreferrer">711casino.be</a> for which I was hired to compose the music and create all the sound effects. You can test the free version of the game by clicking the image above or just follow <a href="https://www.711casino.be/g/nl/PWG_TOMB_OF_FORTUNE_DICE/fun" target="_blank" rel="noopener noreferrer">this link</a></p>
+						</div>
+						<div class="video-container" style="margin-top:0.5rem;">
+							<div class="video-box" id="backseat" tabindex="-1">
+								<iframe src="https://www.youtube.com/embed/xnM_HXAguZY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+								<p>This is a task I was sent by <a href="#backseat">Backseat</a> gaming as part of my application process for a composer/sound designer role. I managed to deliver the project scope up to the expectations which ultimately got me the role and I got on board with Backseat.</p>
+							</div>
+							<div class="video-box" id="dreamshot" tabindex="-1">
+								<iframe src="https://www.youtube.com/embed/z_mGaycVCcY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+								<p>For this project, I was sent a short game play video and was tasked to compose the music and create all the sound effects as part of my application process as a music composer/sound designer for <a href="#dreamshot">Dreamshot</a>. This is the final result which got me to the final interview round. Unfortunately the didn't choose to proceed with me despite the great match.</p>
+							</div>
+							<div class="video-box " id="casino-slots" tabindex="-1">
 								<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2180468645%3Fsecret_token%3Ds-lAaQ4gE38Bp&color=%23231f1d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
 								<p>Fishing Theme</p>
 							</div>
-							<div class="video-box">
+							<div class="video-box" id="halloween" tabindex="-1">
 								<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2180469800%3Fsecret_token%3Ds-BlxvUnjNQk4&color=%23231f1d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
 								<p>Halloween Theme</p>
+							</div>
+							<div class="video-box" style="margin-top:0.75rem; flex-basis:100%;">
+								<p style="margin:0;">For this project I was hired on Upwork to deliver a number of different tracks and sound effects for a couple of online slot games. In order to deliver all the files, I had to follow strict guidelines and references. On the left you can hear the <a href="#casino-slots">fishing themed</a> project and on the right - the <a href="#halloween">halloween themed</a> project.</p>
 							</div>
 						</div>
 					</div>
