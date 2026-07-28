@@ -708,7 +708,91 @@
 		window.addEventListener('hashchange', function() {
 			scrollToHashTarget();
 		});
-		
+		// Mobile swipe support
+if (projectNavPanel) {
+
+    let startX = 0;
+    let currentX = 0;
+    let dragging = false;
+    let panelWidth = 0;
+
+    const CLOSED_OFFSET = 48; // Width of the visible handle (adjust if needed)
+
+    function isMobile() {
+        return window.matchMedia("(max-width: 700px)").matches;
+    }
+
+    projectNavPanel.addEventListener("touchstart", function(e) {
+        if (!isMobile()) return;
+
+        dragging = true;
+        startX = e.touches[0].clientX;
+        currentX = startX;
+        panelWidth = projectNavPanel.offsetWidth;
+
+        projectNavPanel.style.transition = "none";
+    }, { passive: true });
+
+    projectNavPanel.addEventListener("touchmove", function(e) {
+        if (!dragging || !isMobile()) return;
+
+        currentX = e.touches[0].clientX;
+
+        let delta = currentX - startX;
+
+        // Opening
+        if (!projectNavPanel.classList.contains("is-open")) {
+            delta = Math.min(0, delta);
+            const translate = Math.max(-(panelWidth - CLOSED_OFFSET), -(panelWidth - CLOSED_OFFSET) + Math.abs(delta));
+
+            projectNavPanel.style.transform =
+                `translateX(${translate}px) translateY(-50%)`;
+        }
+
+        // Closing
+        else {
+            delta = Math.min(0, delta);
+
+            const translate = Math.max(delta, -(panelWidth - CLOSED_OFFSET));
+
+            projectNavPanel.style.transform =
+                `translateX(${translate}px) translateY(-50%)`;
+        }
+
+    }, { passive: true });
+
+    projectNavPanel.addEventListener("touchend", function() {
+        if (!dragging || !isMobile()) return;
+
+        dragging = false;
+
+        projectNavPanel.style.transition = "";
+
+        const moved = currentX - startX;
+
+        if (!projectNavPanel.classList.contains("is-open")) {
+
+            // Dragged left enough → open
+            if (moved < -60) {
+                openProjectNavPanel();
+            } else {
+                closeProjectNavPanel();
+            }
+
+        } else {
+
+            // Dragged left enough → close
+            if (moved < -60) {
+                closeProjectNavPanel();
+            } else {
+                openProjectNavPanel();
+            }
+
+        }
+
+        projectNavPanel.style.transform = "";
+    });
+}
 	</script>
 	</body>
 </html>
