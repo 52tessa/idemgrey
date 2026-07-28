@@ -14,6 +14,113 @@
 		<style>
 			/* Center and push services to bottom */
 			#wrapper { display: flex; flex-direction: column; min-height: 100vh; }
+			.project-nav-panel {
+				position: fixed;
+				top: 40%;
+				right: 0;
+				transform: translateX(calc(100% - 2.95rem)) translateY(-50%);
+				z-index: 1200;
+				transition: transform 0.25s ease;
+				pointer-events: auto;
+			}
+			.project-nav-panel:hover,
+			.project-nav-panel:focus-within {
+				transform: translateX(0) translateY(-50%);
+			}
+			.project-nav-panel:hover .project-nav-handle,
+			.project-nav-panel:focus-within .project-nav-handle {
+				opacity: 0;
+				pointer-events: none;
+			}
+			.project-nav-handle {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				gap: 0.08rem;
+				position: absolute;
+				right: 84%;
+				top: 50%;
+				transform: translateY(-50%);
+				padding: 0.7rem 0.3rem;
+				color: #fff;
+				font-size: 0.78rem;
+				line-height: 0.95;
+				font-weight: 600;
+				letter-spacing: 0.18em;
+				text-transform: u;
+				text-align: center;
+				opacity: 1;
+				transition: opacity 0.2s ease;
+				user-select: none;
+				background: rgba(10, 8, 18, 0.755);
+				border: 1px solid rgba(255,255,255,0.18);
+				border-radius: 16px;
+				box-shadow: -10px 0 28px rgba(0,0,0,0.32);
+			}
+			.project-nav-handle .project-nav-spacer {
+				height: 0.42rem;
+			}
+			.project-nav-content {
+				width: min(18rem, calc(100vw - 2rem));
+				max-height: min(80vh, 40rem);
+				overflow-y: auto;
+				padding: 1rem 1rem 1rem 1.15rem;
+				background: rgba(10, 8, 18, 0.644);
+				border: 1px solid rgba(255,255,255,0.18);
+				border-right: 0;
+				border-radius: 16px 0 0 16px;
+				box-shadow: -5px 0 28px rgba(193, 255, 254, 0.759);
+				opacity: 0;
+				visibility: hidden;
+				pointer-events: none;
+				transform: translateX(1.25rem);
+				transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+				font-weight: bold;      
+			}
+			.project-nav-panel:hover .project-nav-content,
+			.project-nav-panel:focus-within .project-nav-content {
+				opacity: 1;
+				visibility: visible;
+				pointer-events: auto;
+				transform: translateX(0);
+			}
+			.project-nav-content h3 {
+				margin: 0 0 0.7rem 0;
+				font-size: 0.95rem;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				color: #66f5ff;
+			}
+			.project-nav-content ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.project-nav-content li + li {
+				margin-top: 0.45rem;
+			}
+			.project-nav-content a {
+				display: block;
+				color: #f5f5f5;
+				font-size: 0.92rem;
+				line-height: 1.35;
+				text-decoration: none;
+				border-bottom: none;
+				padding: 0.35rem 0;
+			}
+			.project-nav-content a:hover,
+			.project-nav-content a:focus-visible {
+				color: #66f5ff;
+			}
+			@media (max-width: 700px) {
+				.project-nav-panel {
+					transform: translateX(calc(100% - 2.4rem)) translateY(-50%);
+				}
+				.project-nav-content {
+					width: min(16rem, calc(100vw - 1.4rem));
+				}
+			}
 			#main { flex: 1; }
 			#contact { margin-top: auto !important; text-align: center !important; clear: both; width: 100%; padding: 3rem 0 2rem !important; }
 			#contact .inner { text-align: center; }
@@ -141,6 +248,39 @@
 	</audio>
 
 	<div id="wrapper">
+		<div class="project-nav-panel" aria-label="Project navigation">
+			<div class="project-nav-handle">
+				<span>J</span>
+				<span>U</span>
+				<span>M</span>
+				<span>P</span>
+				<span class="project-nav-spacer"></span>
+				<span>T</span>
+				<span>O</span>
+				<span class="project-nav-spacer"></span>
+				<span>P</span>
+				<span>R</span>
+				<span>O</span>
+				<span>J</span>
+				<span>E</span>
+				<span>C</span>
+				<span>T</span>
+				<span>S</span>
+			</div>
+			<div class="project-nav-content">
+				<h3>Jump to project</h3>
+				<ul>
+					<li><a class="project-nav-link" href="#project-trailer">Skyrim Online Trailer Music &amp; Sound Design</a></li>
+					<li><a class="project-nav-link" href="#steam-games">Steam Games OST Music &amp; Sound Effects</a></li>
+					<li><a class="project-nav-link" href="#UNITY-FMOD">Game Sound Design &amp; Adaptive Music Integration - Unity &amp; FMOD</a></li>
+					<li><a class="project-nav-link" href="#project-thetr">Music Composition for Games</a></li>
+					<li><a class="project-nav-link" href="#mobile-games">Mobile Games</a></li>
+					<li><a class="project-nav-link" href="#project-casino-slots">Online Casino Slots</a></li>
+					<li><a class="project-nav-link" href="#project-miscellaneous">Miscellaneous</a></li>
+				</ul>
+			</div>
+		</div>
+
 		<!-- Header -->
 		<header id="header">
 			<a href="index.html" class="logo" onclick="playHomeSound(); return delayNavigation(event, 'index.html')">
@@ -528,7 +668,7 @@
 			scrollToHashTarget(hash);
 		}
 
-		document.querySelectorAll('.project-item a[href^="#"]').forEach(function(link) {
+		document.querySelectorAll('.project-item a[href^="#"], .project-nav-link[href^="#"]').forEach(function(link) {
 			link.addEventListener('click', handleInternalHashLinkClick);
 		});
 
