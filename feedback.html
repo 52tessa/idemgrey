@@ -1,0 +1,391 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Feedback - Idem Grey</title>
+		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			/* Center and push services to bottom */
+			#wrapper { display: flex; flex-direction: column; min-height: 100vh; }
+			#main { flex: 1; }
+			#contact { margin-top: auto !important; text-align: center !important; clear: both; width: 100%; padding: 3rem 0 2rem !important; }
+			#contact .inner { text-align: center; }
+			#contact .services { display: inline-block; text-align: left; }
+			#contact .services ul { margin-left: 1.5rem; }
+			#footer { margin-top: auto; }
+			
+			/* Project list layout (replaces modals) */
+			.project-list { display: flex; flex-direction: column; gap: 2.5rem; margin: 2.5rem 0; }
+			.project-item { background: rgba(0,0,0,0.06); padding: 1.6rem; border-radius: 8px; color: #fff; }
+			.project-item .project-header { display:flex; gap:1rem; align-items:center; margin-bottom:0.6rem; }
+			.project-item .project-header img { width: 48px; height: 48px; object-fit: contain; }
+			.project-item h2 { margin: 0 0 0.4rem 0; }
+			.project-item p { margin: 0 0 0.6rem 0; }
+			.video-wrapper { position: relative; display: block; width: 100%; text-align:center; }
+			.video-wrapper iframe { width: 70%; max-width:900px; height:400px; border:0; }
+			.video-wrapper .video-container { width: 100%; }
+			.video-wrapper .video-container iframe { width: 70%; max-width:900px; height:400px; border:0; }
+					.modal-image { width: 100%; max-width: 640px; display: block; margin: 0 auto; }
+
+					/* Remove link/image outline/highlight (prevent dotted border) */
+					.video-wrapper a,
+					.video-wrapper a:focus,
+					.video-wrapper a:active,
+					.video-wrapper a:hover {
+						outline: none;
+						border: none;
+						box-shadow: none;
+					}
+					.video-wrapper a img,
+					.modal-image {
+						border: none;
+						display: block;
+					}
+					/* Disable mobile tap highlight */
+					.video-wrapper a, .video-wrapper a img { -webkit-tap-highlight-color: transparent; }
+					/* Prevent selection artifacts */
+					.video-wrapper a img { -webkit-user-select: none; user-select: none; }
+			
+			/* Details/summary styles (consolidated) */
+			details summary {
+				cursor: pointer;
+				padding: 6px 8px;
+				border: 1px solid rgba(255, 255, 255, 0.3);
+				border-radius: 6px;
+				display: inline-block;
+				user-select: none;
+				transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+				color: #ffffff;
+				box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+			}
+			details summary:hover { background: #31055a73; border-color: #b0d42b; box-shadow: 0 0 12px rgba(255,255,255,0.4); }
+			details[open] summary { color: #66f5ff; background: #31055a33; border-color: rgba(255,255,255,0.6); box-shadow: 0 0 16px rgba(255,255,255,0.6), 0 0 24px rgba(255,255,255,0.3); }
+			details summary::-webkit-details-marker { display: none; }
+			/* Space between details and video */
+			.project-item details { margin-bottom: 2rem; }
+
+			/* Feedback form styles */
+			.feedback-form {
+				background: rgba(0,0,0,0.06);
+				padding: 1.6rem; 
+				border-radius: 8px;
+				color: #fff;
+				margin: 2.5rem 0;
+			}
+			.feedback-form h2 {
+				margin-bottom: 1rem;
+			}
+			.feedback-form label {
+				display: block;
+				margin-bottom: 0.5rem;
+				font-weight: bold;
+			}
+			.feedback-form input,
+			.feedback-form textarea {
+				width: 100%;
+				padding: 0.5rem;
+				margin-bottom: 1rem;
+				border: 1px solid rgba(255, 255, 255, 0.3);
+				border-radius: 4px;
+				background: rgba(255, 255, 255, 0.1);
+				color: #fff;
+			}
+			.feedback-form textarea {
+				height: 100px;
+				resize: vertical;
+			}
+			.feedback-form button {
+				background: #b0d42b;
+				color: #000;
+				border: none;
+				padding: 0.75rem 1.5rem;
+				border-radius: 4px;
+				cursor: pointer;
+				font-weight: bold;
+			}
+			.feedback-form button:hover {
+				background: #a0c420;
+			}
+
+			/* Banner Feedback */
+			#bannerFeedback {
+				-moz-align-items: center;
+				-webkit-align-items: center;
+				-ms-align-items: center;
+				align-items: center;
+				background-image: url("../../images/background_recorder.jpg");
+				display: -moz-flex;
+				display: -webkit-flex;
+				display: -ms-flex;
+				display: flex;
+				padding: 6em 0 2em 0 ;
+				background-attachment: fixed;
+				background-position: bottom center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				border-bottom: 0 !important;
+				cursor: default;
+				height: 20vh;
+				margin-bottom: -3.25em;
+				max-height: 32em;
+				min-height: 22em;
+				position: relative;
+				top: -3.25em;
+			}
+			
+			#bannerFeedback:after {
+				-moz-transition: opacity 2.5s ease;
+				-webkit-transition: opacity 2.5s ease;
+				-ms-transition: opacity 2.5s ease;
+				transition: opacity 2.5s ease;
+				-moz-transition-delay: 0.75s;
+				-webkit-transition-delay: 0.75s;
+				-ms-transition-delay: 0.75s;
+				transition-delay: 0.75s;
+				pointer-events: none;
+				content: '';
+				display: block;
+				height: 100%;
+				left: 0;
+				opacity: 0.85;
+				position: absolute;
+				top: 0;
+				width: 100%;
+				z-index: 1;
+			}
+
+			#bannerFeedback h1 {
+				font-size: 3.25em;
+			}
+
+			#bannerFeedback > .inner {
+				-moz-transition: opacity 1.5s ease, -moz-transform 0.5s ease-out, -moz-filter 0.5s ease, -webkit-filter 0.5s ease;
+				-webkit-transition: opacity 1.5s ease, -webkit-transform 0.5s ease-out, -webkit-filter 0.5s ease, -webkit-filter 0.5s ease;
+				-ms-transition: opacity 1.5s ease, -ms-transform 0.5s ease-out, -ms-filter 0.5s ease, -webkit-filter 0.5s ease;
+				transition: opacity 1.5s ease, transform 0.5s ease-out, filter 0.5s ease, -webkit-filter 0.5s ease;
+				padding: 0 !important;
+				position: relative;
+				z-index: 2;
+			}
+
+			#bannerFeedback > .inner .image {
+				display: none;
+			}
+
+			#bannerFeedback > .inner header {
+				width: auto;
+			}
+
+			#bannerFeedback > .inner header > :first-child {
+				width: auto;
+			}
+
+			#bannerFeedback > .inner header > :first-child:after {
+				max-width: 100%;
+			}
+
+			#bannerFeedback > .inner .content {
+				display: -moz-flex;
+				display: -webkit-flex;
+				display: -ms-flex;
+				display: flex;
+				-moz-align-items: center;
+				-webkit-align-items: center;
+				-ms-align-items: center;
+				align-items: center;
+				margin: 0 0 2em 0;
+			}
+
+			#bannerFeedback > .inner .content > * {
+				margin-right: 1.5em;
+				margin-bottom: 0;
+			}
+
+			#bannerFeedback > .inner .content > :last-child {
+				margin-right: 0;
+			}
+
+			#bannerFeedback > .inner .content p {
+				font-size: 0.7em;
+				font-weight: 600;
+				letter-spacing: 0.25em;
+				text-transform: uppercase;
+				background: rgba(0, 0, 0, 0.4);
+				padding: 0.3%;
+			}
+
+			#bannerFeedback.major {
+				height: 30vh;
+				min-height: 23em;
+				max-height: 50em;
+			}
+
+			#bannerFeedback.major.alt {
+				opacity: 0.75;
+			}
+		</style>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+	<!-- Audio elements -->
+	<audio id="menuSound" preload="auto">
+		<source src="assets/sounds/menu.wav" type="audio/wav">
+	</audio>
+	<audio id="menuCloseSound" preload="auto">
+		<source src="assets/sounds/menu_close.wav" type="audio/wav">
+	</audio>
+	<audio id="buttonOpenSound" preload="auto">
+		<source src="assets/sounds/button_open.wav" type="audio/wav">
+	</audio>
+	<audio id="buttonCloseSound" preload="auto">
+		<source src="assets/sounds/button_close.wav" type="audio/wav">
+	</audio>
+	<audio id="homeSound" preload="auto">
+		<source src="assets/sounds/home.wav" type="audio/wav">
+	</audio>
+	<audio id="menuItemSound" preload="auto">
+		<source src="assets/sounds/menu_item.wav" type="audio/wav">
+	</audio>
+
+	<div id="wrapper">
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo" onclick="playHomeSound(); return delayNavigation(event, 'index.html')">
+				<strong>IDEM GREY</strong> <span>audio creative</span></a>
+			<nav>
+				<a href="#menu" onclick="playMenuSound()">Menu</a>
+			</nav>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="index.html" onclick="playMenuItemSound()">Home</a></li>
+				<li><a href="sounddesign.html" onclick="playMenuItemSound()">Sound Design</a></li>
+				<li><a href="music-mastering.html" onclick="playMenuItemSound()">Music Production & Engineering</a></li>
+				<li><a href="index.html#two" onclick="playMenuItemSound()">About Me</a></li>
+				<li><a href="contact.html" onclick="playMenuItemSound()">Contact</a></li>
+			</ul>
+		</nav>
+
+		<!-- Banner -->
+		<section id="bannerFeedback" class="major">
+			<div class="inner">
+				<header class="major">
+					<h1>Feedback</h1>
+				</header>
+				<div class="content">
+					<p>Client testimonials and feedback.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Main -->
+		<div id="main" class="alt">
+			<!-- Inline project sections (replacing modals) -->
+			<div class="project-list">
+
+				<!-- Add feedback items here -->
+
+			</div>
+
+			<!-- Feedback submission form -->
+			<section class="feedback-form">
+				<h2>Submit Your Feedback</h2>
+				<form action="https://formspree.io/f/mpqkndbb" method="POST">
+					<label for="headline">Subject:</label>
+					<input type="text" id="headline" name="headline" required>					<label for="author">Author:</label>
+					<input type="text" id="author" name="author" required>					<label for="feedback">Feedback:</label>
+					<textarea id="feedback" name="feedback" required></textarea>
+					<button type="submit">Post Feedback</button>
+				</form>
+			</section>
+		</div>
+
+		<!-- Services list -->
+		<section id="contact">
+			<div class="inner contact-container">
+				<section class="services">
+					<header class="major">
+						<h2>My services</h2>
+					</header>
+					<ul>	
+						<li>Sound Effects & Sound design</li>
+						<li>Field and foley recording</li>
+						<li>Dialog & voiceover editing</li>
+						<li>Custom soundtracks for film</li>
+						<li>Audio post-production</li>
+						<li>Environmental sound design</li>
+						<li>Immersive audio</li>
+					</ul>
+				</section>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="https://discord.com/users/701113635296247870" class="icon brands alt fa-discord" title="idemgrey"><span class="label">Discord</span></a></li>
+					<li><a href="https://www.instagram.com/idem_grey/" class="icon brands alt fa-instagram"><span class="link"></span></a></li>
+					<li><a href="https://www.linkedin.com/in/kaloyan-djamdjiev-6b78381b9/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+					<li><a href="https://www.buymeacoffee.com/idemgrey" title="Buy Me a Coffee" style="border-bottom: none; text-decoration: none;"><img src="images/bmc.PNG" alt="Buy Me a Coffee" style="width: 2em; height: 2em; vertical-align: middle; display: inline-block;"></a></li>
+				</ul>
+				<img src="images/logo.png" alt="Logo" class="footer-logo">
+				<ul class="copyright">
+					<li>&copy; 2026 Idem Grey</li><li>Design: Tessa Luntz</li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script>
+		function playMenuSound() {
+			const sound = document.getElementById('menuSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
+
+		function playMenuCloseSound() {
+			const sound = document.getElementById('menuCloseSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
+
+		function playDetailsToggle(details) {
+			const sound = document.getElementById(details.open ? 'buttonOpenSound' : 'buttonCloseSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
+
+		function playHomeSound() {
+			const sound = document.getElementById('homeSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
+
+		function playMenuItemSound() {
+			const sound = document.getElementById('menuItemSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
+
+		function delayNavigation(event, url) {
+			event.preventDefault();
+			setTimeout(() => { window.location.href = url; }, 150);
+			return false;
+		}
+	</script>
+	</body>
+</html>
