@@ -243,6 +243,15 @@
 	<audio id="buttonCloseSound" preload="auto">
 		<source src="assets/sounds/button_close.wav" type="audio/wav">
 	</audio>
+	<audio id="projectNavOpenSound" preload="auto">
+		<source src="assets/sounds/hover_close.wav" type="audio/wav">
+	</audio>
+	<audio id="projectNavCloseSound" preload="auto">
+		<source src="assets/sounds/hover_open.wav" type="audio/wav">
+	</audio>
+	<audio id="projectNavLinkSound" preload="auto">
+		<source src="assets/sounds/modal_swipe.wav" type="audio/wav">
+	</audio>
 	<audio id="homeSound" preload="auto">
 		<source src="assets/sounds/home.wav" type="audio/wav">
 	</audio>
@@ -462,6 +471,21 @@
 			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
 		}
 
+		function playProjectNavOpenSound() {
+			const sound = document.getElementById('projectNavOpenSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
+
+		function playProjectNavCloseSound() {
+			const sound = document.getElementById('projectNavCloseSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
+
+		function playProjectNavLinkSound() {
+			const sound = document.getElementById('projectNavLinkSound');
+			if (sound) { sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); }
+		}
+
 		function delayNavigation(event, url) {
 			event.preventDefault();
 			setTimeout(() => { window.location.href = url; }, 150);
@@ -507,16 +531,18 @@
 		}
 
 		function closeProjectNavPanel() {
-			if (projectNavPanel) {
+			if (projectNavPanel && projectNavPanel.classList.contains('is-open')) {
 				projectNavPanel.classList.remove('is-open');
+				playProjectNavCloseSound();
 				if (window.matchMedia('(max-width: 700px)').matches) {
 					clearMobileProjectNavTimeout();
 				}
 			}
 		}
 		function openProjectNavPanel() {
-			if (projectNavPanel) {
+			if (projectNavPanel && !projectNavPanel.classList.contains('is-open')) {
 				projectNavPanel.classList.add('is-open');
+				playProjectNavOpenSound();
 				if (window.matchMedia('(max-width: 700px)').matches) {
 					clearMobileProjectNavTimeout();
 					mobileProjectNavTimeout = setTimeout(function() {
@@ -557,6 +583,9 @@
 
 		document.querySelectorAll('.project-item a[href^="#"], .project-nav-link[href^="#"]').forEach(function(link) {
 			link.addEventListener('click', function(event) {
+				if (link.classList.contains('project-nav-link')) {
+					playProjectNavLinkSound();
+				}
 				handleInternalHashLinkClick(event);
 				closeProjectNavPanel();
 			});
