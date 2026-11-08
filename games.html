@@ -727,7 +727,9 @@
 
 		const projectNavPanel = document.querySelector('.project-nav-panel');
 		let mobileProjectNavTimeout = null;
+		let projectNavCloseTimeout = null;
 		const MOBILE_PROJECT_NAV_TIMEOUT_MS = 4000;
+		const PROJECT_NAV_CLOSE_DELAY_MS = 500;
 
 		function clearMobileProjectNavTimeout() {
 			if (mobileProjectNavTimeout) {
@@ -736,7 +738,15 @@
 			}
 		}
 
+		function clearProjectNavCloseTimeout() {
+			if (projectNavCloseTimeout) {
+				clearTimeout(projectNavCloseTimeout);
+				projectNavCloseTimeout = null;
+			}
+		}
+
 		function closeProjectNavPanel() {
+			clearProjectNavCloseTimeout();
 			if (projectNavPanel && projectNavPanel.classList.contains('is-open')) {
 				projectNavPanel.classList.remove('is-open');
 				playProjectNavCloseSound();
@@ -746,6 +756,7 @@
 			}
 		}
 		function openProjectNavPanel() {
+			clearProjectNavCloseTimeout();
 			if (projectNavPanel && !projectNavPanel.classList.contains('is-open')) {
 				projectNavPanel.classList.add('is-open');
 				playProjectNavOpenSound();
@@ -757,10 +768,18 @@
 				}
 			}
 		}
+		function delayProjectNavClose() {
+			if (window.matchMedia('(max-width: 700px)').matches) {
+				closeProjectNavPanel();
+				return;
+			}
+			clearProjectNavCloseTimeout();
+			projectNavCloseTimeout = setTimeout(closeProjectNavPanel, PROJECT_NAV_CLOSE_DELAY_MS);
+		}
 
 		if (projectNavPanel) {
 			projectNavPanel.addEventListener('mouseenter', openProjectNavPanel);
-			projectNavPanel.addEventListener('mouseleave', closeProjectNavPanel);
+			projectNavPanel.addEventListener('mouseleave', delayProjectNavClose);
 			projectNavPanel.addEventListener('focusin', openProjectNavPanel);
 			projectNavPanel.addEventListener('focusout', function(event) {
 				if (!projectNavPanel.contains(event.relatedTarget)) {
