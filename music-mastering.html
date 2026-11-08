@@ -22,6 +22,9 @@
 	<audio id="menuSound" preload="auto">
 		<source src="assets/sounds/menu.wav" type="audio/wav">
 	</audio>
+	<audio id="menuCloseSound" preload="auto">
+		<source src="assets/sounds/menu_close.wav" type="audio/wav">
+	</audio>
 	<audio id="menuItemSound" preload="auto">
 		<source src="assets/sounds/menu_item.wav" type="audio/wav">
 	</audio>
@@ -45,6 +48,7 @@
 							<li><a href="music-mastering.html" onclick="playMenuItemSound()">Music Production & Engineering</a></li>
 							<li><a href="index.html#two" onclick="playMenuItemSound()">About Me</a></li>
 							<li><a href="contact.html" onclick="playMenuItemSound()">Contact</a></li>
+							<li><a href="feedback.html" onclick="playMenuItemSound()">Feedback Form</a></li>
 						</ul>
 					</nav>
 
@@ -145,7 +149,13 @@
 						sound.play().catch(err => console.log('Audio playback failed:', err));
 					}
 				}
-
+				
+				function playMenuCloseSound() {
+				const sound = document.getElementById('menuCloseSound');
+				if (sound) { 
+					sound.currentTime = 0; sound.play().catch(err => console.log('Audio playback failed:', err)); 
+					}
+				}
 				function playHomeSound() {
 					const sound = document.getElementById('homeSound');
 					if (sound) {
