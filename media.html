@@ -502,7 +502,7 @@
 				window.requestAnimationFrame(() => {
 					const extraTopOffset = 140;
 					const top = window.scrollY + target.getBoundingClientRect().top - extraTopOffset;
-					window.scrollTo({ top: Math.max(0, top), behavior: 'auto' });
+					window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
 					if (typeof target.focus === 'function') {
 						target.focus({ preventScroll: true });
 					}
@@ -523,8 +523,8 @@
 		const projectNavPanel = document.querySelector('.project-nav-panel');
 		let mobileProjectNavTimeout = null;
 		let projectNavCloseTimeout = null;
-		const MOBILE_PROJECT_NAV_TIMEOUT_MS = 4000;
-		const PROJECT_NAV_CLOSE_DELAY_MS = 1500;
+		const MOBILE_PROJECT_NAV_TIMEOUT_MS = 1500;
+		const PROJECT_NAV_CLOSE_DELAY_MS = 700;
 
 		function clearMobileProjectNavTimeout() {
 			if (mobileProjectNavTimeout) {
